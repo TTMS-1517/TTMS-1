@@ -135,7 +135,7 @@ public class StudioDAO implements iStudioDAO
             db=new DBUtil();
             if(!db.openConnection())
             {
-                System.out.print("fail to connect database");
+                System.out.print("fail to connect database table studio");
                 return null;
             }
             ResultSet rst=db.execQuery(sql);

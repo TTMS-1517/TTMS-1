@@ -2,17 +2,18 @@ package xupt.se.ttms.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serial;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import xupt.se.ttms.model.Studio;
 import xupt.se.ttms.service.StudioSrv;
@@ -20,7 +21,8 @@ import xupt.se.ttms.service.StudioSrv;
 @WebServlet("/StudioServlet")
 public class StudioServlet extends HttpServlet
 {
-    private static final long serialVersionUID=1L;
+    @Serial
+    private static final long serialVersionUID=2L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -60,7 +62,6 @@ public class StudioServlet extends HttpServlet
                 out.write("数据添加成功");
             else
                 out.write("数据添加失败，请重试");
-
             out.close();
         }
         catch(Exception e)
@@ -108,7 +109,6 @@ public class StudioServlet extends HttpServlet
                 out.write("数据修改成功");
             else
                 out.write("数据修改失败，请重试");
-
             out.close();
         }
         catch(Exception e)
