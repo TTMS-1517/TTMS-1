@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/nav+left.css">
+    <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <style>
+        .btn_index{
+            margin-top: -20px;
+            font-size: 25px;
+            width: 300px;
+            height: 120px;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow nav_top">
+        <a class="navbar-brand col-md-3 col-lg-2 px-3 name" href="#">阳珑影业票务数据信息管理系统</a>
+        <button class="navbar-toggler position-absolute  d-md-none collapsed" type="button" data-toggle="collapse"
+                data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="animated bounceInLeft col-md-2 col-lg-2 d-md-block bg-light sidebar collapse ">
+                <div class="sidebar-sticky pt-2">
+                    <ul class="nav flex-column">
+                        <li id="active_index" class="nav-item">
+                            <a class="nav-link active_index" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                 首 页<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Program.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
+                                    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+                                </svg>
+                                 电 影 计 划
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Ticket.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                 购 票/退 票
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Movie_Hall.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                                    <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                                </svg>
+                                影 厅 管 理
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="User.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                 用 户 管 理
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Statistics.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                                数 据 统 计
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="vue" class="border">
+                    
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cloud" viewBox="0 0 16 16">
+                            <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+                            </svg>
+                            <span>天气查询</span>
+                            </span>
+                        </div>
+                        <input  @keyup.enter="searchWeather" v-model="city" placeholder="城市名称" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+
+                    <ul class="weather_list" @load="searchWeather">
+                        <li v-for="item in weatherList">
+                            <b>{{ item.date }}</b>
+                            <br>
+                            <span>{{ item.type }}</span>&nbsp;
+                            <span>{{ item.low }}</span>&nbsp;
+                            <span>{{ item.high }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                <div class="jumbotron animated bounceIn">
+                    <h1 class="display-4">欢迎进入阳珑影业票务数据信息管理系统</h1>
+                    <hr class="my-4">
+                    <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp阳珑影视传媒有限公司，是一家基于互联网流量趋势与各大网络媒体平台联合为客户提供推广运营等服务的供应商。
+                        本着广交天下友之心，以“诚信严谨、积极进取”为服务准则，向各大商家发出合作邀请，公司服务范围广泛，
+                        涉及领域包括餐饮、教育、服装、美妆、零售等所有可线上推广运营的行业；阳珑影业始终坚持一切以用户的观影价值和观影体验为核心，持续引进和推广优质放映技术，致力于为广大影迷呈现终极理想观影场景。</p>
+                    <hr class="my-4">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此管理系统具有对电影计划、放映影厅、用户信息和票务信息进行查询、添加、修改和删除的功能，
+                        同时还可以通过互联网查询未来5天的天气情况，能够让管理人员更合理地安排电影的放映。
+                    </p>
+                    <a class="btn btn-primary btn-lg ml-2" href="SignIn.html" role="button">点击登录</a>
+                </div>
+                <div class="text-center animated fadeInUp">
+                    <a href="Program.html" class="btn btn-outline-secondary border btn-lg btn_index">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
+                            <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+                        </svg>
+                        电影计划
+                    </a>
+                    <a href="Movie_Hall.html" class="btn btn-outline-secondary border btn-lg btn_index">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                            <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                        影厅管理
+                    </a>
+                    <a href="User.html" class="btn btn-outline-secondary border btn-lg btn_index">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        用户管理
+                    </a>
+                    <a href="Statistics.html" class="btn btn-outline-secondary border btn-lg btn_index">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2">
+                            <line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        数据统计
+                    </a>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/Bootstrap/jquery.js"></script>
+    <script src="js/Bootstrap/bootstrap.min.js"></script>
+    <!--axios-->
+    <script src="js/axios.min.js"></script>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="js/vue.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

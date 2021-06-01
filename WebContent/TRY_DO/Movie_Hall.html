@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影查询</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/nav+left.css" type="text/css">
+    <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+<script type="text/javascript">
+    function search(){
+        var url = "../StudioServlet";
+        if (window.XMLHttpRequest)
+            req = new XMLHttpRequest();
+        else if (window.ActiveXObject)
+            req = new ActiveXObject("Microsoft.XMLHTTP");
+        if (req) {
+            //采用POST方式，异步传输
+            req.open("post", url, true);
+            //POST方式，必须加入如下头信息设定
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.onreadystatechange = searchComplete;
+            req.send("type=search&name="+document.getElementById("studioname").value);
+        }
+    }
+
+    function searchComplete() {
+        if (req.readyState == 4 && req.status == 200) {
+            var theTable = document.getElementById("table");//table的id
+            var num=theTable.rows.length;
+            while(num>1) {
+                theTable.deleteRow(num-1);
+                num=theTable.rows.length;
+            }
+            var json =  JSON.parse(req.responseText);//转换为json对象
+            for(i=0; i<json.length; i++) {
+                var rowCount = theTable.rows.length; //获得当前表格的行数
+                var row = theTable.insertRow(rowCount);//在tale里动态的增加tr
+                row.insertCell(0).innerHTML = json[i].id;
+                row.insertCell(1).innerHTML = json[i].name;
+                row.insertCell(2).innerHTML = json[i].rowCount;
+                row.insertCell(3).innerHTML = json[i].colCount;
+                row.insertCell(4).innerHTML = json[i].introduction;
+                var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].rowCount + "," + json[i].colCount + ",\'" + json[i].introduction +"\'";
+                row.insertCell(5).innerHTML = '<input type="button" class="btn btn-xs btn-primary" value="修改" onclick="modify('+ tmp +')" />&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-danger" value="删除" onclick="del('+json[i].id+')" />';
+            }
+        }
+    }
+    function modify(a,b,c,d,e){
+        window.location="detail.html?type=update&id="+a+"&name="+encodeURIComponent(b)+"&rowCount="+c+"&colCount="+d+"&introduction="+encodeURIComponent(e);
+    }
+
+    function del(id){
+        if(confirm("确定删除？")) {
+
+            var url = "../../StudioServlet";
+            if (window.XMLHttpRequest)
+                req = new XMLHttpRequest();
+            else if (window.ActiveXObject)
+                req = new ActiveXObject("Microsoft.XMLHTTP");
+            if (req) {
+                //采用POST方式，异步传输
+                req.open("post", url, true);
+                //POST方式，必须加入如下头信息设定
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.onreadystatechange = delComplete;
+                req.send("type=delete&id="+id);
+            }
+        }
+    }
+    function delComplete() {
+        if (req.readyState == 4 && req.status == 200) {
+            if(req.responseText==1)
+                search();
+            else
+                alert("数据删除失败，请重试");
+        }
+    }
+    function init(){
+        search();
+    }
+</script>
+<body onload="init()" >
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow nav_top">
+    <a class="navbar-brand col-md-3 col-lg-2 px-3 name" href="#">阳珑影业票务数据信息管理系统</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed float-right" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-2 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-2">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            首 页<span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Program.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
+                                <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+                            </svg>
+                            电 影 计 划
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Ticket.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            购 票/退 票
+                        </a>
+                    </li>
+                    <li id="active_index" class="nav-item">
+                        <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                                <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                            影 厅 管 理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="User.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            用 户 管 理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Statistics.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                            数 据 统 计
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+            <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">影厅管理</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="input-group mr-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">搜索影厅</span>
+                        </div>
+                        <input type="text" class="form-control " id="studioname" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onkeypress="search()">
+                    </div>
+                    <div class="btn-group mr-2">
+                        <button id="add" type="button" class="btn btn-sm btn-outline-secondary"   data-toggle="modal" data-target="#exampleModal">添加影厅</button>
+                    </div>
+                </div>
+            </div>
+<!--        添加模态框-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">添加影厅</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group form-group col-lg-4 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">影厅编号</label>
+                                    </div>
+                                    <input type="text" class="form-control" disabled="disabled">
+                                </div>
+
+                                <div class="input-group form-group col-lg-8 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect02">影厅名称</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="studioname_add">
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="input-group form-group col-lg-4 float-left">
+                                    <input type="text" class="form-control" id="rowcount">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect03">行</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="colcount">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect04">列</label>
+                                    </div>
+                                </div>
+
+                                <div class="input-group form-group col-lg-8 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect05">影厅描述</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary">确认添加</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!--            修改模态框-->
+            <div class="modal fade" id="exampleMod" tabindex="-1" aria-labelledby="exampleModalLab" aria-hidden="true">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLab">修改此影厅</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group form-group col-lg-4 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect06">影厅编号</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="input-group form-group col-lg-8 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect07">影厅名称</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="input-group form-group col-lg-4 float-left">
+                                    <input type="text" class="form-control">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect08">行</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect09">列</label>
+                                    </div>
+                                </div>
+
+                                <div class="input-group form-group col-lg-8 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect10">影厅描述</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#delModal">删除影厅</button>
+                            <button type="button" class="btn btn-primary"  data-dismiss="modal">确认修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--            删除警示-->
+            <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="delModalLabel">确认删除</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            请谨慎操作！！！确认删除该影厅？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-danger"  data-dismiss="modal">确认删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive  animated bounceInUp">
+                <table class="table table-hover">
+                    <thead>
+                    <tr class="list_nav">
+                        <th>演出厅</th>
+                        <th>影厅名称</th>
+                        <th>座位行数</th>
+                        <th>座位列数</th>
+                        <th>影厅描述</th>
+                        <th>座位数量</th>
+                    </tr>
+                    </thead>
+                    <tbody id="table">
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+<script src="js/Bootstrap/jquery.js"></script>
+<script src="js/Bootstrap/bootstrap.bundle.js"></script>
+<!--axios-->
+<script src="js/axios.min.js"></script>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="js/vue.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+    $(document).ready(function(){
+        $("tr").click(function () {
+            $("tr").attr("data-toggle","modal");
+            $("tr").attr("data-target","#exampleMod");
+        });
+    });
+</script>
+</body>
+</html>
