@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="css/nav+left.css" type="text/css">
     <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <script src="js/Bootstrap/jquery.js"></script>
 </head>
 
 <script type="text/javascript">
+
     function search(){
         var url = "../StudioServlet";
         if (window.XMLHttpRequest)
@@ -45,18 +47,22 @@
                 row.insertCell(3).innerHTML = json[i].colCount;
                 row.insertCell(4).innerHTML = json[i].introduction;
                 var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].rowCount + "," + json[i].colCount + ",\'" + json[i].introduction +"\'";
-                row.insertCell(5).innerHTML = '<input type="button" class="btn btn-xs btn-primary" value="修改" onclick="modify('+ tmp +')" />&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-danger" value="删除" onclick="del('+json[i].id+')" />';
+                row.insertCell(5).innerHTML = '<input type="button" class="btn btn-xs btn-primary" value="修改" onclick="modify('+ tmp +')" ' +
+                    '/>&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
             }
         }
     }
+
+
     function modify(a,b,c,d,e){
         window.location="detail.html?type=update&id="+a+"&name="+encodeURIComponent(b)+"&rowCount="+c+"&colCount="+d+"&introduction="+encodeURIComponent(e);
     }
 
     function del(id){
-        if(confirm("确定删除？")) {
 
-            var url = "../../StudioServlet";
+        $("#delConfirm").click(function (){
+
+            var url = "../StudioServlet";
             if (window.XMLHttpRequest)
                 req = new XMLHttpRequest();
             else if (window.ActiveXObject)
@@ -69,7 +75,7 @@
                 req.onreadystatechange = delComplete;
                 req.send("type=delete&id="+id);
             }
-        }
+        });
     }
     function delComplete() {
         if (req.readyState == 4 && req.status == 200) {
@@ -344,14 +350,14 @@
                             <form>
                                 <div class="input-group form-group col-lg-4 float-left">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect06">影厅编号</label>
+                                        <label class="input-group-text" >影厅编号</label>
                                     </div>
                                     <input type="text" class="form-control">
                                 </div>
 
                                 <div class="input-group form-group col-lg-8 float-left">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect07">影厅名称</label>
+                                        <label class="input-group-text" >影厅名称</label>
                                     </div>
                                     <input type="text" class="form-control">
                                 </div>
@@ -361,17 +367,17 @@
                                 <div class="input-group form-group col-lg-4 float-left">
                                     <input type="text" class="form-control">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect08">行</label>
+                                        <label class="input-group-text" >行</label>
                                     </div>
                                     <input type="text" class="form-control">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect09">列</label>
+                                        <label class="input-group-text" >列</label>
                                     </div>
                                 </div>
 
                                 <div class="input-group form-group col-lg-8 float-left">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect10">影厅描述</label>
+                                        <label class="input-group-text" >影厅描述</label>
                                     </div>
                                     <input type="text" class="form-control">
                                 </div>
@@ -400,7 +406,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-danger"  data-dismiss="modal">确认删除</button>
+                            <button type="button" class="btn btn-danger"  data-dismiss="modal" id="delConfirm">确认删除</button>
                         </div>
                     </div>
                 </div>
@@ -424,7 +430,6 @@
         </main>
     </div>
 </div>
-<script src="js/Bootstrap/jquery.js"></script>
 <script src="js/Bootstrap/bootstrap.bundle.js"></script>
 <!--axios-->
 <script src="js/axios.min.js"></script>
@@ -437,12 +442,7 @@
 </script>
 
 <script>
-    $(document).ready(function(){
-        $("tr").click(function () {
-            $("tr").attr("data-toggle","modal");
-            $("tr").attr("data-target","#exampleMod");
-        });
-    });
+
 </script>
 </body>
 </html>
