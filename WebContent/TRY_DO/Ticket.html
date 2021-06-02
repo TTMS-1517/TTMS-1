@@ -5,9 +5,11 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/jq22.css">
     <link rel="stylesheet" href="css/nav+left.css">
     <link rel="stylesheet" href="css/Ticket.css">
     <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
+
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
 
@@ -153,9 +155,46 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">手动选座</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#chooseSeatModal">手动选座</button>
                         <button type="button" class="btn btn-info" data-dismiss="modal">系统选座</button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+<!--        选座-->
+
+        <div class="modal fade" id="chooseSeatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="chooseSeatModalLabel">选择座位</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body body-choose">
+                        <div class="container mb-3">
+                            <div class="demo clearfix">
+                                <!---左边座位列表----->
+                                <div id="seat_area">
+                                    <div class="front">屏幕</div>
+                                </div>
+                                <!---右边选座信息----->
+                                <div class="booking_area mt-5">
+                                    <p>电影：<span>唐人街探案3</span></p>
+                                    <p>时间：<span>03月20日 22:15</span></p>
+                                    <p>座位：</p>
+                                    <ul id="seats_chose"></ul>
+                                    <p>票数：<span id="tickects_num">0</span></p>
+                                    <p>总价：<b>￥<span id="total_price">0</span></b></p>
+                                    <a type="button" class="btn1"><span>确定购买</span></a>
+                                    <div id="legend"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -170,7 +209,7 @@
                     <div class="col-md-8 pr-2">
                         <a href="movie/trjta3.html" class="card-body ml-3"   data-toggle="modal" data-target="#exampleModal">
                             <h4 class="card-title ml-3">唐人街探案3</h4>
-                            <p class="card-text1">&nbsp;&nbsp;&nbsp;&nbsp;继曼谷、纽约之后，东京再出大案。唐人街神探唐仁（王宝强 饰）、秦风（刘昊然 饰）受侦探野田昊（妻夫木聪 饰）的邀请前往破案。“CRIMASTER世界侦探排行榜”中的侦探们闻讯后也齐聚东京，加入挑战，而排名第一Q的现身，让这个大案更加扑朔迷离，一场亚洲最强神探之间的较量即将爆笑展开……</p>
+                            <p class="card-text1">&nbsp;&nbsp;&nbsp;&nbsp;继曼谷、纽约之后，东京再出大案。唐人街神探唐仁（王宝强 饰）、秦风（刘昊然 饰）受侦探野田昊（妻夫木聪 饰）的邀请前往破案。“CRIMASTER世界侦探排行榜”中的侦探们闻讯后也齐聚东京，加入挑战，而排名第一Q的现身，让这个大案更加扑朔迷离，一场亚洲最强神探之间的较量即将爆笑展……</p>
                             <small class="text-muted ml-3">上映时间：2021-02-12(中国大陆)</small>
                             <a href="movie/trjta3.html" class="btn btn-primary float-right col-md-3 mr-3"   data-toggle="modal" data-target="#exampleModal">购票</a>
                         </a>
@@ -286,11 +325,79 @@
     </div>
 </div>
 <script src="js/Bootstrap/jquery.js"></script>
+<script src="js/jquery.seat-charts.min.js"></script>
 <script src="js/Bootstrap/bootstrap.bundle.js"></script>
 <!--axios-->
 <script src="js/axios.min.js"></script>
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="js/vue.min.js"></script>
 <script src="js/index.js"></script>
+<script type="text/javascript">
+    var price = 33; //电影票价
+    $(document).ready(function() {
+        var $cart = $('#seats_chose'), //座位区
+            $tickects_num = $('#tickects_num'), //票数
+            $total_price = $('#total_price'); //票价总额
+        var sc = $('#seat_area').seatCharts({
+            map: [//座位结构图 a 代表座位; 下划线 "_" 代表过道
+                'cccccccccc',
+                'cccccccccc',
+                '__________',
+                'cccccccc__',
+                'cccccccccc',
+                'cccccccccc',
+                'cccccccccc',
+                'cccccccccc',
+                'cccccccccc',
+                'cc__cc__cc'
+            ],
+            naming: {//设置行列等信息
+                top: false, //不显示顶部横坐标（行）
+                getLabel: function(character, row, column) { //返回座位信息
+                    return column;
+                }
+            },
+
+            legend: {//定义图例
+                node: $('#legend'),
+                items: [
+                    ['c', 'available', '可选座'],
+                    ['c', 'unavailable', '已售出']
+                ]
+            },
+
+            click: function() {
+                if (this.status() == 'available') { //若为可选座状态，添加座位
+                    $('<li>' + (this.settings.row + 1) + '排' + this.settings.label + '座</li>')
+                        .attr('id', 'cart-item-' + this.settings.id)
+                        .data('seatId', this.settings.id)
+                        .appendTo($cart);
+                    $tickects_num.text(sc.find('selected').length + 1); //统计选票数量
+                    $total_price.text(getTotalPrice(sc) + price);//计算票价总金额
+                    return 'selected';
+                } else if (this.status() == 'selected') { //若为选中状态
+                    $tickects_num.text(sc.find('selected').length - 1);//更新票数量
+                    $total_price.text(getTotalPrice(sc) - price);//更新票价总金额
+                    $('#cart-item-' + this.settings.id).remove();//删除已预订座位
+
+                    return 'available';
+                } else if (this.status() == 'unavailable') { //若为已售出状态
+                    return 'unavailable';
+                } else {
+                    return this.style();
+                }
+            }
+        });
+        //设置已售出的座位
+        sc.get(['1_3', '1_4', '4_4', '4_5', '4_6', '4_7', '4_8']).status('unavailable');
+    });
+    function getTotalPrice(sc) { //计算票价总额
+        var total = 0;
+        sc.find('selected').each(function() {
+            total += price;
+        });
+        return total;
+    }
+</script>
 </body>
 </html>

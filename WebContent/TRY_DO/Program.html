@@ -15,6 +15,9 @@
             display:block;
             padding-right:16px;
         }
+        td{
+            margin: auto auto;
+        }
     </style>
 
     <script type="text/javascript">
@@ -53,8 +56,8 @@
                     row.insertCell(3).innerHTML = json[i].length;
                     row.insertCell(4).innerHTML = json[i].ticketprice;
                     var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].kind + "," + json[i].length + ",\'" + json[i].ticketprice +"\'";
-                    row.insertCell(5).innerHTML = '<input type="button" class="btn btn-xs btn-primary" value="修改" onclick="modify('+ tmp +')" ' +
-                        '/>&nbsp;&nbsp;<input type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
+                    row.insertCell(5).innerHTML = '<input type="button" class="btn btn-sm btn-primary" value="修改" onclick="modify('+ tmp +')" ' +
+                        '/>&nbsp;&nbsp;<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
                 }
             }
         }
@@ -68,7 +71,7 @@
 
             $("#delConfirm").click(function (){
 
-                var url = "../StudioServlet";
+                var url = "../PlayServlet";
                 if (window.XMLHttpRequest)
                     req = new XMLHttpRequest();
                 else if (window.ActiveXObject)
@@ -163,30 +166,30 @@
             //alert(type);
             document.getElementById("type").value = type;
             if(type=="update"){
-                var studioid = UrlParm.parm("id");
-                var studioname = UrlParm.parm("name");
-                var rowcount = UrlParm.parm("rowCount");
-                var colcount = UrlParm.parm("colCount");
-                var intro = UrlParm.parm("introduction");
-                document.getElementById("studioid").value = studioid;
-                document.getElementById("studioname").value = studioname;
-                document.getElementById("rowcount").value = rowcount;
-                document.getElementById("colcount").value = colcount;
-                document.getElementById("intro").value = intro;
+                var playid = UrlParm.parm("id");
+                var playname = UrlParm.parm("name");
+                var kind = UrlParm.parm("kind");
+                var length = UrlParm.parm("length");
+                var ticketprice = UrlParm.parm("ticketprice");
+                document.getElementById("studioid").value = playid;
+                document.getElementById("playname").value = playname;
+                document.getElementById("kind").value = kind;
+                document.getElementById("length").value = length;
+                document.getElementById("ticketprice").value = ticketprice;
             }
         }
 
         function check() {
             var form = document.getElementById("myform");
-            if(form.studioname.value=="" || form.rowcount.value=="" || form.colcount.value=="" || form.intro.value=="") {
+            if(form.playname.value=="" || form.kind.value=="" || form.length.value=="" || form.ticketprice.value=="") {
                 alert("请填写完整信息");
                 return;
             }
-            if(isNaN(form.rowcount.value) || isNaN(form.colcount.value)){
-                alert("座位行数和座位列数不是数字");
+            if(isNaN(form.length.value) || isNaN(form.ticketprice.value)){
+                alert("时长和票价不是数字");
                 return;
             }
-            var url = "../StudioServlet";
+            var url = "../PlayServlet";
             if (window.XMLHttpRequest)
                 req = new XMLHttpRequest();
             else if (window.ActiveXObject)
@@ -196,11 +199,11 @@
                 req.open("post", url, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = checkComplete;
-                var data = "type=" + form.type.value + "&studioid="
-                    + form.studioid.value + "&studioname="
-                    + encodeURIComponent(form.studioname.value) + "&rowcount="
-                    + form.rowcount.value + "&colcount=" + form.colcount.value
-                    + "&intro=" + encodeURIComponent(form.intro.value);
+                var data = "type=" + form.type.value + "&playid="
+                    + form.playid.value + "&playname="
+                    + encodeURIComponent(form.playname.value) + "&kind="
+                    + encodeURIComponent(form.kind.value) + "&length=" + form.length.value
+                    + "&ticketprice=" + form.ticketprice.value;
                 req.send(data);
             }
         }
@@ -353,163 +356,6 @@
                 </div>
             </div>
 
-
-<!--            修改模态框-->
-            <div class="modal fade" id="exampleMod" tabindex="-1" aria-labelledby="exampleModalLab" aria-hidden="true">
-                <div class="modal-dialog modal-lg" >
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLab">修改此电影</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="input-group form-group col-lg-7 float-left">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">电影名称</label>
-                                    </div>
-                                    <input type="text" class="form-control" id="recipient-name2">
-                                </div>
-                                <div class="input-group col-lg-5 float-left mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">演出厅</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect06">
-                                        <option selected>01厅</option>
-                                        <option value="2">02厅</option>
-                                        <option value="3">03厅</option>
-                                        <option value="4">04厅</option>
-                                        <option value="5">05厅</option>
-                                        <option value="6">06厅</option>
-                                        <option value="7">07厅</option>
-                                        <option value="8">08厅</option>
-                                        <option value="9">09厅</option>
-                                        <option value="10">10厅</option>
-                                        <option value="11">11厅</option>
-                                        <option value="12">12厅</option>
-                                        <option value="13">13厅</option>
-                                        <option value="14">14厅</option>
-                                        <option value="15">15厅</option>
-                                    </select>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="input-group col-lg-6 float-left mb-3">
-                                    <select class="custom-select" id="inputGroupSelect07">
-                                        <option selected>01</option>
-                                        <option value="2">02</option>
-                                        <option value="3">03</option>
-                                        <option value="4">04</option>
-                                        <option value="5">05</option>
-                                        <option value="6">06</option>
-                                        <option value="7">07</option>
-                                        <option value="8">08</option>
-                                        <option value="9">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <label class="input-group-text" for="inputGroupSelect02">月</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect08">
-                                        <option selected>01</option>
-                                        <option value="2">02</option>
-                                        <option value="3">03</option>
-                                        <option value="4">04</option>
-                                        <option value="5">05</option>
-                                        <option value="6">06</option>
-                                        <option value="7">07</option>
-                                        <option value="8">08</option>
-                                        <option value="9">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="19">25</option>
-                                        <option value="20">26</option>
-                                        <option value="21">27</option>
-                                        <option value="22">28</option>
-                                        <option value="23">29</option>
-                                        <option value="24">30</option>
-                                        <option value="24">31</option>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <label class="input-group-text" for="inputGroupSelect02">日</label>
-                                    </div>
-                                </div>
-
-                                <div class="input-group col-lg-6 float-left mb-3">
-                                    <select class="custom-select" id="inputGroupSelect09">
-                                        <option selected>01</option>
-                                        <option value="2">02</option>
-                                        <option value="3">03</option>
-                                        <option value="4">04</option>
-                                        <option value="5">05</option>
-                                        <option value="6">06</option>
-                                        <option value="7">07</option>
-                                        <option value="8">08</option>
-                                        <option value="9">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <label class="input-group-text" for="inputGroupSelect02">时</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect10">
-                                        <option selected>00</option>
-                                        <option value="5">05</option>
-                                        <option value="10">10</option>
-                                        <option value="15">15</option>
-                                        <option value="20">20</option>
-                                        <option value="19">25</option>
-                                        <option value="24">30</option>
-                                        <option value="19">35</option>
-                                        <option value="24">40</option>
-                                        <option value="19">45</option>
-                                        <option value="24">50</option>
-                                        <option value="19">55</option>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <label class="input-group-text" for="inputGroupSelect02">分</label>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#delModal">删除电影</button>
-                            <button type="button" class="btn btn-primary"  data-dismiss="modal">确认修改</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 <!--            删除警示框-->
             <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">

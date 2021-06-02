@@ -17,6 +17,38 @@
             height: 120px;
             line-height: 100px;
         }
+
+        .product-device {
+            position: absolute;
+            right: 10%;
+            bottom: -30%;
+            width: 250px;
+            height: 470px;
+            background-color: #333;
+            border-radius: 21px;
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+
+        .product-device::before {
+            position: absolute;
+            top: 10%;
+            right: 10px;
+            bottom: 10%;
+            left: 10px;
+            content: "";
+            background-color: rgba(255, 255, 255, .1);
+            border-radius: 5px;
+        }
+
+        .product-device-2 {
+            top: -25%;
+            right: auto;
+            bottom: 0;
+            left: 10%;
+            background-color: #e5e5e5;
+        }
+
     </style>
 </head>
 <body>
@@ -101,9 +133,16 @@
                 </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                <div class="position-relative overflow-hidden p-3 p-md-4 my-md-3 text-center bg-light main animated bounceIn">
+                    <div class="col-md-5 p-lg-5 mx-auto my-5">
+                        <h4 class="display-6 font-weight-normal">阳珑影业票务数据信息管理系统</h4>
+                        <p class="lead">影随心动——服务好每一位顾客</p>
+                        <a class="btn btn-lg btn-outline-primary" href="#">点击登录</a>
+                    </div>
+                    <div class="product-device shadow-sm d-none d-md-block"></div>
+                    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+                </div>
                 <div class="jumbotron animated bounceIn">
-                    <h1 class="display-4">欢迎进入阳珑影业票务数据信息管理系统</h1>
-                    <hr class="my-4">
                     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp阳珑影视传媒有限公司，是一家基于互联网流量趋势与各大网络媒体平台联合为客户提供推广运营等服务的供应商。
                         本着广交天下友之心，以“诚信严谨、积极进取”为服务准则，向各大商家发出合作邀请，公司服务范围广泛，
                         涉及领域包括餐饮、教育、服装、美妆、零售等所有可线上推广运营的行业；阳珑影业始终坚持一切以用户的观影价值和观影体验为核心，持续引进和推广优质放映技术，致力于为广大影迷呈现终极理想观影场景。</p>
@@ -111,7 +150,6 @@
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此管理系统具有对电影计划、放映影厅、用户信息和票务信息进行查询、添加、修改和删除的功能，
                         同时还可以通过互联网查询未来5天的天气情况，能够让管理人员更合理地安排电影的放映。
                     </p>
-                    <a class="btn btn-primary btn-lg ml-2" href="SignIn.html" role="button">点击登录</a>
                 </div>
                 <div class="text-center animated fadeInUp">
                     <a href="Program.html" class="btn btn-outline-secondary border btn-lg btn_index">
