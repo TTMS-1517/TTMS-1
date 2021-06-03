@@ -2,29 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css">
-    <script src="js/Bootstrap/jquery.js"></script>
-    <script src="js/Bootstrap/bootstrap.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/customer_login.css">
 </head>
-<body class="text-center">
-<form class="form-signin col-4 mx-auto mt-5">
-    <img class="mb-4" src="img/场地分类-剧院.svg" alt="" width="72" height="72">
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control line_control" placeholder="Email address" required="" autofocus="">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control line_control" placeholder="Password" required="">
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">©2021</p>
-</form>
+<body>
+    <section>
+        <div class="container">
+            <div class="user signinBx">
+                <div class="imgBx"><img src="img/customer_login_1.jpg"></div>
+                <div class="formBx">
+                    <form>
+                        <h2>Sign In</h2>
+                        <input type="text" placeholder="Username">
+                        <input type="password" placeholder="Password">
+                        <input type="submit" value="Login">
+                        <p class="signup">Don't have an account? <a href="#" onclick="toggleForm();">Sign up.</a></p>
+                    </form>
+                </div>
+            </div>
+            <div class="user signupBx">
+                <div class="formBx">
+                    <form>
+                        <h2>Create an account</h2>
+                        <input type="text" placeholder="Username">
+                        <input type="text" placeholder="Email Address">
+                        <input type="password" placeholder="Create Password">
+                        <input type="password" placeholder="Confirm Password">
+                        <input type="submit" value="Sign Up">
+                        <p class="signup">Already have an account? <a href="#" onclick="toggleForm();">Sign in.</a></p>
+                    </form>
+                </div>
+                <div class="imgBx"><img src="img/customer_login_2.jpg"></div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function toggleForm(){
+            section = document.querySelector('section');
+            container = document.querySelector('.container');
+            container.classList.toggle('active');
+            section.classList.toggle('active');
+        }
+    </script>
+</body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </html>

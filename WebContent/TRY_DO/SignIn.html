@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <script src="js/Bootstrap/jquery.js"></script>
+    <script src="js/Bootstrap/bootstrap.min.js"></script>
     <style>
         .form-signin{
             width: 100%;
@@ -82,16 +83,11 @@
         function searchComplete() {
             if (req.readyState == 4 && req.status == 200) {
                 var inputPwd = document.getElementById("EmployeePassword").value;//输入框中的密码
-                // var num=theTable.rows.length;
-                // while(num>0) {
-                //     theTable.deleteRow(num-1);
-                //     num=theTable.rows.length;
-                // }
                 var json =  JSON.parse(req.responseText);//转换为json对象
                 if(inputPwd == json[0].pwd){
-                    alert("密码正确");
+                    successSignIn();
                 }else {
-                    alert("密码错误");
+                    failSignIn();
                 }
 
                 // for(i=0; i<json.length; i++) {
@@ -107,6 +103,18 @@
                 //         '/>&nbsp;&nbsp;<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
                 // }
             }
+        }
+
+
+        function successSignIn(){
+            var signInmdl = document.getElementById("mdl");
+
+        }
+
+        function failSignIn(){
+            var inputGroup = document.getElementById("input");
+            inputGroup.classList.add("wobble");
+            inputGroup.classList.remove("wobble");
         }
 
         //
@@ -267,14 +275,32 @@
     <form action="" class="form-signin" id="app">
             <img src="img/场地分类-剧院.svg" alt="" class="mb-4" width="86" height="86">
             <h1 class="h2 mb-4">阳珑影业票务管理系统</h1>
-            <input type="text" id="EmployeeEmail" class="form-control"   autofocus>
-            <input type="password" id="EmployeePassword" class="form-control" >
-            <button type="button" id="bt1" class="btn btn-secondary bt1 float-left animated bounceInDown" onclick="search()">登入</button>
+            <div id="input" class="animated ">
+                <input type="text" id="EmployeeEmail" placeholder="邮箱" class="form-control" required autofocus>
+                <input type="password" id="EmployeePassword" placeholder="密码" class="form-control" >
+            </div>
+
+            <button type="button" id="bt1" class="btn btn-secondary bt1 float-left animated bounceInDown" data-toggle="modal" data-target="#signModal" onclick="search()" >登入</button>
             <a id="bt2" href="SignUp.html"  class="btn btn-secondary bt2 float-right animated bounceInUp">注册</a>
             <p id="lyy" class="mb-3 text-muted">@2021 阳珑影视传媒有限公司</p>
-
-
     </form>
+
+<!--    登陆-->
+    <div id="mdl">
+
+        <div class="modal fade" id="signModal" tabindex="-1" aria-labelledby="signModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signModalLabel"><span>登录成功</span></h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="ok">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </body>
