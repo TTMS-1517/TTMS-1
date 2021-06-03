@@ -34,10 +34,11 @@
             if (req.readyState == 4 && req.status == 200) {
                 var inputPwd = document.getElementById("EmployeePassword").value;//输入框中的密码
                 var json =  JSON.parse(req.responseText);//转换为json对象
-                if(inputPwd == json[0].pwd){
-                    alert("成功");
-                }else {
+                var pwd = json[0].pwd;
+                if(inputPwd != pwd){
                     failSignIn();
+                }else {
+                    alert("成功");
                 }
 
                 // for(i=0; i<json.length; i++) {
@@ -222,7 +223,7 @@
 </head>
 <body>
     <section>
-        <div class="container animated">
+        <div class="container animated flipInX">
             <div class="user signinBx">
                 <div class="imgBx"><img src="img/customer_login_1.jpg"></div>
                 <div class="formBx">
