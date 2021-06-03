@@ -126,8 +126,6 @@ public class EmployeeServlet extends HttpServlet
         List<Employee> result=null;
         if(name != null && name.length() > 0)
             result=new EmployeeSrv().Fetch(name);
-        else
-            result=new EmployeeSrv().FetchAll();
         String jsonStr="";
         try
         {

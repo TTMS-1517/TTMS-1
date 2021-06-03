@@ -2,7 +2,6 @@ package xupt.se.ttms.dao;
 
 import xupt.se.ttms.idao.iEmployeeDAO;
 import xupt.se.ttms.model.Employee;
-import xupt.se.ttms.model.Play;
 import xupt.se.util.DBUtil;
 
 import java.sql.ResultSet;

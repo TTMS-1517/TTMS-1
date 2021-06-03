@@ -1,5 +1,6 @@
 package xupt.se.ttms.service;
 
+import xupt.se.ttms.dao.EmployeeDAO;
 import xupt.se.ttms.idao.DAOFactory;
 import xupt.se.ttms.idao.iEmployeeDAO;
 import xupt.se.ttms.model.Employee;
@@ -25,7 +26,4 @@ public class EmployeeSrv {
         return employeeDAO.select(email);
     }
 
-    public List<Employee> FetchAll(){
-        return employeeDAO.select("");
-    }
 }

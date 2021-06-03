@@ -46,8 +46,8 @@ public class Employee {
     public String getEmail(){
         return Email;
     }
-    public void setPwd(String length){
-        this.Pwd=length;
+    public void setPwd(String pwd){
+        this.Pwd=pwd;
     }
 
     public String getPwd(){
