@@ -75,7 +75,7 @@
                 //POST方式，必须加入如下头信息设定
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = searchComplete;
-                req.send("type=search&email="+document.getElementById("EmployeeEmail").value);
+                req.send("type=search&name="+document.getElementById("EmployeeEmail").value);
             }
         }
 
@@ -267,7 +267,7 @@
     <form action="" class="form-signin" id="app">
             <img src="img/场地分类-剧院.svg" alt="" class="mb-4" width="86" height="86">
             <h1 class="h2 mb-4">阳珑影业票务管理系统</h1>
-            <input type="email" id="EmployeeEmail" class="form-control"  required  autofocus>
+            <input type="text" id="EmployeeEmail" class="form-control"   autofocus>
             <input type="password" id="EmployeePassword" class="form-control" >
             <button type="button" id="bt1" class="btn btn-secondary bt1 float-left animated bounceInDown" onclick="search()">登入</button>
             <a id="bt2" href="SignUp.html"  class="btn btn-secondary bt2 float-right animated bounceInUp">注册</a>

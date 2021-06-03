@@ -9,6 +9,7 @@ import xupt.se.ttms.service.EmployeeSrv;
 import xupt.se.ttms.service.PlaySrv;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+@WebServlet("/EmployeeServlet")
 public class EmployeeServlet extends HttpServlet
 {
     private static final long serialVersionUID=1L;
@@ -122,7 +124,7 @@ public class EmployeeServlet extends HttpServlet
     {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out=response.getWriter();
-        String name=request.getParameter("email");
+        String name=request.getParameter("name");
         List<Employee> result=null;
         if(name != null && name.length() > 0)
             result=new EmployeeSrv().Fetch(name);
