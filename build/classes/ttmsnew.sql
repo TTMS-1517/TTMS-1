@@ -90,6 +90,14 @@ CREATE TABLE `employee`  (
   CONSTRAINT `FK_emp_position` FOREIGN KEY (`dict_id`) REFERENCES `data_dict` (`dict_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
+INSERT INTO employee(emp_no,emp_name,emp_email,emp_pwd) VALUES('No.1','LYY','2193560021@qq.com','liuyng01253217');
+INSERT INTO employee(emp_no,emp_name,emp_email,emp_pwd) VALUES('No.2','FJW','123456@qq.com','123456');
+INSERT INTO employee(emp_no,emp_name,emp_email,emp_pwd) VALUES('No.3','ZJQ','234567@qq.com','234567');
+INSERT INTO employee(emp_no,emp_name,emp_email,emp_pwd) VALUES('No.4','ZRP','345678@qq.com','345678');
+INSERT INTO employee(emp_no,emp_name,emp_email,emp_pwd) VALUES('No.5','XZL','567890@qq.com','567890');
+INSERT INTO employee(emp_no,emp_name,emp_email,emp_pwd) VALUES('No.5','QPY','67890@qq.com','67890');
+
+
 -- ----------------------------
 -- Table structure for play
 -- ----------------------------
