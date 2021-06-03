@@ -14,12 +14,12 @@ public class PlayDAO  implements iPlayDAO
     @Override
     public int insert(Play play)
     {
-        int result=0;
+        int resultPlay=0;
         try
         {
             String sql="insert into play(play_name, play_kind, play_length, play_ticket_price )"
-                        + " values('" + play.getName() + "', " + play.getKind() + ", " + play.getLength() + ", '"
-                    + play.getTicketPrice() + "' )";
+                        + " values('" + play.getName() + "', '" + play.getKind() + "', " + play.getLength() + ", "
+                    + play.getTicketPrice() + " )";
             DBUtil db=new DBUtil();
             db.openConnection();
             ResultSet rst=db.getInsertObjectIDs(sql);
@@ -29,7 +29,7 @@ public class PlayDAO  implements iPlayDAO
             }
             db.close(rst);
             db.close();
-            result=1;
+            resultPlay=1;
         }
         catch(Exception e)
         {
@@ -37,7 +37,7 @@ public class PlayDAO  implements iPlayDAO
         }
         finally
         {
-            return result;
+            return resultPlay;
         }
     }
 

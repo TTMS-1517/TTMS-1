@@ -12,11 +12,11 @@ public class Play {
         id = 0;
     }
     public Play(int ID, String name, String kind, int length, int ticketPrice){
-        id = ID;
+        this.id = ID;
         this.name=name;
         this.Kind = kind;
         this.Length = length;
-        TicketPrice = ticketPrice;
+        this.TicketPrice = ticketPrice;
     }
 
     public int getId() {

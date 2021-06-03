@@ -309,14 +309,14 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">电影编号</label>
                                     </div>
-                                    <input type="text" class="form-control" disabled="disabled" id="studioid" name="studioid">
+                                    <input type="text" class="form-control" disabled="disabled" id="playid" name="playid">
                                 </div>
 
                                 <div class="input-group form-group col-lg-8 float-left">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" >电影名称</label>
                                     </div>
-                                    <input type="text" class="form-control" id="studioname" name="studioname">
+                                    <input type="text" class="form-control" id="playname" name="playname">
                                 </div>
                                 <br>
                                 <br>
@@ -333,7 +333,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">时长</label>
                                     </div>
-                                    <input type="text" class="form-control" id="length" name="colcount">
+                                    <input type="text" class="form-control" id="length" name="length">
 
                                 </div>
 
@@ -341,7 +341,7 @@
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">票价</label>
                                     </div>
-                                    <input type="text" class="form-control" id="ticketprice" name="colcount">
+                                    <input type="text" class="form-control" id="ticketprice" name="ticketprice">
 
                                 </div>
 
@@ -357,7 +357,7 @@
             </div>
 
 
-<!--            删除警示框-->
+            <!--            删除警示-->
             <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -368,11 +368,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            请谨慎操作！！！确认删除该电影？
+                            请谨慎操作！！！确认删除该影厅？
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-danger"  data-dismiss="modal">确认删除</button>
+                            <button type="button" class="btn btn-danger"  data-dismiss="modal" id="delConfirm">确认删除</button>
                         </div>
                     </div>
                 </div>
