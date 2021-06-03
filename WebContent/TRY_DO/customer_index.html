@@ -26,6 +26,9 @@
         .paddtop{
             padding-top: 5px;
         }
+        .paddtop-1{
+            padding-top: 40px;
+        }
         .buy-ticket{
             width:100%;
             color:white;/*字体颜色*/
@@ -42,7 +45,24 @@
         .buy-ticket:hover{/*鼠标移动时的颜色变化*/
             background-color: antiquewhite;
         }
+        .fcc{
+            width:100%;
+            height: 250px;
+        }
 
+        .qxd{
+            list-style: none;
+
+        }
+        .qxd li{
+            color: gray;
+            padding: 4px;
+        }
+        .dizhi{
+            color: gray;
+        }
+        .dizhi:hover{
+            color: gray;
     </style>
 </head>
 <body>
@@ -256,10 +276,27 @@
     </div>
 
     <!--页脚部分-->
-    <footer class="container-fluid">
+<div class="paddtop-1">
+    <footer class="container-fluid bg-dark fcc">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-6">
+                    <section class="paddtop-1">
+                        <h4 class="title">关于我们</h4>
+                        <ul class="qxd">
+                            <li><img src="img/icon/dizhi.png" alt="">&nbsp;&nbsp;<a href="http://cs.xiyou.edu.cn/" class="dizhi">西安市长安区西长安街618号东区计算机学院</a></li>
+                            <li><img src="img/icon/phone.png" alt="">&nbsp;&nbsp;15771831xxx</li>
+                            <li><img src="img/icon/email.png" alt="">&nbsp;&nbsp;liuyuyng@xiyou.edu.cn</li>
+                            <li>@西安邮电大学计算机学院软件工程1901(2021)</li>
 
-
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
     </footer>
+</div>
+
 
 <script src="js/Bootstrap/jquery.js"></script>
 <script src="js/Bootstrap/bootstrap.js"></script>
