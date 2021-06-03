@@ -2,65 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign in</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>登录</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/customer_login.css">
+    <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
     <script src="js/Bootstrap/jquery.js"></script>
-    <script src="js/Bootstrap/bootstrap.min.js"></script>
-    <style>
-        .form-signin{
-            width: 100%;
-            max-width: 350px;
-            margin:110px auto;
-        }
-        .form-control{
-            box-sizing: border-box;
-            font-size: 19px;
-            height: 45px;
-        }
-        .form-signin input[type="email"]{
-            margin: 7px auto;
-        }
-        .form-signin input[type="password"]{
-            margin-bottom: 30px;
-        }
-        .bt1{
-            width: 174px;
-            height: 45px;
-            color: #fff;
-            border: none;
-            font-size: 22px;
-            font-weight: bold;
-            background: linear-gradient(145deg,#ffec61,#f321d7);
-            transition: .1s linear;
-        }
 
-        .bt1:hover{
-            background: linear-gradient(135deg,#f321d7,#ffec61);
-            transform: translateY(-3px);
-            box-shadow:0 0px 10px #f321d7 ;
-        }
-        .bt2{
-            width: 174px;
-            height: 45px;
-            color: #fff;
-            border: none;
-            font-size: 22px;
-            font-weight: bold;
-            background: linear-gradient(135deg,#24ff72,#2196f3);
-            transition: .1s linear all;
-        }
-        .bt2:hover{
-            background: linear-gradient(135deg,#2196f3,#24ff72);
-            transform: translateY(-3px);
-            box-shadow:0 0px 10px #2196f3 ;
-        }
-        #lyy{
-            margin-top: 200px;
-        }
-    </style>
 
     <script type="text/javascript">
 
@@ -85,7 +35,7 @@
                 var inputPwd = document.getElementById("EmployeePassword").value;//输入框中的密码
                 var json =  JSON.parse(req.responseText);//转换为json对象
                 if(inputPwd == json[0].pwd){
-                    successSignIn();
+                    alert("成功");
                 }else {
                     failSignIn();
                 }
@@ -105,20 +55,16 @@
             }
         }
 
-
-        function successSignIn(){
-            var signInmdl = document.getElementById("mdl");
-
-        }
-
+        var card = document.getElementsByClassName("container");
+        var bg = document.getElementsByTagName("section");
         function failSignIn(){
-            var inputGroup = document.getElementById("input");
-            inputGroup.classList.add("wobble");
+            card[0].classList.add("wobble");
+            bg[0].classList.add("fail");
             setTimeout(failSignIn_animateRemove,1200);
         }
         function failSignIn_animateRemove(){
-            var inputGroup = document.getElementById("input");
-            inputGroup.classList.remove("wobble");
+            card[0].classList.remove("wobble");
+            bg[0].classList.remove("fail");
         }
         //
         // function modify(a,b,c,d,e){
@@ -274,37 +220,45 @@
     </script>
 
 </head>
-<body class="text-center">
-    <form action="" class="form-signin" id="app">
-            <img src="img/场地分类-剧院.svg" alt="" class="mb-4" width="86" height="86">
-            <h1 class="h2 mb-4">阳珑影业票务管理系统</h1>
-            <div id="input" class="animated ">
-                <input type="text" id="EmployeeEmail" placeholder="邮箱" class="form-control" required autofocus>
-                <input type="password" id="EmployeePassword" placeholder="密码" class="form-control" >
-            </div>
-
-            <button type="button" id="bt1" class="btn btn-secondary bt1 float-left animated bounceInDown" onclick="search()" >登入</button>
-            <a id="bt2" href="SignUp.html"  class="btn btn-secondary bt2 float-right animated bounceInUp">注册</a>
-            <p id="lyy" class="mb-3 text-muted">@2021 阳珑影视传媒有限公司</p>
-    </form>
-
-<!--    登陆-->
-    <div id="mdl">
-
-        <div class="modal fade" id="signModal" tabindex="-1" aria-labelledby="signModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="signModalLabel"><span>登录成功</span></h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="ok">确定</button>
-                    </div>
+<body>
+    <section>
+        <div class="container animated">
+            <div class="user signinBx">
+                <div class="imgBx"><img src="img/customer_login_1.jpg"></div>
+                <div class="formBx">
+                    <form>
+                        <h1>登  录</h1>
+                        <input type="text" id="EmployeeEmail" placeholder="邮箱地址" autofocus>
+                        <input type="password" id="EmployeePassword" placeholder="密码">
+                        <input type="button" id="bt1" value="登 录" onclick="search()">
+                        <p class="signup">还没有账户？ <a href="#" onclick="toggleForm();">去注册</a></p>
+                    </form>
                 </div>
             </div>
+            <div class="user signupBx">
+                <div class="formBx">
+                    <form>
+                        <h1>创建账户</h1>
+                        <input type="text" placeholder="昵称">
+                        <input type="text" placeholder="邮箱地址">
+                        <input type="password" placeholder="密码">
+                        <input type="password" placeholder="确认密码">
+                        <input type="button" value="注 册">
+                        <p class="signup">已经有账户了？ <a href="#" onclick="toggleForm();">登录</a></p>
+                    </form>
+                </div>
+                <div class="imgBx"><img src="img/customer_login_2.jpg"></div>
+            </div>
         </div>
-    </div>
+    </section>
 
-
+    <script>
+        function toggleForm(){
+            section = document.querySelector('section');
+            container = document.querySelector('.container');
+            container.classList.toggle('active');
+            section.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

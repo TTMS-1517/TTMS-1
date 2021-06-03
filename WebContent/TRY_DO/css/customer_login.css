@@ -17,6 +17,9 @@ section{
 section.active{
     background: #3e3f39;
 }
+.fail{
+    background: #e73e49;
+}
 section .container{
     position: relative;
     width: 800px;
@@ -24,6 +27,7 @@ section .container{
     background: #fff;
     box-shadow: 0 15px 50px rgba(0,0,0,0.1);
     overflow: hidden;
+    border-radius: 20px;
 }
 section .container .user{
     position: absolute;
@@ -58,8 +62,8 @@ section .container .user .formBx{
     padding: 40px;
     transition: 0.5s;
 }
-section .container .user .formBx h2{
-    font-size: 18px;
+section .container .user .formBx h1{
+    font-size: 25px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -80,23 +84,23 @@ section .container .user .formBx input{
     letter-spacing: 1px;
     font-weight: 300;
 }
-section .container .user .formBx input[type="submit"]{
+section .container .user .formBx input[type="button"]{
     max-width: 100px;
     background: #677eff;
     color: #fff;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     letter-spacing: 1px;
     transition: 0.5s;
 }
-section .container .user.signupBx .formBx input[type="submit"]{
+section .container .user.signupBx .formBx input[type="button"]{
     background: #e73e49;
 }
 section .container .user .formBx .signup{
     position: relative;
     margin-top: 20px;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 1px;
     color: #555;
     text-transform: uppercase;
