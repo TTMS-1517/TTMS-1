@@ -66,8 +66,11 @@ section .container .user .formBx{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding:0 40px 40px;
     transition: 0.5s;
+}
+section .container .user .formBx img{
+    margin: 0 120px;
 }
 section .container .user .formBx h1{
     font-size: 25px;
