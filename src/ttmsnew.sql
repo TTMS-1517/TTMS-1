@@ -149,6 +149,7 @@ INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_p
 INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('速度与激情9','动作/犯罪','“唐老大”多姆·托莱多（范·迪塞尔 饰）与莱蒂（米歇尔·罗德里格兹 饰）和他的儿子小布莱恩，过上了远离纷扰的平静生活。然而他们也知道，安宁之下总潜藏着危机。这一次，为了保护他所爱的人，唐老大不得不直面过去。他和伙伴们面临的是一场足以引起世界动荡的阴谋，以及一个前所未遇的一流杀手和高能车手.........',142,38);
 INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('悬崖之上','剧情/动作/悬疑','上世纪三十年代，四位曾在苏联接受特训的共产党特工组成任务小队，回国执行代号为“乌特拉”的秘密行动。由于叛徒的出卖，他们从跳伞降落的第一刻起， 就已置身于敌人布下的罗网之中。同志能否脱身，任务能否完成，雪一直下，立于“悬崖之上”的行动小组面临严峻考验。',120,35);
 INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('我要我们在一起','剧情/爱情','你有没有爱过一个人，曾经拼了命，只为和TA在一起。十年前，差生吕钦扬当众告白凌一尧，两人从校园步入社会，为了让她幸福，他不惜以命相搏。然而金钱、房子、婚姻等现实的考验，却将两人越推越远。十年长跑，他们能否还记得曾经刻在心底的约定：我要我们在一起。',105,37);
+
 -- ----------------------------
 -- Table structure for resource
 -- ----------------------------

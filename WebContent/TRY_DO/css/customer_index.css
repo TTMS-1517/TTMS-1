@@ -1,0 +1,60 @@
+.bt{
+    border-bottom: 2px solid gray;
+    padding: 5px;
+}
+.main img{
+    max-width: 100%;
+}
+.movie_kind{
+    font-size: 12px;
+    color: #999;
+}
+#bt-1{
+    float: left;
+}
+#bt-2{
+    float:left;
+    text-align: center;
+    line-height:50px ;
+}
+.paddtop{
+    padding-top: 5px;
+}
+.paddtop-1{
+    padding-top: 40px;
+}
+.buy-ticket{
+    width:100%;
+    color:white;/*字体颜色*/
+    background-color:cornflowerblue;/*按钮背景颜色*/
+    border-radius: 3px;/*让按钮变得圆滑一点*/
+    border-width: 0;/*消去按钮丑的边框*/
+    margin: 0;
+    outline: none;/*取消轮廓*/
+    font-family: KaiTi;/*字体设置为楷体*/
+    font-size: 17px;/*设置字体大小*/
+    text-align: center;/*字体居中*/
+    cursor: pointer;/*设置鼠标箭头手势*/
+}
+.buy-ticket:hover{/*鼠标移动时的颜色变化*/
+    background-color: antiquewhite;
+}
+.fcc{
+    width:100%;
+    height: 250px;
+}
+
+.qxd{
+    list-style: none;
+
+}
+.qxd li{
+    color: gray;
+    padding: 4px;
+}
+.dizhi{
+    color: gray;
+}
+.dizhi:hover{
+    color: gray;
+}

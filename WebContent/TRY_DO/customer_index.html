@@ -7,63 +7,8 @@
     <title>阳珑国际影视</title>
 
     <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css">
-    <style>
-        .bt{
-            border-bottom: 2px solid gray;
-            padding: 5px;
-        }
-        .main img{
-            max-width: 100%;
-        }
-        #bt-1{
-            float: left;
-        }
-        #bt-2{
-            float:left;
-            text-align: center;
-            line-height:50px ;
-        }
-        .paddtop{
-            padding-top: 5px;
-        }
-        .paddtop-1{
-            padding-top: 40px;
-        }
-        .buy-ticket{
-            width:100%;
-            color:white;/*字体颜色*/
-            background-color:cornflowerblue;/*按钮背景颜色*/
-            border-radius: 3px;/*让按钮变得圆滑一点*/
-            border-width: 0;/*消去按钮丑的边框*/
-            margin: 0;
-            outline: none;/*取消轮廓*/
-            font-family: KaiTi;/*字体设置为楷体*/
-            font-size: 17px;/*设置字体大小*/
-            text-align: center;/*字体居中*/
-            cursor: pointer;/*设置鼠标箭头手势*/
-        }
-        .buy-ticket:hover{/*鼠标移动时的颜色变化*/
-            background-color: antiquewhite;
-        }
-        .fcc{
-            width:100%;
-            height: 250px;
-        }
+    <link rel="stylesheet" href="css/customer_index.css">
 
-        .qxd{
-            list-style: none;
-
-        }
-        .qxd li{
-            color: gray;
-            padding: 4px;
-        }
-        .dizhi{
-            color: gray;
-        }
-        .dizhi:hover{
-            color: gray;
-    </style>
 </head>
 <body>
 <header>
@@ -118,7 +63,6 @@
                             <a class="dropdown-item" href="#">退出</a>
                         </div>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -126,7 +70,7 @@
 
 
     <!--  轮播图 -->
-    <div class="container">
+    <div class="container mt-2">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -170,106 +114,128 @@
         </div>
         <!--第一行-->
         <div class="row paddtop">
-            <div class="card col-md-3">
-                <div class="thumbnail">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
                     <img src="img/listimage/464x644/daXiong.png" alt="">
-                    <h6>哆啦A梦：伴我同行2</h6>
-                    <p>剧情/动画</p>
-                    <input type="button" value="购票" class="buy-ticket">
+                    <div class="card-body">
+                        <h6>哆啦A梦：伴我同行2</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">剧情/动画</small>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
                     <img src="img/listimage/464x644/jiJing.png" alt="">
-                    <h6>寂静之地2 A Quiet Place: Part II </h6>
-                    <p>科幻/惊悚/恐怖</p>
-                    <input type="button" value="购票" class="buy-ticket">
+                    <div class="card-body">
+                        <h6>寂静之地2</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">科幻/惊悚/恐怖</small>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
                     <img src="img/listimage/464x644/jiuLingHou.png" alt="">
-                    <h6>九零后 </h6>
-                    <p>纪录片</p>
-                    <input type="button" value="购票" class="buy-ticket">
+                    <div class="card-body">
+                        <h6>九零后</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">纪录片</small>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
                     <img src="img/listimage/464x644/piNuoCao.png" alt="">
-                    <h6>匹诺曹 Pinocchio </h6>
-                    <p>奇幻</p>
-                    <input type="button" value="购票" class="buy-ticket">
+                    <div class="card-body">
+                        <h6>匹诺曹 Pinocchio </h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">奇幻</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--第二行-->
-        <div class="row paddtop">
-            <div class="card col-md-3">
-                <div class="thumbnail">
-                    <img src="img/listimage/464x644/hunLi.png" alt="">
-                    <h6>你的婚礼</h6>
-                    <p>爱情</p>
-                    <input type="button" value="购票" class="buy-ticket">
-                </div>
-            </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
-                    <img src="img/listimage/464x644/keNan.png" alt="">
-                    <h6>名侦探柯南：绯色的子弹</h6>
-                    <p>动作/动画/悬疑/冒险</p>
-                    <input type="button" value="购票" class="buy-ticket">
-                </div>
-            </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
-                    <img src="img/listimage/464x644/nu.png" alt="">
-                    <h6>人之怒 Wrath of Man</h6>
-                    <p>动作/犯罪</p>
-                    <input type="button" value="购票" class="buy-ticket">
-                </div>
-            </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
-                    <img src="img/listimage/464x644/qianTing.png" alt="">
-                    <h6>潜艇总动员8：地心游记</h6>
-                    <p>动画</p>
-                    <input type="button" value="购票" class="buy-ticket">
-                </div>
-            </div>
-        </div>
+
         <!--第三行-->
         <div class="row paddtop">
-            <div class="card col-md-3">
-                <div class="thumbnail">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
                     <img src="img/listimage/464x644/saoHei.png" alt="">
-                    <h6>扫黑·决战</h6>
-                    <p>剧情/动作/犯罪</p>
-                    <input type="button" value="购票" class="buy-ticket">
+                    <div class="card-body">
+                        <h6>扫黑·决战</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">剧情/动作/犯罪</small>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
                     <img src="img/listimage/464x644/suDu.png" alt="">
-                    <h6>速度与激情9 F9: The Fast Saga</h6>
-                    <p>动作/犯罪</p>
-                    <input type="button" value="购票" class="buy-ticket">
+                    <div class="card-body">
+                        <h6>速度与激情9</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">动作/犯罪</small>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
                     <img src="img/listimage/464x644/xuanYa.png" alt="">
-                    <h6>悬崖之上</h6>
-                    <p> 剧情/动作/悬疑</p>
-                    <input type="button" value="购票" class="buy-ticket">
+                    <div class="card-body">
+                        <h6>悬崖之上</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">剧情/动作/悬疑</small>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card col-md-3">
-                <div class="thumbnail">
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
                     <img src="img/listimage/464x644/yiQi.png" alt="">
-                    <h6>我要我们在一起</h6>
-                    <p>剧情/爱情</p>
-                    <input type="button" value="购票" class="buy-ticket">
+                    <div class="card-body">
+                        <h6>我要我们在一起</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">剧情/爱情</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
