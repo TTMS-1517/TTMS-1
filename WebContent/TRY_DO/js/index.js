@@ -10,7 +10,8 @@ var app = new Vue({
             axios.get('http://wthrcdn.etouch.cn/weather_mini?city='
                 +this.city)
                 .then(function (response) {
-                    that.weatherList = response.data.data.forecast
+                    that.weatherList = response.data.data.forecast;
+                    console.log(response);
                 })
                 .catch(function (err) {
                 })

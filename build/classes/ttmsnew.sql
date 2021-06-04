@@ -139,6 +139,17 @@ INSERT INTO `play` VALUES (7, 7, 14, '一点就到家','剧情', '《一点就�
 INSERT INTO `play` VALUES (8, 13, 14, '急先锋','剧情', '中国商人秦国立在英国惨遭雇佣兵组织“北极狼”绑架，秦的女儿Fareeda（徐若晗 饰）也卷入其中，遭到追杀。千钧一发之际，急先锋国际安保团队成为他们唯一的希望，由总指挥唐焕庭（成龙饰）带领雷震宇（杨洋饰）、张凯旋（艾伦饰）、弥雅（母其弥雅饰）、神雕（朱正廷饰）等组成的急先锋行动小组，上天入地，辗转全球各地施展惊险营救。解救人质的过程中，竟发现“北极狼”背后的犯罪集团还策划了一场惊天密谋……', 'images/property/4.jpg', NULL, 108, 36.00, 0);
 INSERT INTO `play` VALUES (9, 7, 14, '\r\n我在时间尽头等你','剧情', '林格（李鸿其 饰）一次次重启时空，只为与恋人邱倩（李一桐 饰）再次相遇。一生只爱一个人，希望开头是你，结尾也是你。2020年七夕最深情的告白: 我在时间尽头等你。', 'images/property/9.jpg', NULL, 115, 37.00, 0);
 
+
+
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('哆啦A梦：伴我同行2','剧情/动画','某天，大雄（大原惠美 配音）偶然发现了童年时奶奶为自己缝制的玩偶熊，于是央求哆啦A梦（水田山葵 配音）去往过去看望已不再人世的奶奶（宫本信子 配音），大雄与奶奶重逢之后，奶奶希望能看到大雄长大结婚时的样子.........',96 , 35);
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('寂静之地2 ','科幻/惊悚/恐怖','故事紧承上一部展开。在丈夫为保护家人牺牲后，伊芙琳（艾米莉·布朗特 饰）不得不独自带着孩子们（米莉森·西蒙斯、诺亚·尤佩 饰）面对全新的生存挑战。他们将被迫离开家园，踏上一段未知的旅途。在无声的世界里，除了要躲避“猎声怪物”的捕杀，铺满细沙的道路尽头还暗藏着新的危机。',97 ,37 );
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('九零后','纪录片','故土在战争中沦陷，大学被占领、被炸毁。一群十八九岁的青年学生，他们匆匆出发，徒步南迁，横穿湘黔滇，最终在昆明高原组建临时大学——由清华、北大、南开联合成立的西南联大........',110 ,38 );
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('匹诺曹','奇幻','改编自经典童话《木偶奇遇记》，讲述老木匠（罗伯托·贝尼尼 Roberto Benigni 饰）雕刻的木偶机缘巧合下获得生命，被木匠当作自己的儿子，并取名“匹诺曹”（费德里科·伊帕迪 Federico Ielapi 饰）。木匠耐心地教导匹诺曹，可贪玩的匹诺曹却跑到马戏团看木偶戏，并因此开启了一段离家之旅。',124, 35);
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('扫黑·决战','剧情/动作/犯罪','该片是国内首部以“扫黑除恶”行动为题材、展现全国扫黑办督办案件的影视化作品，讲述某扫黑专案组组长宋一锐带领组员由一起征地案深入调查，突破层层阻挠，与幕后的黑恶势力展开激烈斗争，最终揭开腐败官员利用公职权力充当犯罪保护伞的虚伪面具，将犯罪分子绳之以法的故事。',112,38 );
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('速度与激情9','动作/犯罪','“唐老大”多姆·托莱多（范·迪塞尔 饰）与莱蒂（米歇尔·罗德里格兹 饰）和他的儿子小布莱恩，过上了远离纷扰的平静生活。然而他们也知道，安宁之下总潜藏着危机。这一次，为了保护他所爱的人，唐老大不得不直面过去。他和伙伴们面临的是一场足以引起世界动荡的阴谋，以及一个前所未遇的一流杀手和高能车手.........',142,38);
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('悬崖之上','剧情/动作/悬疑','上世纪三十年代，四位曾在苏联接受特训的共产党特工组成任务小队，回国执行代号为“乌特拉”的秘密行动。由于叛徒的出卖，他们从跳伞降落的第一刻起， 就已置身于敌人布下的罗网之中。同志能否脱身，任务能否完成，雪一直下，立于“悬崖之上”的行动小组面临严峻考验。',120,35);
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price) VALUES ('我要我们在一起','剧情/爱情','你有没有爱过一个人，曾经拼了命，只为和TA在一起。十年前，差生吕钦扬当众告白凌一尧，两人从校园步入社会，为了让她幸福，他不惜以命相搏。然而金钱、房子、婚姻等现实的考验，却将两人越推越远。十年长跑，他们能否还记得曾经刻在心底的约定：我要我们在一起。',105,37);
+
 -- ----------------------------
 -- Table structure for resource
 -- ----------------------------
