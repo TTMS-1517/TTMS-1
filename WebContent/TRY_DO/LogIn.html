@@ -15,7 +15,7 @@
     <script type="text/javascript">
 
         function search(){
-            var url = "../EmployeeServlet";
+            var url = "../CustomerServlet";
             if (window.XMLHttpRequest)
                 req = new XMLHttpRequest();
             else if (window.ActiveXObject)
@@ -26,211 +26,238 @@
                 //POST方式，必须加入如下头信息设定
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = searchComplete;
-                req.send("type=search&name="+document.getElementById("EmployeeEmail").value);
+                req.send("type=search&name="+document.getElementById("email").value);
             }
         }
 
         function searchComplete() {
             if (req.readyState == 4 && req.status == 200) {
-                var inputPwd = document.getElementById("EmployeePassword").value;//输入框中的密码
-                var json =  JSON.parse(req.responseText);//转换为json对象
-                var pwd = json[0].pwd;
-                if(inputPwd != pwd){
-                    failSignIn();
-                }else {
-                    alert("成功");
-                }
+                var inputPwd = document.getElementById("password").value;//输入框中的密码
+                var json = JSON.parse(req.responseText);//转换为json对象
 
-                // for(i=0; i<json.length; i++) {
-                //     var rowCount = theTable.rows.length; //获得当前表格的行数
-                //     var row = theTable.insertRow(rowCount);//在tale里动态的增加tr
-                //     row.insertCell(0).innerHTML = json[i].id;
-                //     row.insertCell(1).innerHTML = json[i].name;
-                //     row.insertCell(2).innerHTML = json[i].rowCount;
-                //     row.insertCell(3).innerHTML = json[i].colCount;
-                //     row.insertCell(4).innerHTML = json[i].introduction;
-                //     var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].rowCount + "," + json[i].colCount + ",\'" + json[i].introduction +"\'";
-                //     row.insertCell(5).innerHTML = '<input type="button" class="btn btn-sm btn-primary" value="修改" onclick="modify('+ tmp +')" ' +
-                //         '/>&nbsp;&nbsp;<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
-                // }
+                if (inputPwd == json[0].pwd) {
+                    setTimeout(SignInSuccess,100);
+                } else {
+                    setTimeout(failSignIn, 100);
+                }
             }
         }
 
         var card = document.getElementsByClassName("container");
         var bg = document.getElementsByTagName("section");
         function failSignIn(){
-            card[0].classList.add("wobble");
+            card[0].classList.remove("bounceInDown");
+            card[0].classList.add("shake");
             bg[0].classList.add("fail");
             setTimeout(failSignIn_animateRemove,1200);
         }
         function failSignIn_animateRemove(){
-            card[0].classList.remove("wobble");
+            card[0].classList.remove("shake");
             bg[0].classList.remove("fail");
         }
-        //
-        // function modify(a,b,c,d,e){
-        //     window.location="detail.html?type=update&id="+a+"&name="+encodeURIComponent(b)+"&rowCount="+c+"&colCount="+d+"&introduction="+encodeURIComponent(e);
-        // }
-        //
-        // function del(id){
-        //
-        //     $("#delConfirm").click(function (){
-        //
-        //         var url = "../StudioServlet";
-        //         if (window.XMLHttpRequest)
-        //             req = new XMLHttpRequest();
-        //         else if (window.ActiveXObject)
-        //             req = new ActiveXObject("Microsoft.XMLHTTP");
-        //         if (req) {
-        //             //采用POST方式，异步传输
-        //             req.open("post", url, true);
-        //             //POST方式，必须加入如下头信息设定
-        //             req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //             req.onreadystatechange = delComplete;
-        //             req.send("type=delete&id="+id);
-        //         }
-        //     });
-        // }
-        // function delComplete() {
-        //     if (req.readyState == 4 && req.status == 200) {
-        //         if(req.responseText==1)
-        //             search();
-        //         else
-        //             alert("数据删除失败，请重试");
-        //     }
-        // }
-        //
-        //
-        //
-        //
-        // //添加影厅逻辑代码
-        //
-        //
-        //
-        // UrlParm = function() { // url参数
-        //     var data, index;
-        //     (function init() {
-        //         data = [];
-        //         index = {};
-        //         var u = window.location.search.substr(1);
-        //         if (u != '') {
-        //             var parms = decodeURIComponent(u).split('&');
-        //             for (var i = 0, len = parms.length; i < len; i++) {
-        //                 if (parms[i] != '') {
-        //                     var p = parms[i].split("=");
-        //                     if (p.length == 1 || (p.length == 2 && p[1] == '')) {// p | p=
-        //                         data.push([ '' ]);
-        //                         index[p[0]] = data.length - 1;
-        //                     } else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
-        //                         data[0] = [ p[1] ];
-        //                     } else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
-        //                         data.push([ p[1] ]);
-        //                         index[p[0]] = data.length - 1;
-        //                     } else {// c=aaa
-        //                         data[index[p[0]]].push(p[1]);
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     })();
-        //     return {
-        //         // 获得参数
-        //         parm : function(o) { // o: 参数名或者参数次序
-        //             try {
-        //                 return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
-        //             } catch (e) {
-        //             }
-        //         },
-        //         //获得参数组, 类似request.getParameterValues()
-        //         parmValues : function(o) { //  o: 参数名或者参数次序
-        //             try {
-        //                 return (typeof (o) == 'number' ? data[o] : data[index[o]]);
-        //             } catch (e) {
-        //             }
-        //         },
-        //         //是否含有parmName参数
-        //         hasParm : function(parmName) {
-        //             return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
-        //         },
-        //         // 获得参数Map ,类似request.getParameterMap()
-        //         parmMap : function() {
-        //             var map = {};
-        //             try {
-        //                 for ( var p in index) {
-        //                     map[p] = data[index[p]];
-        //                 }
-        //             } catch (e) {
-        //             }
-        //             return map;
-        //         }
-        //     }
-        // }();
-        //
-        // function init() {
-        //     var type = UrlParm.parm("type");
-        //     //alert(type);
-        //     document.getElementById("type").value = type;
-        //     if(type=="update"){
-        //         var studioid = UrlParm.parm("id");
-        //         var studioname = UrlParm.parm("name");
-        //         var rowcount = UrlParm.parm("rowCount");
-        //         var colcount = UrlParm.parm("colCount");
-        //         var intro = UrlParm.parm("introduction");
-        //         document.getElementById("studioid").value = studioid;
-        //         document.getElementById("studioname").value = studioname;
-        //         document.getElementById("rowcount").value = rowcount;
-        //         document.getElementById("colcount").value = colcount;
-        //         document.getElementById("intro").value = intro;
-        //     }
-        // }
-        //
-        // function check() {
-        //     var form = document.getElementById("myform");
-        //     if(form.studioname.value=="" || form.rowcount.value=="" || form.colcount.value=="" || form.intro.value=="") {
-        //         alert("请填写完整信息");
-        //         return;
-        //     }
-        //     if(isNaN(form.rowcount.value) || isNaN(form.colcount.value)){
-        //         alert("座位行数和座位列数不是数字");
-        //         return;
-        //     }
-        //     var url = "../StudioServlet";
-        //     if (window.XMLHttpRequest)
-        //         req = new XMLHttpRequest();
-        //     else if (window.ActiveXObject)
-        //         req = new ActiveXObject("Microsoft.XMLHTTP");
-        //     if (req) {
-        //         //采用POST方式，异步传输
-        //         req.open("post", url, true);
-        //         req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //         req.onreadystatechange = checkComplete;
-        //         var data = "type=" + form.type.value + "&studioid="
-        //             + form.studioid.value + "&studioname="
-        //             + encodeURIComponent(form.studioname.value) + "&rowcount="
-        //             + form.rowcount.value + "&colcount=" + form.colcount.value
-        //             + "&intro=" + encodeURIComponent(form.intro.value);
-        //         req.send(data);
-        //     }
-        // }
-        //
-        // function checkComplete() {
-        //     if (req.readyState == 4 && req.status == 200) {
-        //         search();
-        //     }
-        // }
+
+
+        UrlParm = function() { // url参数
+            var data, index;
+            (function init() {
+                data = [];
+                index = {};
+                var u = window.location.search.substr(1);
+                if (u != '') {
+                    var parms = decodeURIComponent(u).split('&');
+                    for (var i = 0, len = parms.length; i < len; i++) {
+                        if (parms[i] != '') {
+                            var p = parms[i].split("=");
+                            if (p.length == 1 || (p.length == 2 && p[1] == '')) {// p | p=
+                                data.push([ '' ]);
+                                index[p[0]] = data.length - 1;
+                            } else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+                                data[0] = [ p[1] ];
+                            } else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+                                data.push([ p[1] ]);
+                                index[p[0]] = data.length - 1;
+                            } else {// c=aaa
+                                data[index[p[0]]].push(p[1]);
+                            }
+                        }
+                    }
+                }
+            })();
+            return {
+                // 获得参数
+                parm : function(o) { // o: 参数名或者参数次序
+                    try {
+                        return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+                    } catch (e) {
+                    }
+                },
+                //获得参数组, 类似request.getParameterValues()
+                parmValues : function(o) { //  o: 参数名或者参数次序
+                    try {
+                        return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+                    } catch (e) {
+                    }
+                },
+                //是否含有parmName参数
+                hasParm : function(parmName) {
+                    return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+                },
+                // 获得参数Map ,类似request.getParameterMap()
+                parmMap : function() {
+                    var map = {};
+                    try {
+                        for ( var p in index) {
+                            map[p] = data[index[p]];
+                        }
+                    } catch (e) {
+                    }
+                    return map;
+                }
+            }
+        }();
+
+
+        function check() {
+            var form = document.getElementById("form_signUp");
+            if(form.customername.value=="" || form.customeremail.value=="" || form.customerpwd.value=="" || form.customercfmpwd.value=="") {
+                alert("请填写完整信息");
+                return;
+            }
+            var url = "../CustomerServlet";
+            if (window.XMLHttpRequest)
+                req = new XMLHttpRequest();
+            else if (window.ActiveXObject)
+                req = new ActiveXObject("Microsoft.XMLHTTP");
+            if (req && checkcfmpwd()) {
+                //采用POST方式，异步传输
+                req.open("post", url, true);
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.onreadystatechange = checkComplete;
+                var data = "type=" + form.type.value + "&cusname="
+                    + encodeURIComponent(form.customername.value) + "&cusemail="
+                    + encodeURIComponent(form.customeremail.value) + "&customerpwd="
+                    + encodeURIComponent(form.customerpwd.value);
+                req.send(data);
+            }
+        }
+
+        function checkName(){
+            var name = document.getElementById("customername");
+            if(name.value == "" || name.value == null){
+                name.style.background = "#ffb0b0";
+                return false;
+            }else{
+                name.style.background = "#abffab";
+                return true;
+            }
+        }
+
+        function checkMail() {
+            checkField("customeremail",/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,6}$/);
+        }
+
+        function checkPwd(){
+            //获取用户的密码信息
+            var pwd = document.getElementById("customerpwd");
+            //创建校验规则
+            var reg = /^[a-z]\w{6,16}$/;
+            //开始校验
+            if(reg.test(pwd.value)){
+                //输出校验结果
+                pwd.style.background = "#abffab";
+            }else{
+                //输出校验结果
+                pwd.style.background = "#ffb0b0";
+                return false;
+            }
+        }
+
+        //校验确认密码
+        function checkcfmpwd(){
+            //获取密码
+            var pwd1 = document.getElementById("customerpwd");
+            //获取确认密码
+            var pwd2 = document.getElementById("customercfmpwd");
+
+            //比较
+            if(pwd1.value==pwd2.value && checkPwd()){
+                pwd2.style.background = "#abffab";
+                return true;
+            }else {
+                pwd2.style.background = "#ffb0b0";
+                return false;
+            }
+        }
+
+        //封装校验：相同的保留，不同的传参。
+        function checkField(id,reg){
+            //获取用户数据
+            var inp = document.getElementById(id);
+            var va=inp.value;
+            //获取span对象
+            //开始校验
+            if(reg.test(va)){
+                //输出校验规则
+                inp.style.background = "#abffab";
+                return true;
+            }else{
+                //输出校验规则
+                inp.style.background = "#ffb0b0";
+                return false;
+            }
+        }
+
+        function checkComplete() {
+            if (req.readyState == 4 && req.status == 200) {
+                setTimeout(SignUpSuccess,100);
+            }
+        }
+
+        function SignUpSuccess(){
+            document.getElementById("form_signUp").reset();
+            bg[0].classList.remove("active");
+            card[0].classList.remove("active");
+            card[0].classList.add("bounce");
+            bg[0].classList.add("success");
+            var input_signup = document.getElementById("form_signUp").getElementsByTagName("input");
+            for (var i = 0;i < input_signup.length;i++){
+                input_signup[i].style.background = "#f5f5f5";
+            }
+            setTimeout(successSignUp_animateRemove,900);
+        }
+
+        function successSignUp_animateRemove(){
+            card[0].classList.remove("bounce");
+            bg[0].classList.remove("success");
+        }
+
+        function SignInSuccess(){
+            bg[0].classList.remove("active");
+            card[0].classList.remove("active");
+            card[0].classList.add("bounce");
+            bg[0].classList.add("success");
+            setTimeout(successSignIn_animateRemove,1500);
+
+        }
+
+        function successSignIn_animateRemove(){
+            card[0].classList.remove("bounce");
+            bg[0].classList.remove("success");
+            window.location = "index.html";
+        }
     </script>
 
 </head>
 <body>
     <section>
-        <div class="container animated flipInX">
+        <div class="container animated bounceInDown">
             <div class="user signinBx">
                 <div class="imgBx"><img src="img/customer_login_1.jpg"></div>
                 <div class="formBx">
                     <form>
                         <h1>登  录</h1>
-                        <input type="text" id="EmployeeEmail" placeholder="邮箱地址" autofocus>
-                        <input type="password" id="EmployeePassword" placeholder="密码">
+                        <input type="text" id="email" name="email" placeholder="邮箱地址" autofocus>
+                        <input type="password" id="password" name="password" placeholder="密码">
                         <input type="button" id="bt1" value="登 录" onclick="search()">
                         <p class="signup">还没有账户？ <a href="#" onclick="toggleForm();">去注册</a></p>
                     </form>
@@ -238,13 +265,15 @@
             </div>
             <div class="user signupBx">
                 <div class="formBx">
-                    <form>
+                    <form id="form_signUp">
                         <h1>创建账户</h1>
-                        <input type="text" placeholder="昵称">
-                        <input type="text" placeholder="邮箱地址">
-                        <input type="password" placeholder="密码">
-                        <input type="password" placeholder="确认密码">
-                        <input type="button" value="注 册">
+                        <input type="hidden" id="type" name="type" value="add">
+
+                        <input type="text" id="customername" name="customername" placeholder="昵称，英文或汉字" onblur="checkName()">
+                        <input type="text" id="customeremail" name="customeremail" placeholder="邮箱地址，如123456789@163.com" onblur="checkMail()">
+                        <input type="password" id="customerpwd" name="customerpwd" placeholder="密码，6-16位" onblur="checkPwd()">
+                        <input type="password" id="customercfmpwd" name="customercfmpwd" placeholder="确认密码" onblur="checkcfmpwd()">
+                        <input type="button" value="注 册" onclick="check()">
                         <p class="signup">已经有账户了？ <a href="#" onclick="toggleForm();">登录</a></p>
                     </form>
                 </div>

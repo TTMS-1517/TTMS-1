@@ -24,16 +24,21 @@ DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer`  (
   `cus_id` int(11) NOT NULL AUTO_INCREMENT,
   `cus_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cus_gender` smallint(6) DEFAULT 1 COMMENT '说明：\r\n            0 女\r\n            1 男',
   `cus_telnum` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `cus_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cus_uid` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `cus_pwd` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '登陆密码',
   `cus_status` smallint(6) DEFAULT 1 COMMENT '说明：\r\n            0：禁用\r\n            1：启用',
   `cus_balance` decimal(10, 0) DEFAULT 1000 COMMENT '账户余额',
   `cus_paypwd` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '支付密码',
   PRIMARY KEY (`cus_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+
+INSERT INTO customer(cus_name,cus_telnum,cus_email,cus_pwd) VALUES('LYY','13279505680','2193560021@qq.com','liuyng01253217');
+INSERT INTO customer(cus_name,cus_telnum,cus_email,cus_pwd) VALUES('FJW','15830599166','123456@qq.com','123456');
+INSERT INTO customer(cus_name,cus_telnum,cus_email,cus_pwd) VALUES('ZJQ','18791307612','234567@qq.com','234567');
+INSERT INTO customer(cus_name,cus_telnum,cus_email,cus_pwd) VALUES('ZRP','15129072144','345678@qq.com','345678');
+INSERT INTO customer(cus_name,cus_telnum,cus_email,cus_pwd) VALUES('XZL','17764752350','567890@qq.com','567890');
+INSERT INTO customer(cus_name,cus_telnum,cus_email,cus_pwd) VALUES('QPY','15771831001','67890@qq.com','67890');
 
 -- ----------------------------
 -- Table structure for data_dict
