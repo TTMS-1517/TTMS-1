@@ -223,7 +223,7 @@
             card[0].classList.add("bounce");
             bg[0].classList.add("success");
             var input_signup = document.getElementById("form_signUp").getElementsByTagName("input");
-            for (var i = 0;i < input_signup.length;i++){
+            for (var i = 0;i < input_signup.length-1;i++){
                 input_signup[i].style.background = "#f5f5f5";
             }
             setTimeout(successSignUp_animateRemove,900);
