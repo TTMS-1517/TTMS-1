@@ -40,10 +40,29 @@ public class CustomerDAO  implements iCustomerDAO {
         }
     }
 
+    @Override
+    public int delete(int ID)
+    {
+        int result=0;
+        try
+        {
+            String sql="delete from customer where cus_id = " + ID;
+            DBUtil db=new DBUtil();
+            db.openConnection();
+            result=db.execCommand(sql);
+            db.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
     @SuppressWarnings("finally")
     @Override
-    public List<Customer> select(String customerEmail)
+    public List<Customer> select(String customerEmail,String method)
     {
         DBUtil db=null;
         List<Customer> customerList=null;
@@ -51,7 +70,12 @@ public class CustomerDAO  implements iCustomerDAO {
         try
         {
             customerEmail.trim();
-            String sql="select * from customer where cus_email like '%" + customerEmail + "%'";
+            String sql = null;
+            if(method == "search") {
+                sql="select * from customer where cus_email like '%" + customerEmail + "%'";
+            }else if(method == "login"){
+                sql="select * from customer where cus_email like '" + customerEmail + "'";
+            }
             db=new DBUtil();
             if(!db.openConnection())
             {

@@ -34,8 +34,8 @@ public class CustomerServlet  extends HttpServlet
         // 根据请求操作类型，执行相应的增、删、该、查
         if(type.equalsIgnoreCase("add"))
             add(request, response);
-//        else if(type.equalsIgnoreCase("delete"))
-//            delete(request, response);
+        else if(type.equalsIgnoreCase("delete"))
+            delete(request, response);
 //        else if(type.equalsIgnoreCase("update"))
 //            update(request, response);
         else if(type.equalsIgnoreCase("search"))
@@ -71,24 +71,24 @@ public class CustomerServlet  extends HttpServlet
         }
     }
 
-//    private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-//    {
-//        try
-//        {
-//            int id=Integer.valueOf(request.getParameter("id"));
-//            response.setContentType("text/html;charset=utf-8");
-//            PrintWriter out=response.getWriter();
-//            out.write("" + new PlaySrv().delete(id));
-//            out.close();
-//        }
-//        catch(Exception e)
-//        {
-//            e.printStackTrace();
-//            response.setContentType("text/html;charset=utf-8");
-//            response.getWriter().write("操作错误，请重试");
-//        }
-//    }
-//
+    private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        try
+        {
+            int id=Integer.valueOf(request.getParameter("id"));
+            response.setContentType("text/html;charset=utf-8");
+            PrintWriter out=response.getWriter();
+            out.write("" + new CustomerSrv().delete(id));
+            out.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            response.setContentType("text/html;charset=utf-8");
+            response.getWriter().write("操作错误，请重试");
+        }
+    }
+
 //    private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 //    {
 //        Play play=null;
@@ -124,9 +124,10 @@ public class CustomerServlet  extends HttpServlet
         response.setCharacterEncoding("UTF-8");
         PrintWriter out=response.getWriter();
         String name=request.getParameter("name");
+        String method=request.getParameter("method");
         List<Customer> result=null;
-        if(name != null && name.length() > 0)
-            result=new CustomerSrv().Fetch(name);
+//        if(name != null && name.length() > 0)
+            result=new CustomerSrv().Fetch(name,method);
         String jsonStr="";
         try
         {
@@ -139,7 +140,7 @@ public class CustomerServlet  extends HttpServlet
                 json.put("name", s.getName());
                 json.put("tel", s.getTel());
                 json.put("email", s.getEmail());
-                json.put("pwd", s.getPwd()==null?"":s.getPwd());
+                json.put("pwd", s.getPwd());
                 array.put(json);
 
             }

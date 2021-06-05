@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="css/nav+left.css" type="text/css">
     <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <script src="js/Bootstrap/jquery.js"></script>
 
     <script type="text/javascript">
+
         function search(){
             var url = "../CustomerServlet";
             if (window.XMLHttpRequest)
@@ -22,7 +24,7 @@
                 //POST方式，必须加入如下头信息设定
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = searchComplete;
-                req.send("type=search&name="+document.getElementById("email").value);
+                req.send("type=search&method=search&name="+document.getElementById("email").value);
             }
         }
 
@@ -145,7 +147,7 @@
             <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">用户管理</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="input-group mr-2 col-md-12">
+                    <div class="input-group mr-2">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">搜索邮箱</span>
                         </div>
@@ -193,7 +195,6 @@
         </div>
     </div>
 </div>
-<script src="js/Bootstrap/jquery.js"></script>
 <script src="js/Bootstrap/bootstrap.bundle.js"></script>
 <!--axios-->
 <script src="js/axios.min.js"></script>

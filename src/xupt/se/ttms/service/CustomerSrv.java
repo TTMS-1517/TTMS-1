@@ -1,5 +1,6 @@
 package xupt.se.ttms.service;
 
+import xupt.se.ttms.dao.CustomerDAO;
 import xupt.se.ttms.idao.DAOFactory;
 import xupt.se.ttms.idao.iCustomerDAO;
 import xupt.se.ttms.model.Customer;
@@ -18,11 +19,11 @@ public class CustomerSrv {
 //        return employeeDAO.update(play);
 //    }
 //
-//    public int delete(int ID){
-//        return employeeDAO.delete(ID);
-//    }
+    public int delete(int ID){
+        return customerDAO.delete(ID);
+    }
 
-    public List<Customer> Fetch(String email){
-        return customerDAO.select(email);
+    public List<Customer> Fetch(String email,String method){
+        return customerDAO.select(email,method);
     }
 }

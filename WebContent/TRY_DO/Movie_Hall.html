@@ -174,7 +174,7 @@
         var form = document.getElementById("myform");
         if(form.studioname.value=="" || form.rowcount.value=="" || form.colcount.value=="" || form.intro.value=="") {
             alert("请填写完整信息");
-            return;
+            return 0;
         }
         if(isNaN(form.rowcount.value) || isNaN(form.colcount.value)){
             alert("座位行数和座位列数不是数字");

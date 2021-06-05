@@ -12,8 +12,8 @@ public interface iCustomerDAO {
 //
 //    public int update(Play play);
 //
-//    public int delete(int ID);
+    public int delete(int ID);
 //
 
-    public List<Customer> select(String customerEmail);
+    public List<Customer> select(String customerEmail,String method);
 }
