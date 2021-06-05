@@ -27,7 +27,7 @@ CREATE TABLE `customer`  (
   `cus_telnum` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `cus_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `cus_pwd` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '登陆密码',
-  `cus_vip` smallint(6) DEFAULT 1 COMMENT '说明：\r\n            0：禁用\r\n            1：启用',
+  `cus_vip` smallint(6) DEFAULT 0 COMMENT '说明：\r\n            0：禁用\r\n            1：启用',
   `cus_balance` decimal(10, 0) DEFAULT 1000 COMMENT '账户余额',
   `cus_paypwd` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '支付密码',
   PRIMARY KEY (`cus_id`) USING BTREE
