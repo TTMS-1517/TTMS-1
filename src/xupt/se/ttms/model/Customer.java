@@ -4,14 +4,16 @@ public class Customer {
 
     private int id=0      ;
     private String name="" ;
+    private String tel="" ;
     private String Email="";
     private String Pwd="";
 
     public Customer(){
         id = 0;
     }
-    public Customer(int ID,String name, String email, String pwd){
+    public Customer(int ID,String tel,String name, String email, String pwd){
         this.id = ID;
+        this.tel = tel;
         this.name=name;
         this.Email = email;
         this.Pwd = pwd;
@@ -37,6 +39,14 @@ public class Customer {
 
     public String getName(){
         return name;
+    }
+
+    public void setTel(String tel){
+        this.tel=tel;
+    }
+
+    public String getTel(){
+        return tel;
     }
 
     public void setEmail(String count){

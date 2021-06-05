@@ -49,9 +49,10 @@ public class CustomerServlet  extends HttpServlet
         try
         {
             String name=request.getParameter("cusname");
+            String tel=request.getParameter("custel");
             String email=request.getParameter("cusemail");
             String pwd=request.getParameter("customerpwd");
-            customer=new Customer(id, name, email, pwd);
+            customer=new Customer(id,tel, name, email, pwd);
             response.setContentType("text/html;charset=utf-8");
             PrintWriter out=response.getWriter();
 
@@ -136,9 +137,11 @@ public class CustomerServlet  extends HttpServlet
                 json=new JSONObject();
                 json.put("id", s.getID());
                 json.put("name", s.getName());
+                json.put("tel", s.getTel());
                 json.put("email", s.getEmail());
-                json.put("pwd", s.getPwd());
+                json.put("pwd", s.getPwd()==null?"":s.getPwd());
                 array.put(json);
+
             }
             jsonStr=array.toString();
         }

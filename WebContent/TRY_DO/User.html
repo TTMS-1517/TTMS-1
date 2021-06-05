@@ -8,8 +8,84 @@
     <link rel="stylesheet" href="css/nav+left.css" type="text/css">
     <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <script type="text/javascript">
+        function search(){
+            var url = "../CustomerServlet";
+            if (window.XMLHttpRequest)
+                req = new XMLHttpRequest();
+            else if (window.ActiveXObject)
+                req = new ActiveXObject("Microsoft.XMLHTTP");
+            if (req) {
+                //采用POST方式，异步传输
+                req.open("post", url, true);
+                //POST方式，必须加入如下头信息设定
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.onreadystatechange = searchComplete;
+                req.send("type=search&name="+document.getElementById("email").value);
+            }
+        }
+
+        function searchComplete() {
+            if (req.readyState == 4 && req.status == 200) {
+                var theTable = document.getElementById("table");//table的id
+                var num=theTable.rows.length;
+                while(num>0) {
+                    theTable.deleteRow(num-1);
+                    num=theTable.rows.length;
+                }
+                var json =  JSON.parse(req.responseText);//转换为json对象
+                for(i=0; i<json.length; i++) {
+                    var rowCount = theTable.rows.length; //获得当前表格的行数
+                    var row = theTable.insertRow(rowCount);//在tale里动态的增加tr
+                    row.insertCell(0).innerHTML = json[i].id;
+                    row.insertCell(1).innerHTML = json[i].name;
+                    row.insertCell(2).innerHTML = json[i].tel;
+                    row.insertCell(3).innerHTML = json[i].email;
+                    row.insertCell(4).innerHTML = json[i].pwd;
+                    row.insertCell(5).innerHTML = '<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
+                }
+            }
+        }
+
+
+
+
+        function modify(a,b,c,d,e){
+            window.location="detail.html?type=update&id="+a+"&name="+encodeURIComponent(b)+"&rowCount="+c+"&colCount="+d+"&introduction="+encodeURIComponent(e);
+        }
+
+        function del(id){
+
+            $("#delConfirm").click(function (){
+
+                var url = "../CustomerServlet";
+                if (window.XMLHttpRequest)
+                    req = new XMLHttpRequest();
+                else if (window.ActiveXObject)
+                    req = new ActiveXObject("Microsoft.XMLHTTP");
+                if (req) {
+                    //采用POST方式，异步传输
+                    req.open("post", url, true);
+                    //POST方式，必须加入如下头信息设定
+                    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    req.onreadystatechange = delComplete;
+                    req.send("type=delete&id="+id);
+                }
+            });
+        }
+        function delComplete() {
+            if (req.readyState == 4 && req.status == 200) {
+                if(req.responseText==1)
+                    search();
+            }
+        }
+
+    </script>
+
+
 </head>
-<body>
+<body onload="search()">
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow nav_top">
     <a class="navbar-brand col-md-3 col-lg-2 px-3 name" href="#">阳珑影业票务数据信息管理系统</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed float-right" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,9 +147,9 @@
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="input-group mr-2 col-md-12">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">搜索</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default">搜索邮箱</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" id="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onkeypress="search()">
                     </div>
 
                 </div>
@@ -82,155 +158,39 @@
                 <table class="table table-hover">
                     <thead>
                     <tr class="list_nav">
-                        <th>序号</th>
+                        <th>编号</th>
                         <th>昵称</th>
-                        <th>账号</th>
+                        <th>电话号码</th>
                         <th>注册邮箱</th>
-                        <th>注册天数(天)</th>
-                        <th>VIP</th>
+                        <th>密码</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>企鹅的会飞</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>是</td>
-                    </tr>
-                    <tr>
-                        <td>003</td>
-                        <td>会游泳的大象</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>是</td>
-                    </tr>
-                    <tr>
-                        <td>004</td>
-                        <td>白天的昨天</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>005</td>
-                        <td>123的黑夜</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>是</td>
-                    </tr>
-                    <tr>
-                        <td>006</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>是</td>
-                    </tr>
-                    <tr>
-                        <td>007</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>008</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>是</td>
-                    </tr>
-                    <tr>
-                        <td>009</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>010</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>011</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>012</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>013</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>014</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>015</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>016</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
-                    <tr>
-                        <td>017</td>
-                        <td>会飞的企鹅</td>
-                        <td>7531598426</td>
-                        <td>ht1256489566@qq.com</td>
-                        <td>16</td>
-                        <td>否</td>
-                    </tr>
+                    <tbody id="table">
                     </tbody>
                 </table>
             </div>
         </main>
+        <!--            删除警示-->
+        <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="delModalLabel">确认删除</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        请谨慎操作！！！确认删除该影厅？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-danger"  data-dismiss="modal" id="delConfirm">确认删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="js/Bootstrap/jquery.js"></script>

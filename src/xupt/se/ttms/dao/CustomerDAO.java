@@ -17,8 +17,8 @@ public class CustomerDAO  implements iCustomerDAO {
         int result=0;
         try
         {
-            String sql="insert into customer(cus_name, cus_email, cus_pwd )"
-                    + " values('" + customer.getName() + "', '" + customer.getEmail() + "', '" + customer.getPwd() + "' )";
+            String sql="insert into customer(cus_name,cus_telnum, cus_email, cus_pwd )"
+                    + " values('" + customer.getName() + "', '" + customer.getTel() + "', '" + customer.getEmail() + "', '" + customer.getPwd() + "' )";
             DBUtil db=new DBUtil();
             db.openConnection();
             ResultSet rst=db.getInsertObjectIDs(sql);
@@ -51,7 +51,7 @@ public class CustomerDAO  implements iCustomerDAO {
         try
         {
             customerEmail.trim();
-            String sql="select * from customer where cus_email like '" + customerEmail + "'";
+            String sql="select * from customer where cus_email like '%" + customerEmail + "%'";
             db=new DBUtil();
             if(!db.openConnection())
             {
@@ -66,6 +66,7 @@ public class CustomerDAO  implements iCustomerDAO {
                     Customer customer = new Customer();
                     customer.setID(rst.getInt("cus_id"));
                     customer.setName(rst.getString("cus_name"));
+                    customer.setTel(rst.getString("cus_telnum"));
                     customer.setEmail(rst.getString("cus_email"));
                     customer.setPwd(rst.getString("cus_pwd"));
                     customerList.add(customer);
