@@ -168,7 +168,7 @@
             //获取用户的密码信息
             var pwd = document.getElementById("customerpwd");
             //创建校验规则
-            var reg = /^[a-z]\w{6,16}$/;
+            var reg = /^[A-Za-z\d]{6,16}$/;
             //开始校验
             if(reg.test(pwd.value)){
                 //输出校验结果

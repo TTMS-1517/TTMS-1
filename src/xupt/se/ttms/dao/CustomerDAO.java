@@ -70,10 +70,11 @@ public class CustomerDAO  implements iCustomerDAO {
         try
         {
             customerEmail.trim();
+            method.trim();
             String sql = null;
-            if(method == "search") {
+            if(method.equalsIgnoreCase("search")) {
                 sql="select * from customer where cus_email like '%" + customerEmail + "%'";
-            }else if(method == "login"){
+            }else if(method.equalsIgnoreCase("login")){
                 sql="select * from customer where cus_email like '" + customerEmail + "'";
             }
             db=new DBUtil();

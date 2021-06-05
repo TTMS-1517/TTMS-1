@@ -125,6 +125,7 @@ public class CustomerServlet  extends HttpServlet
         PrintWriter out=response.getWriter();
         String name=request.getParameter("name");
         String method=request.getParameter("method");
+        System.out.println("!!!!!!!!!!!!!!!!" + method + "!!!!!!!!!!!!!!!!!!!!" );
         List<Customer> result=null;
 //        if(name != null && name.length() > 0)
             result=new CustomerSrv().Fetch(name,method);
