@@ -46,10 +46,7 @@
                     <a class="" href="#">首页 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="">
-                    <a class="" href="#">电影</a>
-                </li>
-                <li class="">
-                    <a class="" href="#">榜单</a>
+                    <a class="" href="#">购票</a>
                 </li>
             </ul>
         </nav>
@@ -114,7 +111,7 @@
         </div>
         <div class="container main">
             <div class="col-12 mt-3 mb-4 text-center" id="inter_every_intro">
-                <h1 class="col-3 mx-auto pt-5 pb-2 inter_every_intro  font-weight-bolder">公司简介</h1>
+                <h1 class="col-xl-3 mx-auto pt-5 pb-2 inter_every_intro  font-weight-bolder">公司简介</h1>
             </div>
             <!--功能介绍-->
             <div class="row container my-4 mx-auto p-3" id="inter_every">
@@ -129,85 +126,89 @@
             </div>
             <hr class="container">
 
-            <div class="col-12 mt-3 mb-4 text-center" id="privacy_security_intro">
-                <h1 class="col-3 mx-auto pt-5 pb-2 privacy_security_intro  font-weight-bolder">网站服务</h1>
+            <div class="col-12 mt-3 mb-2 text-center" id="privacy_security_intro">
+                <h1 class="col-xl-3 mx-auto pt-5 privacy_security_intro_title  font-weight-bolder">网站服务</h1>
             </div>
             <!--功能介绍-->
-            <div class="row container my-4 mx-auto p-3" id="privacy_security">
-                <div class="col-lg-5 float-right  text-center">
-                    <div id="vue" class="func_card func_card3">
-
-                        <div class="input-group">
-                            <div class="input-group-prepend">
+            <div class="row container mb-4 mx-auto p-3" id="privacy_security">
+                <div class="col-xl-5">
+                    <div class="col-xl-12 mt-3 mb-4 text-center" id="privacy_security_intro_title1">
+                        <h3 class="col-xl-12 pt-2 pb-2 privacy_security_intro  font-weight-bolder">查询天气</h3>
+                    </div>
+                    <div class="col-lg-12 float-right my-2  text-center">
+                        <div id="vue" class="func_card func_card3" @load="searchWeather">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cloud" viewBox="0 0 16 16">
                             <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
                             </svg>
                             <span>天气查询</span>
                             </span>
-                            </div>
-                            <input  @keyup.enter="searchWeather" v-model="city" placeholder="城市名称" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-
-                        </div>
-
-                        <ul class="weather_list pt-2" @load="searchWeather">
-                            <li class="" v-for="item in weatherList">
-
-                                <b class="float-left text-center weather_date">{{ item.date }}</b>
-                                <div class="weather_data text-center">
-                                    <span>{{ item.type }}</span>&nbsp;
-                                    <span>{{ item.low}}~</span>&nbsp;
-                                    <span>{{item.high }}</span>
                                 </div>
-                            </li>
-                        </ul>
+                                <input  @keyup.enter="searchWeather" v-model="city" placeholder="城市名称" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                            </div>
+
+                            <ul class="weather_list pt-2" @load="searchWeather">
+                                <li class="" v-for="item in weatherList">
+
+                                    <b class="float-left text-center weather_date">{{ item.date }}</b>
+                                    <div class="weather_data text-center">
+                                        <span>{{ item.type }}</span>&nbsp;
+                                        <span>{{ item.low}}~</span>&nbsp;
+                                        <span>{{item.high }}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-7 float-right  text-center">
-                    <div id="player" class="func_card func_card3">
+                <div class="col-xl-7">
+                    <div class="col-xl-12 mt-3 mb-4 text-center" id="privacy_security_intro_title2">
+                        <h3 class="col-xl-12 pt-2 pb-2 privacy_security_intro  font-weight-bolder">收听音乐</h3>
+                    </div>
+                    <div class="col-lg-12 float-right my-2  text-center">
+                        <div id="player" class="func_card_music func_card4">
 
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cloud" viewBox="0 0 16 16">
-                            <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
-                            </svg>
-                            <span>搜索音乐</span>
-                            </span>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cloud" viewBox="0 0 16 16">
+                                <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+                                </svg>
+                                <span>搜索音乐</span>
+                                </span>
+                                </div>
+                                <input  @keyup.enter="searchMusic" v-model="query" autocomplete="off" placeholder="搜索歌曲" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
                             </div>
-                            <input  @keyup.enter="searchMusic" v-model="query" autocomplete="off" placeholder="城市名称" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
-                        </div>
+                            <ul class="col-xl-5 float-left music_list pt-2" @load="searchMusic">
+                                <li class="" v-for="item in musicList">
+                                    <a href="javascript:;" @click="playMusic(item.id)">
+                                        <b>{{ item.name }}</b>
+                                        <span><i></i></span>
+                                    </a>
+                                </li>
 
-                        <ul class="weather_list pt-2" @load="searchMusic">
-                            <li class="" v-for="item in musicList">
-                                <a href="javascript:;" @click="playMusic(item.id)">
-                                    <b>{{ item.name }}</b>
-                                    <span><i></i></span>
-                                </a>
-                            </li>
-
-                        </ul>
-                        <div class="song">
-                            <img src="img/logo.png" :src="musicPicUrl">
-                            <div class="audio_con">
-                                <audio controls="controls" autoplay="autoplay" loop="loop" :src="musicUrl"></audio>
+                            </ul>
+                            <div class="col-xl-7 float-right song">
+                                <img src="img/logo.png" width="200" height="200" :src="musicPicUrl">
+                                <div class="audio_con">
+                                    <audio controls="controls" autoplay="autoplay" loop="loop" :src="musicUrl"></audio>
+                                </div>
                             </div>
                         </div>
-
-
-
-
                     </div>
                 </div>
-
             </div>
 
             <hr class="container">
 
 
             <div class="col-12 mt-3 mb-4 text-center" id="intell_life_intro">
-                <h1 class="col-3 mx-auto py-3 pb-2 func_int font-weight-bolder">正在热映</h1>
+                <h1 class="col-xl-3 mx-auto py-3 pb-2 func_int font-weight-bolder">正在热映</h1>
             </div>
 
             <!--第一行-->
@@ -349,7 +350,7 @@
             <!--页脚部分-->
         <div class="paddtop-1">
             <footer class="container-fluid bg-dark fcc">
-                <div class="container">
+                <div class="">
                     <div class="row">
                         <div class="col-md-5 col-sm-6">
                             <div class="paddtop-1">

@@ -4,7 +4,7 @@ var app = new Vue({
         query:"",
         musicList:[],       //歌曲数组
         musicUrl:[],        //歌曲地址
-        musicPicUrl:[]      //封面
+        musicPicUrl:["img/logo.png"]      //封面
     },
     methods:{
         searchMusic:function () {

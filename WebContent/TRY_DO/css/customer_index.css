@@ -74,8 +74,11 @@ ul,ol{
 .inter_every_intro{
     border-bottom: 5px solid #1296db;
 }
-.privacy_security_intro{
+.privacy_security_intro_title{
     border-bottom: 5px solid #1296db;
+}
+.privacy_security_intro{
+    border-bottom: 5px solid #73c5e8;
 }
 .nav_diy{
     z-index: 1;
@@ -101,6 +104,10 @@ ul,ol{
     background-color: #f5f5f5;
     transition: .3s;
 }
+
+.func_card img{
+    margin: 50px;
+}
 .func_card3{
     height: 240px;
 }
@@ -116,26 +123,43 @@ ul,ol{
 .weather_data{
     width: 396px;
 }
-.music_data{
-    width: 496px;
+/*歌曲*/
+.func_card_music{
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    transition: .3s;
+}
+.func_card4{
+    height: 300px;
+}
+@media screen and (max-width: 1200px) {
+    .func_card4{
+        height: 600px;
+    }
+}
+.music_list{
+    height: 250px;
+    overflow: auto;
+}
+.music_list li{
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.music_list li a{
+    display: inline-block;
+    width: 100%;
+    color: #1b1e21;
+}
+.music_list li:hover{
+    background-color: #aaa;
 }
 .privacy_security_text{
     padding: 15px;
 }
 
-.func_card img{
-    margin: 50px;
-}
 
 .func_card:hover{
-    box-shadow:
-            0 2.3px 2.2px rgba(0, 0, 0, 0.006),
-            0 6.9px 5.3px rgba(0, 0, 0, 0.016),
-            0 12.5px 10px rgba(0, 0, 0, 0.026),
-            0 18.1px 17.9px rgba(0, 0, 0, 0.035),
-            0 23.3px 33.4px rgba(0, 0, 0, 0.042),
-            0 26px 80px rgba(0, 0, 0, 0.04)
-;
+
 }
 
 
