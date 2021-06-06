@@ -4,57 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/customer_schedule.css">
   <title>Title</title>
   <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css">
-
-  <style>
-
-    .paddtop {
-      padding-top: 5px;
-    }
-    /*.nav-1{*/
-    /*  background: url("../img/listimage/saohei-2.jpg") ;*/
-    /*  opacity: 0.5;*/
-
-    /*}*/
-    .nav-2{
-      background-color: black;
-    }
-    .nav-4{
-
-    }
-    .nav-3{
-
-    }
-    .kuai-1{
-      width:300px;
-    }
-    .kuai-2{
-      width:130px;
-      float: left;
-
-    }
-    .kuai-3{
-      width:130px;
-      float: right;
-    }
-
-    .kuai-4{
-      width:300px;
-    }
-    .location-1{
-
-    }
-
-
-  </style>
-
-
-
 </head>
 <body>
-<header  >
-  <div class="nav-4">
+<header >
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">阳珑国际影视</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,51 +66,55 @@
       </div>
     </nav>
 
-  </div>
+
 </header>
 
-<div class="nav-2">
-  <div class="jumbotron nav-1 w-100" >
-    <div class="nav-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-3" >
-            <img src="img/listimage/464x644/saoHei.png" alt="" class="img-thumbnail" >
-          </div>
-          <div class="col-4" >
-            <h1 class="display-5">扫黑·决战</h1>
-            <p class="lead">BREAK THROUGH THE DARKNESS</p>
-            <br class="my-4">
-            <p>犯罪 剧情 动作</p>
-            <p>中国大陆 / 112分钟</p>
-            <p>2021-05-01 08:00中国大陆上映</p>
-            <div class="kuai-1">
-              <p>
-              <div class="kuai-4">
-                <div class="kuai-2"><button type="button" class="btn btn-primary btn-block">想看</button></div>
 
-                <div class="kuai-3"><button type="button" class="btn btn-primary btn-block">评分</button></div>
-              </div>
-              </p>
-              <br><br>
-              <p>
-                <button type="button" class="btn btn-primary btn-lg btn-block">特惠购票</button>
-              </p>
-            </div>
+<div id="back-color">
+  <div id="back-img" class="op-1"></div>
+</div>
+<div class="container op-2">
+  <div class="row">
+    <div class="col-3">
+      <img src="img/listimage/464x644/saoHei.png" alt="" class="img-thumbnail">
+    </div>
+    <div class="col-4">
+      <h1 class="display-5">扫黑·决战</h1>
+      <p class="lead">BREAK THROUGH THE DARKNESS</p>
+      <br class="my-4">
+      <p>犯罪 剧情 动作</p>
+      <p>中国大陆 / 112分钟</p>
+      <p>2021-05-01 08:00中国大陆上映</p>
+      <div class="kuai-1">
+        <p>
+        <div class="kuai-4">
+          <div class="kuai-2">
+            <button type="button" class="btn btn-primary btn-block">想看</button>
           </div>
-          <div class="col-5">
-            <div class="location-1">
-              <p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该片是国内首部以“扫黑除恶”行动为题材、展现全国扫黑办督办案件的影视化作品，讲述某扫黑专案组组长宋一锐带领组员由一起征地案深入调查，突破层层阻挠，与幕后的黑恶势力展开激烈斗争，最终揭开腐败官员利用公职权力充当犯罪保护伞的虚伪面具，将犯罪分子绳之以法的故事。
-              </p>
-            </div>
+
+          <div class="kuai-3">
+            <button type="button" class="btn btn-primary btn-block">评分</button>
           </div>
         </div>
+        </p>
+        <br><br>
+        <p>
+          <button type="button" class="btn btn-primary btn-lg btn-block">特惠购票</button>
+        </p>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="brief">
+        <p>
+          该片是国内首部以“扫黑除恶”行动为题材、展现全国扫黑办督办案件的影视化作品，讲述某扫黑专案组组长宋一锐带领组员由一起征地案深入调查，突破层层阻挠，与幕后的黑恶势力展开激烈斗争，最终揭开腐败官员利用公职权力充当犯罪保护伞的虚伪面具，将犯罪分子绳之以法的故事。
+        </p>
       </div>
     </div>
   </div>
 </div>
-<div class="container">
+
+
+<div class="container" style="margin-top:50px;">
   <table class="table">
     <thead>
     <tr>
@@ -186,6 +146,27 @@
     </tbody>
   </table>
 </div>
+
+
+<!--页脚-->
+<div style="margin-top:200px;">
+  <footer class="container-fluid bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-6" style="margin-top:20px;">
+          <h4 class="title">关于我们</h4>
+          <ul class="message">
+            <li><img src="img/icon/dizhi.png" alt="">&nbsp;&nbsp;<a href="http://cs.xiyou.edu.cn/" class="dizhi">西安市长安区西长安街618号东区计算机学院</a></li>
+            <li><img src="img/icon/phone.png" alt="">&nbsp;&nbsp;15771831xxx</li>
+            <li><img src="img/icon/email.png" alt="" width="16px">&nbsp;&nbsp;liuyuyng@xiyou.edu.cn</li>
+            <li>@西安邮电大学计算机学院软件工程1901(2021)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
 <script src="js/Bootstrap/jquery.js"></script>
 <script src="js/Bootstrap/bootstrap.js"></script>
 

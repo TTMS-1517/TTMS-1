@@ -1,0 +1,60 @@
+.paddtop {
+    padding-top: 5px;
+}
+.kuai-1{
+    width:300px;
+}
+.kuai-2{
+    width:130px;
+    float: left;
+
+}
+.kuai-3{
+    width:130px;
+    float: right;
+}
+
+.kuai-4{
+    width:300px;
+}
+#back-img{
+    background: url("../img/listimage/saohei-2.jpg");
+    opacity: 0.3;
+    height: 450px;
+}
+#back-color{
+    background-color: black;
+}
+
+.op-1{
+    position: relative;
+
+}
+.op-2{
+    position: absolute;
+    top:100px;
+    left:150px;
+    color:white;
+}
+.brief p{
+    font-family:"黑体";
+    text-indent: 45px;
+    letter-spacing: 2px;
+    line-height:1.8;
+    font-size: 20px;
+    position: relative;
+    top:50px;
+}
+.message{
+    color:#555555;
+}
+.message li{
+    list-style: none;
+}
+.message li a{
+    text-decoration:none;
+    color:#555555;
+}
+.message a:hover{
+    color:aqua;
+}
