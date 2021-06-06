@@ -242,6 +242,32 @@ CREATE TABLE `schedule`  (
   CONSTRAINT `FK_studio_sched` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
+
+
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (2,10,"2021-5-28 09:32:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,10,"2021-5-28 12:52:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,10,"2021-5-28 19:24:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,11,"2021-5-28 9:24:00",37);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (3,11,"2021-5-28 14:38:00",37);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,11,"2021-5-28 22:24:00",37);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (2,12,"2021-5-29 10:56:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (3,12,"2021-5-29 16:24:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,12,"2021-5-29 23:10:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,13,"2021-6-1 08:10:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,13,"2021-6-1 12:25:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,13,"2021-6-1 21:17:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,14,"2021-5-1 11:17:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (3,14,"2021-5-1 15:23:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,14,"2021-5-1 19:24:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,15,"2021-5-21 09:24:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,15,"2021-5-21 15:14:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,15,"2021-5-21 23:36:00",38);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,16,"2021-4-30 09:36:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,16,"2021-4-30 12:46:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,16,"2021-4-30 24:36:00",35);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (2,17,"2021-5-20 8:46:00",37);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,17,"2021-5-20 11:38:00",37);
+insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,17,"2021-5-20 19:45:00",37);
 -- ----------------------------
 -- Table structure for seat
 -- ----------------------------
