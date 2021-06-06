@@ -38,6 +38,7 @@ ul,ol{
 }
 .fcc{
     width:100%;
+    padding: 0 10%;
     height: 250px;
 }
 .card{
@@ -88,7 +89,7 @@ ul,ol{
 
 }
 .banner_img,.banner_img img{
-    border-radius: 8px;
+    border-radius: 2px;
 }
 
 .intell_life_text,
@@ -161,6 +162,7 @@ ul,ol{
 .func_card:hover{
 
 }
+
 
 
 
@@ -288,7 +290,6 @@ header.sticky .nav2 ul {
 section{
     position: absolute;
     margin-top: 195px;
-    padding: 0 100px;
     z-index: -1;
 }
 section h2{

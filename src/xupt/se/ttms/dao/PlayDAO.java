@@ -17,9 +17,11 @@ public class PlayDAO  implements iPlayDAO
         int resultPlay=0;
         try
         {
-            String sql="insert into play(play_name, play_kind, play_length, play_ticket_price )"
-                        + " values('" + play.getName() + "', '" + play.getKind() + "', " + play.getLength() + ", "
-                    + play.getTicketPrice() + " )";
+            String sql="insert into play(play_name, play_kind , play_introduction , play_image, play_length, play_ticket_price )"
+                        + " values('" + play.getName() + "', '" + play.getKind()
+                        + "', '" + play.getIntro() + "', '" + play.getImg()
+                        + "', " + play.getLength() + ", "
+                        + play.getTicketPrice() + " )";
             DBUtil db=new DBUtil();
             db.openConnection();
             ResultSet rst=db.getInsertObjectIDs(sql);
@@ -147,6 +149,8 @@ public class PlayDAO  implements iPlayDAO
                     play.setID(rst.getInt("play_id"));
                     play.setName(rst.getString("play_name"));
                     play.setKind(rst.getString("play_kind"));
+                    play.setIntro(rst.getString("play_introduction"));
+                    play.setImg(rst.getString("play_image"));
                     play.setLength(rst.getInt("play_length"));
                     play.setTicketPrice(rst.getInt("play_ticket_price"));
                     playList.add(play);

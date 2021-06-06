@@ -14,28 +14,7 @@
 
 
 </head>
-<body>
-<!--            <nav class="navbar navbar-expand-lg navbar-dark nav_diy" >-->
-<!--                <div class="container">-->
-<!--                    <a class="navbar-brand" href="#"><h3>阳珑国际影视</h3></a>-->
-<!--                    <button class="navbar-toggler" id="changetop" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--                        <span class="navbar-toggler-icon"></span>-->
-<!--                    </button>-->
-
-<!--                    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--                                               <form class="form-inline my-2 my-lg-0">-->
-<!--                            <input class="form-control mr-sm-2 " type="search" placeholder="请输入电影名称" aria-label="Search">-->
-
-<!--                            <ul class="nav navbar-nav navbar-right">-->
-
-
-<!--                            </ul>-->
-<!--                        </form>-->
-
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </nav>-->
-
+<body onload="searchMovie()">
     <header>
         <img src="img/space.jpg" class="banner">
         <a href="#" class="logo">阳珑国际影业</a>
@@ -212,138 +191,7 @@
             </div>
 
             <!--第一行-->
-            <div class="row paddtop">
-                <div class="col-md-3">
-                    <a href="">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="img/listimage/464x644/daXiong.png" alt="">
-                            <div class="card-body">
-                                <h6>哆啦A梦：伴我同行2</h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">剧情/动画</small>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-primary">购票</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="img/listimage/464x644/jiJing.png" alt="">
-                        <div class="card-body">
-                            <h6>寂静之地2</h6>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">科幻/惊悚/恐怖</small>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-primary">购票</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div></a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="img/listimage/464x644/jiuLingHou.png" alt="">
-                            <div class="card-body">
-                                <h6>九零后</h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">纪录片</small>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-primary">购票</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="img/listimage/464x644/piNuoCao.png" alt="">
-                            <div class="card-body">
-                                <h6>匹诺曹 Pinocchio </h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">奇幻</small>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-primary">购票</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!--第三行-->
-            <div class="row paddtop">
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="img/listimage/464x644/saoHei.png" alt="">
-                            <div class="card-body">
-                                <h6>扫黑·决战</h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">剧情/动作/犯罪</small>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-primary">购票</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="img/listimage/464x644/suDu.png" alt="">
-                            <div class="card-body">
-                                <h6>速度与激情9</h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">动作/犯罪</small>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-primary">购票</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="img/listimage/464x644/xuanYa.png" alt="">
-                            <div class="card-body">
-                                <h6>悬崖之上</h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">剧情/动作/悬疑</small>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-primary">购票</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="img/listimage/464x644/yiQi.png" alt="">
-                            <div class="card-body">
-                                <h6>我要我们在一起</h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">剧情/爱情</small>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-primary" >购票</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+            <div class="row paddtop" id="movielist">
             </div>
         </div>
 
@@ -380,6 +228,6 @@
     <script src="js/customer_index.js"></script>
 <script src="js/index.js"></script>
 <script src="js/index_music.js"></script>
-
+<script src="js/movie_list.js"></script>
 </body>
 </html>

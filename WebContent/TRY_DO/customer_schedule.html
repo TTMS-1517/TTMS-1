@@ -7,165 +7,285 @@
   <link rel="stylesheet" href="css/customer_schedule.css">
   <title>Title</title>
   <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css">
+  <style>
+
+    a,a:hover{
+        text-decoration: none;
+    }
+    nav{
+
+    }
+    header.sticky nav{
+      position: relative;
+      left: 0;
+      float: left;
+    }
+    nav ul{
+      position: relative;
+      left: 220px;
+      display: flex;
+      transition: 0.20s;
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    header.sticky nav ul{
+      float: left;
+      transform: translateY(0px);
+      opacity: 1;
+      transition-delay: 0.55s;
+      visibility: visible;
+    }
+    nav ul li{
+      list-style: none;
+    }
+    nav ul li a{
+      color: #fff;
+      display: inline-block;
+      padding: 10px 15px;
+      font-size: 1.2em;
+      text-decoration: none;
+      transition: 0.1s;
+    }
+    nav ul li a:hover{
+      color: #1296db;
+    }
+
+    .nav2 {
+      position: absolute;
+      right: 100px;
+    }
+    .nav2 ul{
+      opacity: 0;
+      transition: 0.25s;
+      transform: translateX(100px);
+
+
+    }
+    header.sticky .nav2 ul {
+      transform: translateX(0px);
+      transition-delay: 0.75s;
+
+      opacity: 1;
+    }
+    .nav2 ul li{
+      float: left;
+    }
+    .nav_person{
+      color: #fff;
+    }
+    .nav_person:hover{
+      color: #aaa;
+    }
+
+
+
+
+
+    @media (max-width: 991px){
+      section,
+      header{
+        padding: 40px;
+      }
+      section h2{
+        font-size: 2em;
+      }
+      header.sticky .logo{
+        left: 40px;
+      }
+      header.sticky .banner{
+        opacity: 0;
+      }
+      nav{
+
+        transition: .5s;
+      }
+      nav ul{
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+      }
+      nav.active ul{
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 80px);
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      nav ul li a{
+        font-size: 2em;
+        padding: 5px 15px;
+      }
+      header.sticky .toggle{
+        position: fixed;
+        top: 15px;
+        right: 40px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        background: url(img/menu.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      header.sticky .toggle.active{
+        background: url(img/close.png);
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+  </style>
 </head>
 <body>
-<header >
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">阳珑国际影视</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">电影</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">演出</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">榜单</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-              西安
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">上海</a>
-              <a class="dropdown-item" href="#">北京</a>
-              <a class="dropdown-item" href="#">深圳</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">其它城市</a>
-            </div>
-          </li>
-          <li>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="请输入剧目" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">查询</button>
-            </form>
-          </li>
-        </ul>
-
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-            个人账户
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">登录</a>
-            <a class="dropdown-item" href="#">注册</a>
-            <a class="dropdown-item" href="#">联系我们</a>
-
-          </div>
-        </div>
-      </div>
-    </nav>
-
-
-</header>
-
-
-<div id="back-color">
-  <div id="back-img" class="op-1"></div>
-</div>
-<div class="container op-2">
-  <div class="row">
-    <div class="col-3">
-      <img src="img/listimage/464x644/saoHei.png" alt="" class="img-thumbnail">
-    </div>
-    <div class="col-4">
-      <h1 class="display-5">扫黑·决战</h1>
-      <p class="lead">BREAK THROUGH THE DARKNESS</p>
-      <br class="my-4">
-      <p>犯罪 剧情 动作</p>
-      <p>中国大陆 / 112分钟</p>
-      <p>2021-05-01 08:00中国大陆上映</p>
-      <div class="kuai-1">
-        <p>
-        <div class="kuai-4">
-          <div class="kuai-2">
-            <button type="button" class="btn btn-primary btn-block">想看</button>
-          </div>
-
-          <div class="kuai-3">
-            <button type="button" class="btn btn-primary btn-block">评分</button>
-          </div>
-        </div>
-        </p>
-        <br><br>
-        <p>
-          <button type="button" class="btn btn-primary btn-lg btn-block">特惠购票</button>
-        </p>
-      </div>
-    </div>
-    <div class="col-5">
-      <div class="brief">
-        <p>
-          该片是国内首部以“扫黑除恶”行动为题材、展现全国扫黑办督办案件的影视化作品，讲述某扫黑专案组组长宋一锐带领组员由一起征地案深入调查，突破层层阻挠，与幕后的黑恶势力展开激烈斗争，最终揭开腐败官员利用公职权力充当犯罪保护伞的虚伪面具，将犯罪分子绳之以法的故事。
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="container" style="margin-top:50px;">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<!--页脚-->
-<div style="margin-top:200px;">
-  <footer class="container-fluid bg-dark">
-    <div class="container">
-      <div class="row">
-        <div class="col-6" style="margin-top:20px;">
-          <h4 class="title">关于我们</h4>
-          <ul class="message">
-            <li><img src="img/icon/dizhi.png" alt="">&nbsp;&nbsp;<a href="http://cs.xiyou.edu.cn/" class="dizhi">西安市长安区西长安街618号东区计算机学院</a></li>
-            <li><img src="img/icon/phone.png" alt="">&nbsp;&nbsp;15771831xxx</li>
-            <li><img src="img/icon/email.png" alt="" width="16px">&nbsp;&nbsp;liuyuyng@xiyou.edu.cn</li>
-            <li>@西安邮电大学计算机学院软件工程1901(2021)</li>
+  <header class="sticky">
+      <img src="img/space.jpg" class="banner">
+      <a href="#" class="logo">阳珑国际影业</a>
+      <div class="toggle"></div>
+      <nav class="mt-3">
+          <ul class="">
+              <li class="">
+                  <a class="" href="#">首页 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="">
+                  <a class="" href="#">购票</a>
+              </li>
           </ul>
-        </div>
+      </nav>
+      <div class="navbar  navbar-expand-xl nav2 mt-3">
+          <ul class="float-left">
+              <li class="">
+                  <input class="form-control mr-sm-2 " type="search" placeholder="请输入电影名称" aria-label="Search">
+              </li>
+              <li class="ml-2">
+                  <a class="btn btn btn-outline-primary my-sm-0" href="LogIn.html" type="submit">登 录</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle nav_person" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    个人中心
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">我的订单</a>
+                    <a class="dropdown-item" href="#">我的钱包</a>
+                    <a class="dropdown-item" href="#">退出</a>
+                  </div>
+              </li>
+          </ul>
       </div>
+
+  </header>
+
+  <section>
+    <div id="main_schedule">
+
+        <div id="back-color">
+            <img src="img/listimage/saohei-2.jpg" alt="">
+        </div>
+        <div class="op-2">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-3">
+                      <img src="img/listimage/464x644/5.png" alt="" class="img-thumbnail">
+                    </div>
+                    <div class="col-4">
+                      <h1 class="display-5">扫黑·决战</h1>
+                      <p class="lead">BREAK THROUGH THE DARKNESS</p>
+                      <br class="my-4">
+                      <p>犯罪 剧情 动作</p>
+                      <p>中国大陆 / 112分钟</p>
+                      <p>2021-05-01 08:00中国大陆上映</p>
+                      <div class="kuai-1">
+                        <p>
+                        <div class="kuai-4">
+                          <div class="kuai-2">
+                            <button type="button" class="btn btn-primary btn-block">想看</button>
+                          </div>
+
+                          <div class="kuai-3">
+                            <button type="button" class="btn btn-primary btn-block">评分</button>
+                          </div>
+                        </div>
+                        </p>
+                        <br><br>
+                        <p>
+                          <button type="button" class="btn btn-primary btn-lg btn-block">特惠购票</button>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="brief">
+                        <p>
+                          该片是国内首部以“扫黑除恶”行动为题材、展现全国扫黑办督办案件的影视化作品，讲述某扫黑专案组组长宋一锐带领组员由一起征地案深入调查，突破层层阻挠，与幕后的黑恶势力展开激烈斗争，最终揭开腐败官员利用公职权力充当犯罪保护伞的虚伪面具，将犯罪分子绳之以法的故事。
+                        </p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="margin-top:50px;">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <!--页脚-->
+        <div style="margin-top:200px;">
+          <footer class="container-fluid bg-dark">
+            <div class="container">
+              <div class="row">
+                <div class="col-6" style="margin-top:20px;">
+                  <h4 class="title">关于我们</h4>
+                  <ul class="message">
+                    <li><img src="img/icon/dizhi.png" alt="">&nbsp;&nbsp;<a href="http://cs.xiyou.edu.cn/" class="dizhi">西安市长安区西长安街618号东区计算机学院</a></li>
+                    <li><img src="img/icon/phone.png" alt="">&nbsp;&nbsp;15771831xxx</li>
+                    <li><img src="img/icon/email.png" alt="" width="16px">&nbsp;&nbsp;liuyuyng@xiyou.edu.cn</li>
+                    <li>@西安邮电大学计算机学院软件工程1901(2021)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
     </div>
-  </footer>
-</div>
+  </section>
 
 <script src="js/Bootstrap/jquery.js"></script>
 <script src="js/Bootstrap/bootstrap.js"></script>

@@ -2,7 +2,6 @@ package xupt.se.ttms.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Serial;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -21,7 +20,6 @@ import xupt.se.ttms.service.StudioSrv;
 @WebServlet("/StudioServlet")
 public class StudioServlet extends HttpServlet
 {
-    @Serial
     private static final long serialVersionUID=2L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

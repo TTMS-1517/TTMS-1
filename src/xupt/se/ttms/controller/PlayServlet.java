@@ -48,9 +48,11 @@ public class PlayServlet extends HttpServlet
         {
             String name=request.getParameter("playname");
             String kind=request.getParameter("kind");
+            String intro=request.getParameter("intro");
+            String img=request.getParameter("img");
             int length=Integer.valueOf(request.getParameter("length"));
             int ticketprice=Integer.valueOf(request.getParameter("ticketprice"));
-            play=new Play(id, name, kind, length, ticketprice);
+            play=new Play(id, name, kind,intro,img, length, ticketprice);
             response.setContentType("text/html;charset=utf-8");
             PrintWriter out=response.getWriter();
 
@@ -93,12 +95,13 @@ public class PlayServlet extends HttpServlet
         int id=0;
         try
         {
-            id=Integer.valueOf(request.getParameter("playid"));
             String name=request.getParameter("playname");
             String kind=request.getParameter("kind");
+            String intro=request.getParameter("intro");
+            String img=request.getParameter("img");
             int length=Integer.valueOf(request.getParameter("length"));
             int ticketprice=Integer.valueOf(request.getParameter("ticketprice"));
-            play=new Play(id, name, kind, length, ticketprice);
+            play=new Play(id, name, kind,intro,img, length, ticketprice);
             response.setContentType("text/html;charset=utf-8");
             PrintWriter out=response.getWriter();
 
@@ -138,6 +141,8 @@ public class PlayServlet extends HttpServlet
                 json.put("id", s.getID());
                 json.put("name", s.getName());
                 json.put("kind", s.getKind());
+                json.put("intro", s.getIntro());
+                json.put("img", s.getImg());
                 json.put("length", s.getLength());
                 json.put("ticketprice", s.getTicketPrice());
                 array.put(json);
