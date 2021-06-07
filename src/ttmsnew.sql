@@ -284,6 +284,11 @@ CREATE TABLE `seat`  (
   CONSTRAINT `FK_studio_seat` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
+insert into seat (studio_id,seat_row,seat_column) values(2,6,6);
+insert into seat (studio_id,seat_row,seat_column) values(4,3,5);
+insert into seat (studio_id,seat_row,seat_column) values(5,9,4);
+insert into seat (studio_id,seat_row,seat_column) values(3,7,9);
+insert into seat (studio_id,seat_row,seat_column) values(4,6,4);
 -- ----------------------------
 -- Table structure for studio
 -- ----------------------------
