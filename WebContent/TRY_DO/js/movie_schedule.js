@@ -83,6 +83,7 @@ function searchMovieContComplete() {
     if (req.readyState == 4 && req.status == 200) {
         var movieschelist = document.getElementById("movie_sche");
         var json = JSON.parse(req.responseText);//转换为json对象
+        searchSche(json[0].id);
         var tmp = json[0].id;
         console.log(json);
         document.getElementsByTagName("title")[0].innerText = json[0].name;
@@ -130,8 +131,9 @@ function searchMovieContComplete() {
 
 
 // 演出列表
-function searchSche(){
-    var url = "../StudioServlet";
+function searchSche(playid){
+
+    var url = "../ScheduleServlet";
     if (window.XMLHttpRequest)
         req = new XMLHttpRequest();
     else if (window.ActiveXObject)
@@ -142,13 +144,14 @@ function searchSche(){
         //POST方式，必须加入如下头信息设定
         req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         req.onreadystatechange = searchScheComplete;
-        req.send("type=search&name="+document.getElementById("studioname_search").value);
+        req.send("type=search&playid="+playid);
     }
 }
 
 function searchScheComplete() {
     if (req.readyState == 4 && req.status == 200) {
         var theTable = document.getElementById("table");//table的id
+        var playname = UrlParm.parm("name");
         var num=theTable.rows.length;
         while(num>0) {
             theTable.deleteRow(num-1);
@@ -158,14 +161,12 @@ function searchScheComplete() {
         for(i=0; i<json.length; i++) {
             var rowCount = theTable.rows.length; //获得当前表格的行数
             var row = theTable.insertRow(rowCount);//在tale里动态的增加tr
-            row.insertCell(0).innerHTML = json[i].id;
-            row.insertCell(1).innerHTML = json[i].name;
-            row.insertCell(2).innerHTML = json[i].rowCount;
-            row.insertCell(3).innerHTML = json[i].colCount;
-            row.insertCell(4).innerHTML = json[i].introduction;
+            row.insertCell(0).innerHTML = json[i].studioid;
+            row.insertCell(1).innerHTML = playname;
+            row.insertCell(2).innerHTML = json[i].schedtime;
+            row.insertCell(3).innerHTML = json[i].price;
             var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].rowCount + "," + json[i].colCount + ",\'" + json[i].introduction +"\'";
-            row.insertCell(5).innerHTML = '<input type="button" class="btn btn-sm btn-primary" value="修改" onclick="modify('+ tmp +')" ' +
-                '/>&nbsp;&nbsp;<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
+            row.insertCell(4).innerHTML = '<input type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delModal" value="购票" onclick="del('+json[i].id+')" />';
         }
     }
 }
