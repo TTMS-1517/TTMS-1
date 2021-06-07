@@ -33,7 +33,7 @@ ul,ol{
 #back-color img{
     width: 100%;
     height: 480px;
-    opacity: .28;
+    opacity: .32;
     object-fit: cover;
 }
 #main_schedule{
@@ -55,6 +55,9 @@ ul,ol{
 #mov_sch_list{
     border: 7px solid #000;
     border-radius: 20px;
+}
+#studio{
+    font-size: 14px;
 }
 
 
