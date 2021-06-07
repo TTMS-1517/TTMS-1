@@ -7,18 +7,20 @@ public class Play {
     private String Kind="";
     private String Intro="" ;
     private String Img="";
+    private String Imgbg="";
     private int Length=0;
     private int TicketPrice=0; //���
 
     public Play(){
         id = 0;
     }
-    public Play(int ID, String name, String kind,String intro, String img, int length, int ticketPrice){
+    public Play(int ID, String name, String kind,String intro, String img,String img_bg, int length, int ticketPrice){
         this.id = ID;
         this.name=name;
         this.Kind = kind;
         this.Intro=intro;
         this.Img = img;
+        this.Imgbg = img_bg;
         this.Length = length;
         this.TicketPrice = ticketPrice;
     }
@@ -59,6 +61,14 @@ public class Play {
 
     public String getImg(){
         return Img;
+    }
+
+    public void setImgbg(String imgbg){
+        this.Imgbg=imgbg;
+    }
+
+    public String getImgbg(){
+        return Imgbg;
     }
 
     public void setKind(String count){

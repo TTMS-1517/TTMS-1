@@ -151,6 +151,7 @@ public class PlayDAO  implements iPlayDAO
                     play.setKind(rst.getString("play_kind"));
                     play.setIntro(rst.getString("play_introduction"));
                     play.setImg(rst.getString("play_image"));
+                    play.setImgbg(rst.getString("play_image_bg"));
                     play.setLength(rst.getInt("play_length"));
                     play.setTicketPrice(rst.getInt("play_ticket_price"));
                     playList.add(play);

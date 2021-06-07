@@ -23,6 +23,7 @@
         <th>电影时长</th>
         <th>票价</th>
         <th>图片url</th>
+        <th>背景图片url</th>
     </tr>
     </thead>
     <tbody id="table">
@@ -81,6 +82,8 @@
                 row.insertCell(3).innerHTML = json[i].colCount;
                 row.insertCell(4).innerHTML = json[i].introduction;
                 row.insertCell(5).innerHTML = json[i].img;
+                row.insertCell(6).innerHTML = json[i].imgbg;
+
             }
         }
     }

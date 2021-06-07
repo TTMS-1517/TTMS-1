@@ -1,5 +1,4 @@
 
-
 function searchMovie(){
     var url = "../PlayServlet";
     if (window.XMLHttpRequest)
@@ -22,10 +21,10 @@ function searchMovieComplete() {
         var json = JSON.parse(req.responseText);//转换为json对象
         for (i = 0; i < json.length; i++) {
 
-            var tmp = json[i].id;
+            var tmp = json[i].name;
 
             movielist.innerHTML += '<div class="col-md-3">' +
-                '                    <a href="" onclick="openmovie('+ tmp +')">' +
+                '                    <a href="customer_schedule.html?type=search&name=' + json[i].name + '" target="_blank">' +
                 '                        <div class="card mb-4 shadow-sm">' +
                 '                            <img src="' + json[i].img + '" alt="">' +
                 '                            <div class="card-body">' +
@@ -44,6 +43,6 @@ function searchMovieComplete() {
     }
 }
 
-function openmovie(id){
-    window.location = "customer_index.html?type=search&id=" + id;
+function openmovie(name){
+    window.location = "customer_schedule.html?type=search&name=" + name;
 }
