@@ -10,3 +10,8 @@ document.querySelector('.toggle').onclick = function(){
 }
 
 
+document.getElementById("input_searchmovie").onkeyup = function (event){
+    if(event.keyCode ==13){
+        $("#login").trigger("click");
+    }
+}

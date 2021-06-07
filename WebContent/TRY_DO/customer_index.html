@@ -22,20 +22,23 @@
         <nav class="mt-3">
             <ul class="">
                 <li class="">
-                    <a class="" href="#">首页 <span class="sr-only">(current)</span></a>
+                    <a class="#" href="#">首页 <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="">
-                    <a class="" href="#">购票</a>
+                <li class="" >
+                    <a href="#">购票</a>
                 </li>
             </ul>
         </nav>
         <div class="navbar  navbar-expand-xl nav2 mt-3">
             <ul class="float-left">
                 <li class="">
-                    <input class="form-control mr-sm-2 " type="search" placeholder="请输入电影名称" aria-label="Search">
+                    <input class="form-control mr-sm-3 " id="input_searchmovie" type="search" placeholder="请输入正确的电影名称"  aria-label="Search" >
                 </li>
-                <li class="ml-2">
-                    <a class="btn btn btn-outline-primary my-sm-0" href="LogIn.html" type="submit">登 录</a>
+                <li>
+                    <input type="button" class="btn btn-primary mx-2" value="搜索" onclick="openmovie()">
+                </li>
+                <li>
+                    <a class="btn btn btn-outline-warning my-sm-0" href="LogIn.html" type="submit">登&nbsp;&nbsp;录</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav_person" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -217,15 +220,13 @@
             </footer>
         </div>
     </section>
-
-
 <script src="js/Bootstrap/jquery.js"></script>
 <script src="js/Bootstrap/bootstrap.js"></script>
 <!--axios-->
 <script src="js/axios.min.js"></script>
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="js/vue.min.js"></script>
-    <script src="js/customer_index.js"></script>
+<script src="js/customer_index.js"></script>
 <script src="js/index.js"></script>
 <script src="js/index_music.js"></script>
 <script src="js/movie_list.js"></script>

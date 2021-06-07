@@ -43,6 +43,8 @@ function searchMovieComplete() {
     }
 }
 
-function openmovie(name){
-    window.location = "customer_schedule.html?type=search&name=" + name;
+function openmovie(){
+    var name = document.getElementById("input_searchmovie").value;
+    var url = "customer_schedule.html?type=search&name=" + name;
+    window.open(url);
 }

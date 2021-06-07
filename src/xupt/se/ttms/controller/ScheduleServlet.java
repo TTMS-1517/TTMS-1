@@ -152,6 +152,5 @@ public class ScheduleServlet extends HttpServlet
         }
         // System.out.print(jsonStr);
     }
-
 }
 

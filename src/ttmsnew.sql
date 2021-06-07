@@ -224,6 +224,7 @@ CREATE TABLE `schedule`  (
   `sched_id` int(11) NOT NULL AUTO_INCREMENT,
   `studio_id` int(11) DEFAULT NULL,
   `play_id` int(11) DEFAULT NULL,
+  `play_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `sched_time` datetime NOT NULL,
   `sched_ticket_price` decimal(10, 2) DEFAULT NULL,
   `sched_status` smallint(6) DEFAULT NULL,
@@ -236,30 +237,31 @@ CREATE TABLE `schedule`  (
 
 
 
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (2,10,"2021-5-28 09:32:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,10,"2021-5-28 12:52:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,10,"2021-5-28 19:24:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,11,"2021-5-28 9:24:00",37);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (3,11,"2021-5-28 14:38:00",37);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,11,"2021-5-28 22:24:00",37);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (2,12,"2021-5-29 10:56:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (3,12,"2021-5-29 16:24:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,12,"2021-5-29 23:10:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,13,"2021-6-1 08:10:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,13,"2021-6-1 12:25:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,13,"2021-6-1 21:17:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,14,"2021-5-1 11:17:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (3,14,"2021-5-1 15:23:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,14,"2021-5-1 19:24:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (1,15,"2021-5-21 09:24:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,15,"2021-5-21 15:14:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,15,"2021-5-21 23:36:00",38);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,16,"2021-4-30 09:36:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,16,"2021-4-30 12:46:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,16,"2021-4-30 21:36:00",35);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (2,17,"2021-5-20 8:46:00",37);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (5,17,"2021-5-20 11:38:00",37);
-insert into schedule (studio_id,play_id,sched_time,sched_ticket_price) values (4,17,"2021-5-20 19:45:00",37);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (2,10,'哆啦A梦：伴我同行',"2021-5-28 09:35",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (4,10,'哆啦A梦：伴我同行',"2021-5-28 12:55",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (5,10,'哆啦A梦：伴我同行',"2021-5-28 19:25",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (1,11,'寂静之地2 ',"2021-5-28 9:25",37);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (3,11,'寂静之地2 ',"2021-5-28 14:35",37);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (5,11,'寂静之地2 ',"2021-5-28 22:25",37);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (2,12,'九零后',"2021-5-29 10:55",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (3,12,'九零后',"2021-5-29 16:25",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (4,12,'九零后',"2021-5-29 23:15",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (1,13,'匹诺曹',"2021-6-1 08:15",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (1,13,'匹诺曹',"2021-6-1 12:25",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (5,13,'匹诺曹',"2021-6-1 21:10",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (1,14,'扫黑·决战',"2021-5-1 11:10",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (3,14,'扫黑·决战',"2021-5-1 15:20",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (4,14,'扫黑·决战',"2021-5-1 19:20",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (1,15,'速度与激情9',"2021-5-21 09:20",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (5,15,'速度与激情9',"2021-5-21 15:10",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (4,15,'速度与激情9',"2021-5-21 23:35",38);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (4,16,'悬崖之上',"2021-4-30 09:35",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (5,16,'悬崖之上',"2021-4-30 12:45",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (5,16,'悬崖之上',"2021-4-30 21:35",35);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (2,17,'我要我们在一起',"2021-5-20 8:45",37);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (5,17,'我要我们在一起',"2021-5-20 11:35",37);
+insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price) values (4,17,'我要我们在一起',"2021-5-20 19:45",37);
+
 
 -- ----------------------------
 -- Table structure for seat

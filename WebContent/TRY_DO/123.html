@@ -40,6 +40,27 @@
         <p></p>
     </div>
 </div>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">影厅编号</label>
+    </div>
+    <select class="custom-select" id="inputGroupSelect01">
+        <option id="selected" selected="">请选择</option>
+        <div>
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="9">3</option>
+            <option value="8">4</option>
+            <option value="7">5</option>
+        </div>
+
+    </select>
+</div>
+
+<button type="button" id="select">选择</button>
+
 <script src="js/Bootstrap/jquery.js"></script>
 <script src="js/Bootstrap/bootstrap.min.js"></script>
 <!--axios-->
@@ -47,6 +68,9 @@
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="js/vue.min.js"></script>
 <script type="text/javascript">
+    document.getElementById("select").onclick = function (){
+        console.log(document.getElementById("inputGroupSelect01").value);
+    }
 
     function search1(){
         var url = "../ScheduleServlet";

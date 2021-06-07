@@ -2,28 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>电影查询</title>
+    <title>Title</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/nav+left.css" type="text/css">
+    <link rel="stylesheet" href="css/jq22.css">
+    <link rel="stylesheet" href="css/nav+left.css">
+    <link rel="stylesheet" href="css/Ticket.css">
     <link rel="stylesheet" href="css/Bootstrap/animate.min.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <script src="js/Bootstrap/jquery.js"></script>
 
-    <style>
-        .show2{
-            display:block;
-            padding-right:16px;
-        }
-        td{
-            margin: auto auto;
-        }
-    </style>
-
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <script type="text/javascript">
 
         function search(){
-            var url = "../PlayServlet";
+            var url = "../ScheduleServlet";
             if (window.XMLHttpRequest)
                 req = new XMLHttpRequest();
             else if (window.ActiveXObject)
@@ -34,7 +25,7 @@
                 //POST方式，必须加入如下头信息设定
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = searchComplete;
-                req.send("type=search&name="+document.getElementById("playname_search").value);
+                req.send("type=search&name="+document.getElementById("schedule_search").value);
             }
         }
 
@@ -50,12 +41,12 @@
                 for(i=0; i<json.length; i++) {
                     var rowCount = theTable.rows.length; //获得当前表格的行数
                     var row = theTable.insertRow(rowCount);//在tale里动态的增加tr
-                    row.insertCell(0).innerHTML = json[i].id;
-                    row.insertCell(1).innerHTML = json[i].name;
-                    row.insertCell(2).innerHTML = json[i].kind;
-                    row.insertCell(3).innerHTML = json[i].length;
-                    row.insertCell(4).innerHTML = json[i].ticketprice;
-                    var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].kind + "," + json[i].length + ",\'" + json[i].ticketprice +"\'";
+                    row.insertCell(0).innerHTML = json[i].schedid;
+                    row.insertCell(1).innerHTML = json[i].studioid;
+                    row.insertCell(2).innerHTML = json[i].playid;
+                    row.insertCell(3).innerHTML = json[i].schedtime;
+                    row.insertCell(4).innerHTML = json[i].price;
+                    var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].rowCount + "," + json[i].colCount + ",\'" + json[i].introduction +"\'";
                     row.insertCell(5).innerHTML = '<input type="button" class="btn btn-sm btn-primary" value="修改" onclick="modify('+ tmp +')" ' +
                         '/>&nbsp;&nbsp;<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
                 }
@@ -71,7 +62,7 @@
 
             $("#delConfirm").click(function (){
 
-                var url = "../PlayServlet";
+                var url = "../StudioServlet";
                 if (window.XMLHttpRequest)
                     req = new XMLHttpRequest();
                 else if (window.ActiveXObject)
@@ -166,30 +157,30 @@
             //alert(type);
             document.getElementById("type").value = type;
             if(type=="update"){
-                var playid = UrlParm.parm("id");
-                var playname = UrlParm.parm("name");
-                var kind = UrlParm.parm("kind");
-                var length = UrlParm.parm("length");
-                var ticketprice = UrlParm.parm("ticketprice");
-                document.getElementById("studioid").value = playid;
-                document.getElementById("playname").value = playname;
-                document.getElementById("kind").value = kind;
-                document.getElementById("length").value = length;
-                document.getElementById("ticketprice").value = ticketprice;
+                var studioid = UrlParm.parm("id");
+                var studioname = UrlParm.parm("name");
+                var rowcount = UrlParm.parm("rowCount");
+                var colcount = UrlParm.parm("colCount");
+                var intro = UrlParm.parm("introduction");
+                document.getElementById("studioid").value = studioid;
+                document.getElementById("studioname").value = studioname;
+                document.getElementById("rowcount").value = rowcount;
+                document.getElementById("colcount").value = colcount;
+                document.getElementById("intro").value = intro;
             }
         }
 
         function check() {
             var form = document.getElementById("myform");
-            if(form.playname.value=="" || form.kind.value=="" || form.length.value=="" || form.ticketprice.value=="") {
+            if(form.studioname.value=="" || form.rowcount.value=="" || form.colcount.value=="" || form.intro.value=="") {
                 alert("请填写完整信息");
+                return 0;
+            }
+            if(isNaN(form.rowcount.value) || isNaN(form.colcount.value)){
+                alert("座位行数和座位列数不是数字");
                 return;
             }
-            if(isNaN(form.length.value) || isNaN(form.ticketprice.value)){
-                alert("时长和票价不是数字");
-                return;
-            }
-            var url = "../PlayServlet";
+            var url = "../StudioServlet";
             if (window.XMLHttpRequest)
                 req = new XMLHttpRequest();
             else if (window.ActiveXObject)
@@ -199,11 +190,11 @@
                 req.open("post", url, true);
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.onreadystatechange = checkComplete;
-                var data = "type=" + form.type.value + "&playid="
-                    + form.playid.value + "&playname="
-                    + encodeURIComponent(form.playname.value) + "&kind="
-                    + encodeURIComponent(form.kind.value) + "&length=" + form.length.value
-                    + "&ticketprice=" + form.ticketprice.value;
+                var data = "type=" + form.type.value + "&studioid="
+                    + form.studioid.value + "&studioname="
+                    + encodeURIComponent(form.studioname.value) + "&rowcount="
+                    + form.rowcount.value + "&colcount=" + form.colcount.value
+                    + "&intro=" + encodeURIComponent(form.intro.value);
                 req.send(data);
             }
         }
@@ -215,6 +206,7 @@
             }
         }
     </script>
+
 
 
 </head>
@@ -236,18 +228,18 @@
                             首 页<span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li id="active_index" class="nav-item">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Program.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
                                 <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
                             </svg>
-                            电 影 计 划
+                            电 影 管 理
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Schedule.html">
+                    <li id="active_index" class="nav-item">
+                        <a class="nav-link" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                            购 票/退 票
+                            放 映 计 划
                         </a>
                     </li>
                     <li class="nav-item">
@@ -274,29 +266,65 @@
             </div>
         </nav>
 
+<!--        选座-->
+
+        <div class="modal fade" id="chooseSeatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="chooseSeatModalLabel">选择座位</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body body-choose">
+                        <div class="container mb-3">
+                            <div class="demo clearfix">
+                                <!---左边座位列表----->
+                                <div id="seat_area">
+                                    <div class="front">屏幕</div>
+                                </div>
+                                <!---右边选座信息----->
+                                <div class="booking_area mt-5">
+                                    <p>电影：<span>唐人街探案3</span></p>
+                                    <p>时间：<span>03月20日 22:15</span></p>
+                                    <p>座位：</p>
+                                    <ul id="seats_chose"></ul>
+                                    <p>票数：<span id="tickects_num">0</span></p>
+                                    <p>总价：<b>￥<span id="total_price">0</span></b></p>
+                                    <a type="button" class="btn1"><span>确定购买</span></a>
+                                    <div id="legend"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
             <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">电影管理</h1>
+                <h1 class="h2">放映计划</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="input-group mr-2">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">搜索电影</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default">搜索计划</span>
                         </div>
-                        <input type="text" id="playname_search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onkeypress="search()">
+                        <input type="text" class="form-control " id="schedule_search" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onkeypress="search()">
                     </div>
                     <div class="btn-group mr-2">
-                        <button id="add" type="button" class="btn btn-sm btn-outline-secondary"  data-toggle="modal" data-target="#exampleModal">添加电影</button>   <!--模态框-->
+                        <button id="add" type="button" class="btn btn-sm btn-outline-secondary"   data-toggle="modal" data-target="#exampleModal">添加计划</button>
                     </div>
                 </div>
             </div>
-
-
-            <!--添加影厅_模态框-->
+            <!--        添加模态框-->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" >
-                    <div class="modal-content">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content"  onload="init()">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">添加电影</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">添加放映计划</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -306,52 +334,62 @@
                                 <input type="hidden" id="type" name="type" value="add">
 
                                 <div class="input-group form-group col-lg-4 float-left">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text">电影编号</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="studio_id">影厅编号</label>
+                                        </div>
+                                        <select class="custom-select" id="studio_id">
+                                            <option selected="">请选择</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+
+                                        </select>
                                     </div>
-                                    <input type="text" class="form-control" disabled="disabled" id="playid" name="playid">
                                 </div>
 
                                 <div class="input-group form-group col-lg-8 float-left">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" >电影名称</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="play_name">电影名称</label>
+                                        </div>
+                                        <select class="custom-select" id="play_name">
+                                            <option selected="">请选择</option>
+                                            <div>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </div>
+
+                                        </select>
                                     </div>
-                                    <input type="text" class="form-control" id="playname" name="playname">
                                 </div>
                                 <br>
                                 <br>
                                 <br>
-                                <div class="input-group form-group col-lg-4 float-left">
+                                <div class="input-group form-group col-lg-8 float-left">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text">种类</label>
+                                        <label class="input-group-text" >放映时间</label>
                                     </div>
-                                    <input type="text" class="form-control" id="kind" name="colcount">
-
+                                    <input type="text" class="form-control" placeholder="xxxx-xx-xx xx:xx" id="sched_time" name="sched_time">
                                 </div>
 
                                 <div class="input-group form-group col-lg-4 float-left">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text">时长</label>
+                                        <label class="input-group-text" >票价</label>
                                     </div>
-                                    <input type="text" class="form-control" id="length" name="length">
-
+                                    <input type="text" class="form-control" id="price" name="price">
                                 </div>
-
-                                <div class="input-group form-group col-lg-4 float-left">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text">票价</label>
-                                    </div>
-                                    <input type="text" class="form-control" id="ticketprice" name="ticketprice">
-
-                                </div>
-
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                                     <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addSuccessModal" onclick="check()">确认添加</button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -367,7 +405,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            电影添加成功！
+                            放映计划添加成功！
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" data-dismiss="modal">确定</button>                        </div>
@@ -376,9 +414,64 @@
             </div>
 
 
+            <!--            修改模态框-->
+            <div class="modal fade" id="exampleMod" tabindex="-1" aria-labelledby="exampleModalLab" aria-hidden="true">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLab">修改此影厅</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group form-group col-lg-4 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" >影厅编号</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="input-group form-group col-lg-8 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" >影厅名称</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="input-group form-group col-lg-4 float-left">
+                                    <input type="text" class="form-control">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" >行</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" >列</label>
+                                    </div>
+                                </div>
+
+                                <div class="input-group form-group col-lg-8 float-left">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" >影厅描述</label>
+                                    </div>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#delModal">删除影厅</button>
+                            <button type="button" class="btn btn-primary"  data-dismiss="modal">确认修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--            删除警示-->
             <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="delModalLabel">确认删除</h5>
@@ -387,7 +480,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            请谨慎操作！！！确认删除该影厅？
+                            请谨慎操作！！！确认删除此放映计划？
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
@@ -396,40 +489,101 @@
                     </div>
                 </div>
             </div>
-<!--            列表-->
+
             <div class="table-responsive  animated bounceInUp">
                 <table class="table table-hover">
                     <thead>
-                        <tr class="list_nav">
-                            <th>电影编号</th>
-                            <th>电影名称</th>
-                            <th>类别</th>
-                            <th>电影时长</th>
-                            <th>票价</th>
-                            <th>操作</th>
-                        </tr>
+                    <tr class="list_nav">
+                        <th>计划编号</th>
+                        <th>影厅</th>
+                        <th>电影名称</th>
+                        <th>放映时间</th>
+                        <th>票价</th>
+                        <th>操作</th>
+                    </tr>
                     </thead>
-                    <tbody id="table"></tbody>
+                    <tbody id="table">
+                    </tbody>
                 </table>
             </div>
         </main>
+
     </div>
 </div>
-
+<script src="js/Bootstrap/jquery.js"></script>
+<script src="js/jquery.seat-charts.min.js"></script>
 <script src="js/Bootstrap/bootstrap.bundle.js"></script>
-<script>
-    $(document).ready(function(){
-        $("tr").click(function () {
-            $("tr").attr("data-toggle","modal");
-            $("tr").attr("data-target","#exampleMod");
-        });
-    });
-</script>
 <!--axios-->
 <script src="js/axios.min.js"></script>
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="js/vue.min.js"></script>
 <script src="js/index.js"></script>
+<script type="text/javascript">
+    var price = 33; //电影票价
+    $(document).ready(function() {
+        var $cart = $('#seats_chose'), //座位区
+            $tickects_num = $('#tickects_num'), //票数
+            $total_price = $('#total_price'); //票价总额
+        var sc = $('#seat_area').seatCharts({
+            map: [//座位结构图 a 代表座位; 下划线 "_" 代表过道
+                'cccccccccc',
+                'cccccccccc',
+                '__________',
+                'cccccccc__',
+                'cccccccccc',
+                'cccccccccc',
+                'cccccccccc',
+                'cccccccccc',
+                'cccccccccc',
+                'cc__cc__cc'
+            ],
+            naming: {//设置行列等信息
+                top: false, //不显示顶部横坐标（行）
+                getLabel: function(character, row, column) { //返回座位信息
+                    return column;
+                }
+            },
 
+            legend: {//定义图例
+                node: $('#legend'),
+                items: [
+                    ['c', 'available', '可选座'],
+                    ['c', 'unavailable', '已售出']
+                ]
+            },
+
+            click: function() {
+                if (this.status() == 'available') { //若为可选座状态，添加座位
+                    $('<li>' + (this.settings.row + 1) + '排' + this.settings.label + '座</li>')
+                        .attr('id', 'cart-item-' + this.settings.id)
+                        .data('seatId', this.settings.id)
+                        .appendTo($cart);
+                    $tickects_num.text(sc.find('selected').length + 1); //统计选票数量
+                    $total_price.text(getTotalPrice(sc) + price);//计算票价总金额
+                    return 'selected';
+                } else if (this.status() == 'selected') { //若为选中状态
+                    $tickects_num.text(sc.find('selected').length - 1);//更新票数量
+                    $total_price.text(getTotalPrice(sc) - price);//更新票价总金额
+                    $('#cart-item-' + this.settings.id).remove();//删除已预订座位
+
+                    return 'available';
+                } else if (this.status() == 'unavailable') { //若为已售出状态
+                    return 'unavailable';
+                } else {
+                    return this.style();
+                }
+            }
+        });
+        //设置已售出的座位
+        sc.get(['1_3', '1_4', '4_4', '4_5', '4_6', '4_7', '4_8']).status('unavailable');
+    });
+    function getTotalPrice(sc) { //计算票价总额
+        var total = 0;
+        sc.find('selected').each(function() {
+            total += price;
+        });
+        return total;
+    }
+</script>
 </body>
 </html>
