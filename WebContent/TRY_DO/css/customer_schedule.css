@@ -51,6 +51,13 @@ ul,ol{
     top:60px;
     color:white;
 }
+/*电影列表*/
+#mov_sch_list{
+    border: 7px solid #000;
+    border-radius: 20px;
+}
+
+
 .brief p{
     font-family:"黑体";
     text-indent: 45px;
@@ -64,15 +71,19 @@ ul,ol{
     color:#555555;
 }
 .message li{
+    color:#aaa;
+
     list-style: none;
 }
 .message li a{
     text-decoration:none;
-    color:#555555;
+    color:#aaa;
 }
 .message a:hover{
     color:aqua;
 }
+
+
 
 
 

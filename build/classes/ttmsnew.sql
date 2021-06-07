@@ -115,6 +115,7 @@ CREATE TABLE `play`  (
   `play_kind` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `play_introduction` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `play_image` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `play_image_bg` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `play_video` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `play_length` int(11) DEFAULT NULL,
   `play_ticket_price` int(5) DEFAULT NULL,
@@ -129,26 +130,17 @@ CREATE TABLE `play`  (
 -- ----------------------------
 -- Records of play
 -- ----------------------------
-INSERT INTO `play` VALUES (1, 7, 14, '我和我的家乡','剧情', '电影《我和我的家乡》定档2020年国庆，延续《我和我的祖国》集体创作的方式，由张艺谋担当总监制，宁浩担任总导演，张一白担任总策划，宁浩、徐峥、陈思诚、闫非&彭大魔、邓超&俞白眉分别执导五个故事。', 'images/property/1.jpg', NULL, 120, 35, 0);
-INSERT INTO `play` VALUES (2, 7, 14, '七号房的礼物','剧情', '《7号房的礼物》\r\n是由李焕庆执导，柳承龙、葛素媛、郑进永、朴信惠等主演的喜剧电影。影片讲述了蒙受不白之冤入狱的李龙久和为了给父亲洗去冤屈而不懈努力的女儿之间的故事。该片于2013年1月23日在韩国上映。并成为2013年韩国电影票房排名第一。\r\n\r\n1997年，只有6岁儿童智商的智障男子李海报海报(12张)龙久（柳承龙饰）和可爱的女儿艺胜（葛素媛饰）相依为命，生活虽然简单清贫，却充满幸福。某天，执着为女儿买美少女战士书包的龙久意外卷入一起幼童诱拐奸杀案，而死者竟是警察局长的女儿。龙久懵懂无知，搞不清状况，昏头昏脑就被投入监狱。在7号牢房中，聚集着走私犯苏杨浩、诈骗犯崔春浩、通奸犯姜万范、恐吓犯老徐和抢劫犯申奉植等五毒俱全的“社会渣滓”。龙久孩子般纯洁的心渐渐感动了这几个“大坏蛋”，他们甚至不惜冒险将艺胜带入牢房与父亲相会。黑暗冰冷的监牢内，7号牢房阳光满满。', 'images/property/5.jpg', NULL, 108, 30.00, 0);
-INSERT INTO `play` VALUES (3, 9, 14, '天道王','剧情', '《天道王》\r\n是一部由缘世达国际影视文化传媒(北京)公司、奇雪文化投影城有限公司联合出品，苑本立执导，巩峥、陶红、杨钧丞、刘楚玄主演的电影。《天道王》以中国东北猎人加入抗日联军,与日军展开惨烈战斗为故事主线。主要讲述了抗战时期，东北深山老林猎人为了小家，为了国家奋起抗日英勇杀敌，为掩护东北抗联总部撤退，顽强阻击日军，谱写惊天动地抗日史诗的故事。东北抗日联军“十二烈士小孤山阻击战”和“李炮营阻击战”的原型故事；平民视角的东北猎人抗日；强情节、超反转的生死阻击。\r\n\r\n《天道王》以东北抗日联军为史料,以中国抗日战役中以少胜多最著名一次战役——“烈士山战役”为渊源,主要讲述了抗战时期,东北山野猎人奋起抗日救国,义勇军战败后猎人返山继续游猎生活,又谱写惊天动地抗日史诗的故事。 [1] 不愿做亡国奴的猎人们,1937年在抗联的感召下加入了抗联举起抗日救国大旗,成为主力,与日军斗智斗勇。1938年日军蓄谋大讨伐,猎人出身的十二名战士用生命全力阻击敌人,为抗联总部突围和群众转移赢得宝贵时间。', 'images/property/6.jpg', NULL, 125, 33.00, 0);
-INSERT INTO `play` VALUES (4, 7, 14, '喜宝','剧情', '《喜宝》\r\n《喜宝》是由北京日光鼎盛影视文化有限公司、北京轴心影视文化有限公司出品的作品，王丹阳执导，郭采洁、张国柱主演。该片根据著名作家亦舒的原著同名小说改编的电影，讲述了成绩优异但家境贫寒的剑桥学生姜喜宝在飞机上认识了富家女勖聪慧，此后更是被其父亲和兄长追求，最终与其父勖存姿展开一段恋情，命运也因此彻底改变的故事。\r\n\r\n喜宝（郭采洁饰）因家庭困境中止了英国学业返回国内，在飞机上结识了单纯可爱的富家千金勖聪慧（李彦漫 饰），回国后先后遭遇了母亲过世、从未见过的父亲上门索要钱财，被房东赶出无家可归。勖家帮助喜宝摆脱了困境，同时喜宝也深陷勖家男人的感情旋涡。曾经想要很多很多爱的喜宝，忽然拥有了选择很多很多钱的机会，年轻的喜宝能否明白爱情的真谛……', 'images/property/8.jpg', NULL, 153, 42.00, 0);
-INSERT INTO `play` VALUES (5, 6, 14, '姜子牙','剧情', '动画电影《姜子牙》的故事发生于封神大战后。姜子牙率领众神伐纣，赢得封神大战胜利，以为可以唤回世间安宁。然而，一切并未结束。一个偶然，姜子牙发现了原来“封神大战”之下酝酿着更大的阴谋。姜子牙开始踏上探寻真相的旅途......', 'images/property/2.jpg', NULL, 110, 40, 0);
-INSERT INTO `play` VALUES (6, 7, 14, '夺冠','剧情', '2008年8月15日，北京奥运会女排比赛，中国VS美国。戴着金丝框眼镜的郎平（巩俐 饰）坐在美国队教练席上，大气沉稳，目光如电；中国队教练陈忠和（黄渤 饰）站在场边，全神贯注，面带笑容。陈忠和望向郎平，目光充满深意，不断经过的人影遮蔽了他的视线，中国女排三十余年的沉浮图景被缓缓打开……', 'images/property/3.jpg', NULL, 135, 38.00, 0);
-INSERT INTO `play` VALUES (7, 7, 14, '一点就到家','剧情', '《一点就到家》\r\n是由陈可辛监制，许宏宇执导，刘昊然、彭昱畅、尹昉领衔主演的农村题材喜剧片。该片讲述了三个性格迥异的年轻人从大城市回到云南千年古寨开启创业旅程的故事。\r\n\r\n魏晋北（刘昊然 饰）、彭秀兵（彭昱畅 饰）、李绍群（尹昉 饰）三个性格迥异的年轻人从大城市回到云南千年古寨，机缘巧合下合伙干电商。三个年轻人在走弯路后，一拍即合携手开启创业之旅，他们明白了电商下乡，不仅仅是把城里面的东西卖到农村来，也是要把农村的东西卖出去。与古寨“格格不入”的他们用真诚改变了所有人，开启了一段纯真且荒诞的创业旅程。', 'images/property/7.jpg', NULL, 147, 35.00, 0);
-INSERT INTO `play` VALUES (8, 13, 14, '急先锋','剧情', '中国商人秦国立在英国惨遭雇佣兵组织“北极狼”绑架，秦的女儿Fareeda（徐若晗 饰）也卷入其中，遭到追杀。千钧一发之际，急先锋国际安保团队成为他们唯一的希望，由总指挥唐焕庭（成龙饰）带领雷震宇（杨洋饰）、张凯旋（艾伦饰）、弥雅（母其弥雅饰）、神雕（朱正廷饰）等组成的急先锋行动小组，上天入地，辗转全球各地施展惊险营救。解救人质的过程中，竟发现“北极狼”背后的犯罪集团还策划了一场惊天密谋……', 'images/property/4.jpg', NULL, 108, 36.00, 0);
-INSERT INTO `play` VALUES (9, 7, 14, '\r\n我在时间尽头等你','剧情', '林格（李鸿其 饰）一次次重启时空，只为与恋人邱倩（李一桐 饰）再次相遇。一生只爱一个人，希望开头是你，结尾也是你。2020年七夕最深情的告白: 我在时间尽头等你。', 'images/property/9.jpg', NULL, 115, 37.00, 0);
 
 
 
-INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image) VALUES ('哆啦A梦：伴我同行2','剧情/动画','某天，大雄（大原惠美 配音）偶然发现了童年时奶奶为自己缝制的玩偶熊，于是央求哆啦A梦（水田山葵 配音）去往过去看望已不再人世的奶奶（宫本信子 配音），大雄与奶奶重逢之后，奶奶希望能看到大雄长大结婚时的样子.........',96 , 35,'img/listimage/464x644/1.png');
-INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image) VALUES ('寂静之地2 ','科幻/惊悚/恐怖','故事紧承上一部展开。在丈夫为保护家人牺牲后，伊芙琳（艾米莉·布朗特 饰）不得不独自带着孩子们（米莉森·西蒙斯、诺亚·尤佩 饰）面对全新的生存挑战。他们将被迫离开家园，踏上一段未知的旅途。在无声的世界里，除了要躲避“猎声怪物”的捕杀，铺满细沙的道路尽头还暗藏着新的危机。',97 ,37,'img/listimage/464x644/2.png' );
-INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image) VALUES ('九零后','纪录片','故土在战争中沦陷，大学被占领、被炸毁。一群十八九岁的青年学生，他们匆匆出发，徒步南迁，横穿湘黔滇，最终在昆明高原组建临时大学——由清华、北大、南开联合成立的西南联大........',110 ,38,'img/listimage/464x644/3.png' );
-INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image) VALUES ('匹诺曹','奇幻','改编自经典童话《木偶奇遇记》，讲述老木匠（罗伯托·贝尼尼 Roberto Benigni 饰）雕刻的木偶机缘巧合下获得生命，被木匠当作自己的儿子，并取名“匹诺曹”（费德里科·伊帕迪 Federico Ielapi 饰）。木匠耐心地教导匹诺曹，可贪玩的匹诺曹却跑到马戏团看木偶戏，并因此开启了一段离家之旅。',124, 35,'img/listimage/464x644/4.png');
-INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image) VALUES ('扫黑·决战','剧情/动作/犯罪','该片是国内首部以“扫黑除恶”行动为题材、展现全国扫黑办督办案件的影视化作品，讲述某扫黑专案组组长宋一锐带领组员由一起征地案深入调查，突破层层阻挠，与幕后的黑恶势力展开激烈斗争，最终揭开腐败官员利用公职权力充当犯罪保护伞的虚伪面具，将犯罪分子绳之以法的故事。',112,38,'img/listimage/464x644/5.png' );
-INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image) VALUES ('速度与激情9','动作/犯罪','“唐老大”多姆·托莱多（范·迪塞尔 饰）与莱蒂（米歇尔·罗德里格兹 饰）和他的儿子小布莱恩，过上了远离纷扰的平静生活。然而他们也知道，安宁之下总潜藏着危机。这一次，为了保护他所爱的人，唐老大不得不直面过去。他和伙伴们面临的是一场足以引起世界动荡的阴谋，以及一个前所未遇的一流杀手和高能车手.........',142,38,'img/listimage/464x644/6.png');
-INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image) VALUES ('悬崖之上','剧情/动作/悬疑','上世纪三十年代，四位曾在苏联接受特训的共产党特工组成任务小队，回国执行代号为“乌特拉”的秘密行动。由于叛徒的出卖，他们从跳伞降落的第一刻起， 就已置身于敌人布下的罗网之中。同志能否脱身，任务能否完成，雪一直下，立于“悬崖之上”的行动小组面临严峻考验。',120,35,'img/listimage/464x644/7.png');
-INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image) VALUES ('我要我们在一起','剧情/爱情','你有没有爱过一个人，曾经拼了命，只为和TA在一起。十年前，差生吕钦扬当众告白凌一尧，两人从校园步入社会，为了让她幸福，他不惜以命相搏。然而金钱、房子、婚姻等现实的考验，却将两人越推越远。十年长跑，他们能否还记得曾经刻在心底的约定：我要我们在一起。',105,37,'img/listimage/464x644/8.png');
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image,play_image_bg) VALUES ('哆啦A梦：伴我同行2','剧情/动画','某天，大雄（大原惠美 配音）偶然发现了童年时奶奶为自己缝制的玩偶熊，于是央求哆啦A梦（水田山葵 配音）去往过去看望已不再人世的奶奶（宫本信子 配音），大雄与奶奶重逢之后，奶奶希望能看到大雄长大结婚时的样子.........',96 , 35,'img/listimage/464x644/1.png','img/listimage-bg/1-1.jpg');
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image,play_image_bg) VALUES ('寂静之地2 ','科幻/惊悚/恐怖','故事紧承上一部展开。在丈夫为保护家人牺牲后，伊芙琳（艾米莉·布朗特 饰）不得不独自带着孩子们（米莉森·西蒙斯、诺亚·尤佩 饰）面对全新的生存挑战。他们将被迫离开家园，踏上一段未知的旅途。在无声的世界里，除了要躲避“猎声怪物”的捕杀，铺满细沙的道路尽头还暗藏着新的危机。',97 ,37,'img/listimage/464x644/2.png','img/listimage-bg/2-2.jpg');
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image,play_image_bg) VALUES ('九零后','纪录片','故土在战争中沦陷，大学被占领、被炸毁。一群十八九岁的青年学生，他们匆匆出发，徒步南迁，横穿湘黔滇，最终在昆明高原组建临时大学——由清华、北大、南开联合成立的西南联大........',110 ,38,'img/listimage/464x644/3.png','img/listimage-bg/3-3.jpg');
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image,play_image_bg) VALUES ('匹诺曹','奇幻','改编自经典童话《木偶奇遇记》，讲述老木匠（罗伯托·贝尼尼 Roberto Benigni 饰）雕刻的木偶机缘巧合下获得生命，被木匠当作自己的儿子，并取名“匹诺曹”（费德里科·伊帕迪 Federico Ielapi 饰）。木匠耐心地教导匹诺曹，可贪玩的匹诺曹却跑到马戏团看木偶戏，并因此开启了一段离家之旅。',124, 35,'img/listimage/464x644/4.png','img/listimage-bg/4-4.jpg');
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image,play_image_bg) VALUES ('扫黑·决战','剧情/动作/犯罪','该片是国内首部以“扫黑除恶”行动为题材、展现全国扫黑办督办案件的影视化作品，讲述某扫黑专案组组长宋一锐带领组员由一起征地案深入调查，突破层层阻挠，与幕后的黑恶势力展开激烈斗争，最终揭开腐败官员利用公职权力充当犯罪保护伞的虚伪面具，将犯罪分子绳之以法的故事。',112,38,'img/listimage/464x644/5.png','img/listimage-bg/5-5.jpg');
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image,play_image_bg) VALUES ('速度与激情9','动作/犯罪','“唐老大”多姆·托莱多（范·迪塞尔 饰）与莱蒂（米歇尔·罗德里格兹 饰）和他的儿子小布莱恩，过上了远离纷扰的平静生活。然而他们也知道，安宁之下总潜藏着危机。这一次，为了保护他所爱的人，唐老大不得不直面过去。他和伙伴们面临的是一场足以引起世界动荡的阴谋，以及一个前所未遇的一流杀手和高能车手.........',142,38,'img/listimage/464x644/6.png','img/listimage-bg/6-6.jpg');
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image,play_image_bg) VALUES ('悬崖之上','剧情/动作/悬疑','上世纪三十年代，四位曾在苏联接受特训的共产党特工组成任务小队，回国执行代号为“乌特拉”的秘密行动。由于叛徒的出卖，他们从跳伞降落的第一刻起， 就已置身于敌人布下的罗网之中。同志能否脱身，任务能否完成，雪一直下，立于“悬崖之上”的行动小组面临严峻考验。',120,35,'img/listimage/464x644/7.png','img/listimage-bg/7-7.jpg');
+INSERT INTO play(play_name,play_kind,play_introduction,play_length,play_ticket_price,play_image,play_image_bg) VALUES ('我要我们在一起','剧情/爱情','你有没有爱过一个人，曾经拼了命，只为和TA在一起。十年前，差生吕钦扬当众告白凌一尧，两人从校园步入社会，为了让她幸福，他不惜以命相搏。然而金钱、房子、婚姻等现实的考验，却将两人越推越远。十年长跑，他们能否还记得曾经刻在心底的约定：我要我们在一起。',105,37,'img/listimage/464x644/8.png','img/listimage-bg/8-8.jpg');
 
 -- ----------------------------
 -- Table structure for resource
@@ -283,6 +275,12 @@ CREATE TABLE `seat`  (
   INDEX `FK_studio_seat`(`studio_id`) USING BTREE,
   CONSTRAINT `FK_studio_seat` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+
+insert into seat (studio_id,seat_row,seat_column) values(2,6,6);
+insert into seat (studio_id,seat_row,seat_column) values(4,3,5);
+insert into seat (studio_id,seat_row,seat_column) values(5,9,4);
+insert into seat (studio_id,seat_row,seat_column) values(3,7,9);
+insert into seat (studio_id,seat_row,seat_column) values(4,6,4);
 
 -- ----------------------------
 -- Table structure for studio

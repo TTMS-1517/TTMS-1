@@ -281,6 +281,7 @@ insert into seat (studio_id,seat_row,seat_column) values(4,3,5);
 insert into seat (studio_id,seat_row,seat_column) values(5,9,4);
 insert into seat (studio_id,seat_row,seat_column) values(3,7,9);
 insert into seat (studio_id,seat_row,seat_column) values(4,6,4);
+
 -- ----------------------------
 -- Table structure for studio
 -- ----------------------------

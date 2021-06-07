@@ -1,9 +1,6 @@
 package xupt.se.ttms.idao;
 
-import xupt.se.ttms.dao.CustomerDAO;
-import xupt.se.ttms.dao.EmployeeDAO;
-import xupt.se.ttms.dao.PlayDAO;
-import xupt.se.ttms.dao.StudioDAO;
+import xupt.se.ttms.dao.*;
 
 public class DAOFactory
 {
@@ -14,6 +11,8 @@ public class DAOFactory
     private static iEmployeeDAO empDao;
 
     private static iCustomerDAO cusDao;
+
+    private static iScheduleDAO scheDao;
 
     public static synchronized iStudioDAO creatStudioDAO()
     {
@@ -41,5 +40,12 @@ public class DAOFactory
         if(null == cusDao)
             cusDao=new CustomerDAO();
         return cusDao;
+    }
+
+    public static synchronized iScheduleDAO creatScheduleDAO()
+    {
+        if(null == scheDao)
+            scheDao=new ScheduleDAO();
+        return scheDao;
     }
 }
