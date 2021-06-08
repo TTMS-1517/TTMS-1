@@ -12,10 +12,11 @@ public class Schedule {
     public Schedule(){
         id = 0;
     }
-    public Schedule(int ID, int studioid, int playid, String schedtime, int price){
+    public Schedule(int ID, int studioid, int playid,String playname, String schedtime, int price){
         id = ID;
         this.studioid=studioid;
         this.playid = playid;
+        this.playname = playname;
         this.schedtime = schedtime;
         this.price = price;
     }

@@ -19,9 +19,9 @@ public class ScheduleDAO implements iScheduleDAO
         int result=0;
         try
         {
-            String sql="insert into studio(studio_name, studio_row_count, studio_col_count, studio_introduction )"
-                    + " values('" + stu.getStudioid() + "', " + stu.getPlayid() + ", " + stu.getSchedtime() + ", '"
-                    + stu.getPrice() + "' )";
+            String sql="insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price)"
+                    + " values(" + stu.getStudioid() + ", " + stu.getPlayid() + ", '" + stu.getPlayname() + ", '" + stu.getSchedtime() + "', "
+                    + stu.getPrice() + " )";
             DBUtil db=new DBUtil();
             db.openConnection();
             ResultSet rst=db.getInsertObjectIDs(sql);
@@ -50,9 +50,9 @@ public class ScheduleDAO implements iScheduleDAO
         int result=0;
         try
         {
-            String sql="update schedule set " + " studio_name ='" + stu.getStudioid() + "', " + " studio_row_count = "
-                    + stu.getPlayid() + ", " + " studio_col_count = " + stu.getSchedtime() + ", "
-                    + " studio_introduction = '" + stu.getPrice() + "' ";
+            String sql="update schedule set " + " studio_id ='" + stu.getStudioid() + "', " + " play_id = "
+                    + stu.getPlayid() + ", " + " sched_time = '" + stu.getSchedtime() + "', "
+                    + " sched_ticket_price = '" + stu.getPrice() + "' ";
             sql+=" where studio_id = " + stu.getID();
             DBUtil db=new DBUtil();
             db.openConnection();
@@ -148,6 +148,52 @@ public class ScheduleDAO implements iScheduleDAO
                     stu.setID(rst.getInt("sched_id"));
                     stu.setStudioid(rst.getInt("studio_id"));
                     stu.setPlayid(rst.getInt("play_id"));
+                    stu.setPlayname(rst.getString("play_name"));
+                    stu.setSchedtime(rst.getString("sched_time"));
+                    stu.setPrice(rst.getInt("sched_ticket_price"));
+                    stuList.add(stu);
+                }
+            }
+            db.close(rst);
+            db.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            return stuList;
+        }
+    }
+
+
+    @SuppressWarnings("finally")
+    @Override
+    public List<Schedule> selectName(String playname)
+    {
+        DBUtil db=null;
+        List<Schedule> stuList=null;
+        stuList=new LinkedList<Schedule>();
+        try
+        {
+            String sql="select * from schedule where play_name = '" + playname + "'";
+            db=new DBUtil();
+            if(!db.openConnection())
+            {
+                System.out.print("fail to connect database table studio");
+                return null;
+            }
+            ResultSet rst=db.execQuery(sql);
+            if(rst != null)
+            {
+                while(rst.next())
+                {
+                    Schedule stu=new Schedule();
+                    stu.setID(rst.getInt("sched_id"));
+                    stu.setStudioid(rst.getInt("studio_id"));
+                    stu.setPlayid(rst.getInt("play_id"));
+                    stu.setPlayname(rst.getString("play_name"));
                     stu.setSchedtime(rst.getString("sched_time"));
                     stu.setPrice(rst.getInt("sched_ticket_price"));
                     stuList.add(stu);

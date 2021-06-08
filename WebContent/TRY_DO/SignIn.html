@@ -69,12 +69,17 @@
             if (req.readyState == 4 && req.status == 200) {
                 var inputPwd = document.getElementById("EmployeePassword").value;//输入框中的密码
                 var json =  JSON.parse(req.responseText);//转换为json对象
-                if(inputPwd == json[0].pwd){
-                    successSignIn();
-                    setTimeout(SignInSuccess,100);
-
-                }else {
+                console.log(json);
+                if(json.length == 0){
                     failSignIn();
+                }else {
+                    if(inputPwd == json[0].pwd){
+                        successSignIn();
+                        setTimeout(SignInSuccess,100);
+
+                    }else {
+                        failSignIn();
+                    }
                 }
             }
         }

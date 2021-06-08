@@ -40,6 +40,8 @@ public class ScheduleServlet extends HttpServlet
             update(request, response);
         else if(type.equalsIgnoreCase("search"))
             search(request, response);
+        else if(type.equalsIgnoreCase("searchname"))
+            searchName(request, response);
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -50,9 +52,10 @@ public class ScheduleServlet extends HttpServlet
         {
             int studioId=Integer.valueOf(request.getParameter("studioid"));
             int playId=Integer.valueOf(request.getParameter("playid"));
+            String playname=request.getParameter("playname");
             String schedTime=request.getParameter("schedtime");
             int price=Integer.valueOf(request.getParameter("price"));
-            stu=new Schedule(id, studioId, playId, schedTime,price);
+            stu=new Schedule(id, studioId, playId,playname, schedTime,price);
             response.setContentType("text/html;charset=utf-8");
             PrintWriter out=response.getWriter();
 
@@ -95,10 +98,11 @@ public class ScheduleServlet extends HttpServlet
         try
         {
             int studioId=Integer.valueOf(request.getParameter("studioid"));
-            int playId=Integer.valueOf(request.getParameter("playid"));
+            int playId=Integer.valueOf(request.getParameter("playname"));
+            String playname=request.getParameter("playname");
             String schedTime=request.getParameter("schedtime");
             int price=Integer.valueOf(request.getParameter("price"));
-            stu=new Schedule(id, studioId, playId, schedTime,price);
+            stu=new Schedule(id, studioId, playId,playname, schedTime,price);
             response.setContentType("text/html;charset=utf-8");
             PrintWriter out=response.getWriter();
 
@@ -134,6 +138,46 @@ public class ScheduleServlet extends HttpServlet
                 json.put("schedid", s.getID());
                 json.put("studioid", s.getStudioid());
                 json.put("playid", s.getPlayid());
+                json.put("playname", s.getPlayname());
+                json.put("schedtime", s.getSchedtime());
+                json.put("price", s.getPrice());
+                array.put(json);
+            }
+            jsonStr=array.toString();
+        }
+        catch(JSONException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            out.println(jsonStr);
+            out.flush();
+            out.close();
+        }
+        // System.out.print(jsonStr);
+    }
+
+
+    private void searchName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out=response.getWriter();
+        String name=request.getParameter("name");
+        List<Schedule> result=null;
+        result=new ScheduleSrv().FetchName(name);
+        String jsonStr="";
+        try
+        {
+            JSONArray array=new JSONArray();
+            JSONObject json;
+            for(Schedule s : result)
+            {
+                json=new JSONObject();
+                json.put("schedid", s.getID());
+                json.put("studioid", s.getStudioid());
+                json.put("playid", s.getPlayid());
+                json.put("playname", s.getPlayname());
                 json.put("schedtime", s.getSchedtime());
                 json.put("price", s.getPrice());
                 array.put(json);

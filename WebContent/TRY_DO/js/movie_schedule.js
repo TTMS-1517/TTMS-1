@@ -62,6 +62,11 @@ function init(){
     searchMovieContent(playname);
 }
 
+function scheHTML(){
+    var playname = document.getElementById("input_searchmovie");
+    searchMovieContent(playname);
+}
+
 function searchMovieContent(playName){
     var url = "../PlayServlet";
     if (window.XMLHttpRequest)
@@ -82,10 +87,19 @@ function searchMovieContent(playName){
 function searchMovieContComplete() {
     if (req.readyState == 4 && req.status == 200) {
         var movieschelist = document.getElementById("movie_sche");
+
         var json = JSON.parse(req.responseText);//转换为json对象
+        if(json.length == 0){
+            console.log("123");
+            movieschelist.innerHTML = '<div class="bg-dark text-center py-5">' +
+                '                <img src="img/cry.png" height="180" width="180" alt="."/>' +
+                '                <h1 class="text-light mx-auto my-5">抱歉，没有找到该电影...</h1>' +
+                '            </div>';
+            return 0;
+        }
+        console.log(json);
         searchSche(json[0].id);
         var tmp = json[0].id;
-        console.log(json);
         document.getElementsByTagName("title")[0].innerText = json[0].name;
         movieschelist.innerHTML = '<div id="back-color">' +
             '                <img src="' + json[0].imgbg + '" alt="">' +
@@ -150,6 +164,29 @@ function searchSche(playid){
 
 function searchScheComplete() {
     if (req.readyState == 4 && req.status == 200) {
+        var schedlist = document.getElementById("schedlist");
+        schedlist.innerHTML = '<div class="container" id="mov_sch_list" style="margin-top:50px;">' +
+            '                <table class="table table-hover">' +
+            '                    <thead>' +
+            '                    <tr class="list_nav">' +
+            '                        <th>影厅</th>' +
+            '                        <th>电影名称</th>' +
+            '                        <th>放映时间</th>' +
+            '                        <th>票价</th>' +
+            '                        <th>购票</th>' +
+            '                    </tr>' +
+            '                    </thead>' +
+            '                    <tbody id="table">' +
+            '                    </tbody>' +
+            '                </table>' +
+            '                <div class="text-right">' +
+            '                   <span class="badge badge-pill badge-primary"><span class="badge badge-light">1</span>&nbsp;一号厅</span>' +
+            '                   <span class="badge badge-pill badge-success"><span class="badge badge-light">2</span>&nbsp;激光MAX厅</span>' +
+            '                   <span class="badge badge-pill badge-info"><span class="badge badge-light">3</span>&nbsp;全景声MAX厅</span>' +
+            '                   <span class="badge badge-pill badge-warning"><span class="badge badge-light">4</span>&nbsp;VIP厅</span>' +
+            '                   <span class="badge badge-pill badge-dark"><span class="badge badge-light">5</span>&nbsp;杜比厅</span>' +
+            '                </div>' +
+            '            </div>';
         var theTable = document.getElementById("table");//table的id
         var playname = UrlParm.parm("name");
         var num=theTable.rows.length;

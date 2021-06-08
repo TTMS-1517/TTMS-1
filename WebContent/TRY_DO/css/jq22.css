@@ -15,7 +15,7 @@ img{border:none}
 }
 .head {border-bottom: 1px solid #dadada;padding: 0 0 5px;}
 .head_inner {margin: 0 auto;width: 980px;}
-.container{width:980px; min-height:540px; margin:30px auto 0 auto; border:1px solid #d3d3d3; background:#fff; -moz-border-radius:5px;-khtml-border-radius: 5px;-webkit-border-radius: 5px; border-radius:5px;}
+/*.container{width:980px; min-height:540px; margin:30px auto 0 auto; border:1px solid #d3d3d3; background:#fff; -moz-border-radius:5px;-khtml-border-radius: 5px;-webkit-border-radius: 5px; border-radius:5px;}*/
 h2.title{margin:4px 0 30px;padding:15px 0 10px 20px; border-bottom:1px solid #d3d3d3; font-size:18px; color:#a84c10; background:url(../images/arrow.jpg) no-repeat 2px 14px}
 .foot{ height:60px;padding:10px 2px; line-height:24px; text-align:center}
 .foot a:hover{color:#51555C}
