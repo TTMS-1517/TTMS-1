@@ -1,4 +1,4 @@
-var price = 33; //电影票价
+var price = $("#price").text(); //电影票价
 $(document).ready(function() {
     var $cart = $('#seats_chose'), //座位区
         $tickects_num = $('#tickects_num'), //票数

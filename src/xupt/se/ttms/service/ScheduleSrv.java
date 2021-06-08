@@ -27,6 +27,10 @@ public class ScheduleSrv {
         return scheDAO.select(playid);
     }
 
+    public List<Schedule> FetchSchedid(int schedid){
+        return scheDAO.selectSchedid(schedid);
+    }
+
     public List<Schedule> FetchName(String playname){
         return scheDAO.selectName(playname);
     }

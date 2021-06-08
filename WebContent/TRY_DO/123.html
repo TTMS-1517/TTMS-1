@@ -61,6 +61,19 @@
 
 <button type="button" id="select">选择</button>
 
+<a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delModal" >购票</a>
+
+<span id="price">价格</span>
+
+<a href="customer_seat_ticket.html?type=search&schedid=' + json[i].schedid + '"><input type="button" class="btn btn-sm btn-primary" value="购票"></a>
+
+<a href="customer_seat_ticket.html?type=search&schedid=' + json[i].schedid + '" class="btn btn-sm btn-primary">购票</a>
+
+
+
+
+
+
 <script src="js/Bootstrap/jquery.js"></script>
 <script src="js/Bootstrap/bootstrap.min.js"></script>
 <!--axios-->
@@ -68,6 +81,10 @@
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="js/vue.min.js"></script>
 <script type="text/javascript">
+    document.getElementById("price").onclick = function (){
+        console.log(document.getElementById("price").innerText);
+    }
+
     document.getElementById("select").onclick = function (){
         console.log(document.getElementById("inputGroupSelect01").value);
     }

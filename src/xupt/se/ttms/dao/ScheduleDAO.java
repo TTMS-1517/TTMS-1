@@ -167,6 +167,48 @@ public class ScheduleDAO implements iScheduleDAO
         }
     }
 
+    @Override
+    public List<Schedule> selectSchedid(int schedid) {
+        DBUtil db=null;
+        List<Schedule> stuList=null;
+        stuList=new LinkedList<Schedule>();
+        try
+        {
+            String sql="select * from schedule where sched_id = '" + schedid + "'";
+            db=new DBUtil();
+            if(!db.openConnection())
+            {
+                System.out.print("fail to connect database table studio");
+                return null;
+            }
+            ResultSet rst=db.execQuery(sql);
+            if(rst != null)
+            {
+                while(rst.next())
+                {
+                    Schedule stu=new Schedule();
+                    stu.setID(rst.getInt("sched_id"));
+                    stu.setStudioid(rst.getInt("studio_id"));
+                    stu.setPlayid(rst.getInt("play_id"));
+                    stu.setPlayname(rst.getString("play_name"));
+                    stu.setSchedtime(rst.getString("sched_time"));
+                    stu.setPrice(rst.getInt("sched_ticket_price"));
+                    stuList.add(stu);
+                }
+            }
+            db.close(rst);
+            db.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            return stuList;
+        }
+    }
+
 
     @SuppressWarnings("finally")
     @Override

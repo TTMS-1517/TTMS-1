@@ -30,12 +30,6 @@ ul,ol{
     text-align: center;
     line-height:50px ;
 }
-.paddtop{
-    padding-top: 5px;
-}
-.paddtop-1{
-    padding-top: 40px;
-}
 .fcc{
     width:100%;
     padding: 0 10%;
@@ -68,6 +62,17 @@ ul,ol{
 }
 
 /*刘宇阳改*/
+
+/*页脚*/
+footer{
+    height: 100px;
+    background-color: #eee;
+}
+footer p{
+    font-size: 12px;
+    color: #666;
+    font-family: "Adobe 黑体 Std R";
+}
 
 .func_int{
     border-bottom: 5px solid #1296db;

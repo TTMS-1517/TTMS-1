@@ -13,6 +13,8 @@ public interface iScheduleDAO {
 
     public List<Schedule> select(int playid);
 
+    public List<Schedule> selectSchedid(int schedid);
+
     public List<Schedule> selectName(String playname);
 
 

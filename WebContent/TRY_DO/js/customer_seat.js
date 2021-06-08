@@ -58,14 +58,56 @@ UrlParm = function() { // url参数
 }();
 
 function init(){
-    var playname = UrlParm.parm("name");
-    searchMovieContent(playname);
+    var schedid = UrlParm.parm("schedid");
+    searchSche(schedid);
 }
 
-function scheHTML(){
-    var playname = document.getElementById("input_searchmovie");
-    searchMovieContent(playname);
+
+function searchSche(schedid){
+
+    var url = "../ScheduleServlet";
+    if (window.XMLHttpRequest)
+        req = new XMLHttpRequest();
+    else if (window.ActiveXObject)
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+    if (req) {
+        //采用POST方式，异步传输
+        req.open("post", url, true);
+        //POST方式，必须加入如下头信息设定
+        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        req.onreadystatechange = searchScheComplete;
+        req.send("type=schedid&schedid="+schedid);
+    }
 }
+
+function searchScheComplete() {
+    if (req.readyState == 4 && req.status == 200) {
+        var selectSeat = document.getElementById("selectSeat");
+        var json =  JSON.parse(req.responseText);//转换为json对象
+        selectSeat.innerHTML = '<div class="demo clearfix">' +
+            '          <!---左边座位列表----->' +
+            '          <div id="seat_area">' +
+            '            <div class="front">屏幕</div>' +
+            '          </div>' +
+            '          <!---右边选座信息----->' +
+            '          <div class="booking_area mt-5">' +
+            '            <p>影厅：<span>' + json[0].studioid + '</span></p>' +
+            '            <p>电影：<span>' + json[0].playname + '</span></p>' +
+            '            <p>时间：<span>' + json[0].schedtime + '</span></p>' +
+            '            <p>票价：<span id="price">' + json[0].price + '</span></p>' +
+            '            <p>座位：</p>' +
+            '            <ul id="seats_chose"></ul>' +
+            '            <p>票数：<span id="tickects_num">0</span></p>' +
+            '            <p>总价：<b>￥<span id="total_price">0</span></b></p>' +
+            '            <a type="button" class="btn1"><span>确定购买</span></a>' +
+            '            <div id="legend"></div>' +
+            '          </div>' +
+            '        </div>';
+        searchMovieContent(json[0].playname);
+    }
+}
+
+
 
 function searchMovieContent(playName){
     var url = "../PlayServlet";
@@ -98,7 +140,6 @@ function searchMovieContComplete() {
             return 0;
         }
         console.log(json);
-        searchSche(json[0].id);
         var tmp = json[0].id;
         document.getElementsByTagName("title")[0].innerText = json[0].name;
         movieschelist.innerHTML = '<div id="back-color">' +
@@ -142,71 +183,3 @@ function searchMovieContComplete() {
             '            </div>'
     }
 }
-
-
-// 演出列表
-function searchSche(playid){
-
-    var url = "../ScheduleServlet";
-    if (window.XMLHttpRequest)
-        req = new XMLHttpRequest();
-    else if (window.ActiveXObject)
-        req = new ActiveXObject("Microsoft.XMLHTTP");
-    if (req) {
-        //采用POST方式，异步传输
-        req.open("post", url, true);
-        //POST方式，必须加入如下头信息设定
-        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        req.onreadystatechange = searchScheComplete;
-        req.send("type=search&playid="+playid);
-    }
-}
-
-function searchScheComplete() {
-    if (req.readyState == 4 && req.status == 200) {
-        var schedlist = document.getElementById("schedlist");
-        schedlist.innerHTML = '<div class="container" id="mov_sch_list" style="margin-top:50px;">' +
-            '                <table class="table table-hover">' +
-            '                    <thead>' +
-            '                    <tr class="list_nav">' +
-            '                        <th>影厅</th>' +
-            '                        <th>电影名称</th>' +
-            '                        <th>放映时间</th>' +
-            '                        <th>票价</th>' +
-            '                        <th>购票</th>' +
-            '                    </tr>' +
-            '                    </thead>' +
-            '                    <tbody id="table">' +
-            '                    </tbody>' +
-            '                </table>' +
-            '                <div class="text-right">' +
-            '                   <span class="badge badge-pill badge-primary"><span class="badge badge-light">1</span>&nbsp;一号厅</span>' +
-            '                   <span class="badge badge-pill badge-success"><span class="badge badge-light">2</span>&nbsp;激光MAX厅</span>' +
-            '                   <span class="badge badge-pill badge-info"><span class="badge badge-light">3</span>&nbsp;全景声MAX厅</span>' +
-            '                   <span class="badge badge-pill badge-warning"><span class="badge badge-light">4</span>&nbsp;VIP厅</span>' +
-            '                   <span class="badge badge-pill badge-dark"><span class="badge badge-light">5</span>&nbsp;杜比厅</span>' +
-            '                </div>' +
-            '            </div>';
-        var theTable = document.getElementById("table");//table的id
-        var playname = UrlParm.parm("name");
-        var num=theTable.rows.length;
-        while(num>0) {
-            theTable.deleteRow(num-1);
-            num=theTable.rows.length;
-        }
-        var json =  JSON.parse(req.responseText);//转换为json对象
-        for(i=0; i<json.length; i++) {
-            var rowCount = theTable.rows.length; //获得当前表格的行数
-            var row = theTable.insertRow(rowCount);//在tale里动态的增加tr
-            row.insertCell(0).innerHTML = json[i].studioid;
-            row.insertCell(1).innerHTML = playname;
-            row.insertCell(2).innerHTML = json[i].schedtime;
-            row.insertCell(3).innerHTML = json[i].price;
-            row.insertCell(4).innerHTML = '<a href="customer_seat_ticket.html?type=search&schedid=' + json[i].schedid + '"><input type="button" class="btn btn-sm btn-primary" value="购票"></a>';
-        }
-    }
-}
-
-
-
-
