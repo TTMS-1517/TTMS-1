@@ -59,6 +59,7 @@ UrlParm = function() { // url参数
 
 function init(){
     var playname = UrlParm.parm("name");
+    document.getElementsByTagName("title")[0].innerText = playname;
     searchMovieContent(playname);
 }
 
@@ -84,6 +85,19 @@ function searchMovieContent(playName){
 }
 
 
+function Nonemovieschelist(){
+    var movieschelist = document.getElementById("movie_sche");
+    var playname = UrlParm.parm("name");
+     movieschelist.innerHTML = '<div class="bg-dark text-center py-5">' +
+                '                <img src="img/cry.png" height="180" width="180" alt="."/>' +
+                '                <h1 class="text-light mx-auto my-5">抱歉，没有找到该电影...</h1>' +
+                '            </div>' +
+                '<div class="container py-3"><div style="margin:15px auto 70px;"><h3>但是我们提供友情链接</h3><a target="_blank" href="https://maoyan.com/query?kw=' + playname + '" class="col-xl-4 float-left"><input type="button" class="btn btn-danger col-12" value="在猫眼电影搜索：'+ playname +'"></a>'+
+                '<a target="_blank" href="https://search.douban.com/movie/subject_search?search_text=' + playname + '" class="col-xl-4 float-right"><input type="button" class="btn btn-success col-12" value="在豆瓣电影搜索：'+ playname +'"></a>'+
+                '<a target="_blank" href="https://www.baidu.com/s?wd=' + playname + '" class="col-xl-4 float-right"><input type="button" class="btn btn-primary col-12" value="在百度中搜索：'+ playname +'"></a></div></div>';
+}
+
+
 function searchMovieContComplete() {
     if (req.readyState == 4 && req.status == 200) {
         var movieschelist = document.getElementById("movie_sche");
@@ -91,10 +105,7 @@ function searchMovieContComplete() {
         var json = JSON.parse(req.responseText);//转换为json对象
         if(json.length == 0){
             console.log("123");
-            movieschelist.innerHTML = '<div class="bg-dark text-center py-5">' +
-                '                <img src="img/cry.png" height="180" width="180" alt="."/>' +
-                '                <h1 class="text-light mx-auto my-5">抱歉，没有找到该电影...</h1>' +
-                '            </div>';
+            Nonemovieschelist();
             return 0;
         }
         console.log(json);

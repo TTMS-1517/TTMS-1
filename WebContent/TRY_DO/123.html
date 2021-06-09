@@ -102,6 +102,7 @@
 
     function search1(){
         var url = "../ScheduleServlet";
+        var playname = '九零后';
         if (window.XMLHttpRequest)
             req = new XMLHttpRequest();
         else if (window.ActiveXObject)
@@ -111,15 +112,16 @@
             req.open("post", url, true);
             //POST方式，必须加入如下头信息设定
             req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            req.onreadystatechange = searchComplete1;
+            req.onreadystatechange = searchComplete1(playname);
             req.send("type=search&playid="+document.getElementById("input").value);
         }
     }
 
-    function searchComplete1() {
+    function searchComplete1(playname) {
         if (req.readyState == 4 && req.status == 200) {
             var theTable = document.getElementById("table");//table的id
             var num=theTable.rows.length;
+            console.log("playname");
             while(num>0) {
                 theTable.deleteRow(num-1);
                 num=theTable.rows.length;
