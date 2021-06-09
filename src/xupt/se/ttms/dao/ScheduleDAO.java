@@ -20,8 +20,8 @@ public class ScheduleDAO implements iScheduleDAO
         try
         {
             String sql="insert into schedule (studio_id,play_id,play_name,sched_time,sched_ticket_price)"
-                    + " values(" + stu.getStudioid() + ", " + stu.getPlayid() + ", '" + stu.getPlayname() + ", '" + stu.getSchedtime() + "', "
-                    + stu.getPrice() + " )";
+                    + " values(" + stu.getStudioid() + ", " + stu.getPlayid() + ", '" + stu.getPlayname() + "', '" + stu.getSchedtime() + "', "
+                    + stu.getPrice() + ")";
             DBUtil db=new DBUtil();
             db.openConnection();
             ResultSet rst=db.getInsertObjectIDs(sql);
@@ -75,7 +75,7 @@ public class ScheduleDAO implements iScheduleDAO
         int result=0;
         try
         {
-            String sql="delete from  studio where studio_id = " + ID;
+            String sql="delete from  schedule where sched_id = " + ID;
             DBUtil db=new DBUtil();
             db.openConnection();
             result=db.execCommand(sql);
@@ -219,7 +219,7 @@ public class ScheduleDAO implements iScheduleDAO
         stuList=new LinkedList<Schedule>();
         try
         {
-            String sql="select * from schedule where play_name = '" + playname + "'";
+            String sql="select * from schedule where play_name like '%" + playname + "%'";
             db=new DBUtil();
             if(!db.openConnection())
             {

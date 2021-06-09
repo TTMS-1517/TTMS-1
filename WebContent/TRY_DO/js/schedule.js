@@ -1,4 +1,6 @@
-
+function initAll(){
+        searchName();
+}
 
     function searchName(){
     var url = "../ScheduleServlet";
@@ -35,8 +37,11 @@
         row.insertCell(4).innerHTML = json[i].price;
         var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].rowCount + "," + json[i].colCount + ",\'" + json[i].introduction +"\'";
         row.insertCell(5).innerHTML = '<input type="button" class="btn btn-sm btn-primary" value="修改" onclick="modify('+ tmp +')" ' +
-        '/>&nbsp;&nbsp;<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].id+')" />';
+        '/>&nbsp;&nbsp;<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].schedid+')" />';
+
 }
+
+    searchInPlay();
 }
 }
 
@@ -161,15 +166,15 @@
 
     function check() {
     var form = document.getElementById("myform");
-    if(form.studioname.value=="" || form.rowcount.value=="" || form.colcount.value=="" || form.intro.value=="") {
+    if(form.studioid.value=="" || form.schedtime.value=="" || form.price.value=="") {
     alert("请填写完整信息");
     return 0;
 }
-    if(isNaN(form.rowcount.value) || isNaN(form.colcount.value)){
-    alert("座位行数和座位列数不是数字");
+    if(isNaN(form.price.value)){
+    alert("票价不是数字");
     return;
 }
-    var url = "../StudioServlet";
+    var url = "../ScheduleServlet";
     if (window.XMLHttpRequest)
     req = new XMLHttpRequest();
     else if (window.ActiveXObject)
@@ -179,11 +184,12 @@
     req.open("post", url, true);
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     req.onreadystatechange = checkComplete;
+    var arr = document.getElementById("playname").value.split("-");
         form.playname.value.split(" ");
     var data = "type=" + form.type.value + "&studioid="
     + form.studioid.value + "&playid="
-        + form.playname.value.split(" ")[0] + "&playname="
-    + encodeURIComponent(form.playname.value.split(" ")[1]) + "&schedtime="
+        + document.getElementById("playname").value.split("-")[0] + "&playname="
+    + encodeURIComponent(document.getElementById("playname").value.split("-")[1]) + "&schedtime="
     + encodeURIComponent(form.schedtime.value) + "&price=" + form.price.value;
     req.send(data);
 }
@@ -192,14 +198,11 @@
     function checkComplete() {
     if (req.readyState == 4 && req.status == 200) {
     document.getElementById("myform").reset();
-    search();
+    searchName();
 }
 }
 
-function initAll(){
-        searchName()
-        searchInPlay();
-}
+
 
     function searchInPlay(){
         var url = "../PlayServlet";
@@ -219,11 +222,12 @@ function initAll(){
 
     function searchInPlayComplete() {
         if (req.readyState == 4 && req.status == 200) {
-            var add_playname = document.getElementById("add_playname");//table的id
+            var playname = document.getElementById("playname");//table的id
+
+            playname.innerHTML = '<option selected="">请选择</option>';
             var json =  JSON.parse(req.responseText);//转换为json对象
             for(i=0; i<json.length; i++) {
-                add_playname.innerHTML +=
-                    '<option value="' + json[i].id + ' ' + json[i].name + '">' + json[i].id + ' ' + json[i].name + '</option>'
+                playname.innerHTML += '<option value="' + json[i].id + '-' + json[i].name + '">' + json[i].id + '-' + json[i].name + '</option>'
             }
         }
     }

@@ -41,23 +41,18 @@
     </div>
 </div>
 
-<div class="input-group mb-3">
+<form id="myform">
+    <div class="input-group mb-3">
     <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">影厅编号</label>
     </div>
-    <select class="custom-select" id="inputGroupSelect01">
-        <option id="selected" selected="">请选择</option>
-        <div>
-
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="9">3</option>
-            <option value="8">4</option>
-            <option value="7">5</option>
-        </div>
-
+    <select class="custom-select" id="inputGroupSelect01" name="inputGroupSelect02">
     </select>
 </div>
+</form>
+
+
+
 
 <button type="button" id="select">选择</button>
 
@@ -87,6 +82,15 @@
 <script src="js/vue.min.js"></script>
 <script type="text/javascript">
 
+    var form = document.getElementById("myform");
+
+    document.getElementById("inputGroupSelect01").innerHTML = '<option id="selected" selected="">请选择</option><option value="123-421">1234-5341</option>';
+
+    var arr = document.getElementById("inputGroupSelect01").value.split("-")[0];
+
+
+
+
     document.getElementById("button").onclick = function (){
         var input1 = document.getElementById("input1").value;
         document.getElementById("file_path").innerText = input1;
@@ -98,6 +102,8 @@
 
     document.getElementById("select").onclick = function (){
         console.log(document.getElementById("inputGroupSelect01").value);
+        console.log(document.getElementById("inputGroupSelect01").value.split("-")[1]);
+
     }
 
     function search1(){

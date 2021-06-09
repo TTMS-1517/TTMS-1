@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>放映计划</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/jq22.css">
@@ -70,43 +70,6 @@
             </div>
         </nav>
 
-<!--        选座-->
-
-        <div class="modal fade" id="chooseSeatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl" >
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="chooseSeatModalLabel">选择座位</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body body-choose">
-                        <div class="container mb-3">
-                            <div class="demo clearfix">
-                                <!---左边座位列表----->
-                                <div id="seat_area">
-                                    <div class="front">屏幕</div>
-                                </div>
-                                <!---右边选座信息----->
-                                <div class="booking_area mt-5">
-                                    <p>电影：<span>唐人街探案3</span></p>
-                                    <p>时间：<span>03月20日 22:15</span></p>
-                                    <p>座位：</p>
-                                    <ul id="seats_chose"></ul>
-                                    <p>票数：<span id="tickects_num">0</span></p>
-                                    <p>总价：<b>￥<span id="total_price">0</span></b></p>
-                                    <a type="button" class="btn1"><span>确定购买</span></a>
-                                    <div id="legend"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
             <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -161,8 +124,6 @@
                                         </div>
                                         <select class="custom-select" id="playname" name="playname">
                                             <option selected="">请选择</option>
-                                            <div id="add_playname">
-                                            </div>
                                         </select>
                                     </div>
                                 </div>
@@ -212,61 +173,6 @@
             </div>
 
 
-            <!--            修改模态框-->
-            <div class="modal fade" id="exampleMod" tabindex="-1" aria-labelledby="exampleModalLab" aria-hidden="true">
-                <div class="modal-dialog modal-lg" >
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLab">修改此影厅</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="input-group form-group col-lg-4 float-left">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" >影厅编号</label>
-                                    </div>
-                                    <input type="text" class="form-control">
-                                </div>
-
-                                <div class="input-group form-group col-lg-8 float-left">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" >影厅名称</label>
-                                    </div>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="input-group form-group col-lg-4 float-left">
-                                    <input type="text" class="form-control">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" >行</label>
-                                    </div>
-                                    <input type="text" class="form-control">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" >列</label>
-                                    </div>
-                                </div>
-
-                                <div class="input-group form-group col-lg-8 float-left">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" >影厅描述</label>
-                                    </div>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"  data-toggle="modal" data-target="#delModal">删除影厅</button>
-                            <button type="button" class="btn btn-primary"  data-dismiss="modal">确认修改</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!--            删除警示-->
             <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -317,72 +223,5 @@
 <script src="js/vue.min.js"></script>
 <script src="js/index.js"></script>
 <script src="js/schedule.js"></script>
-<script type="text/javascript">
-    var price = 33; //电影票价
-    $(document).ready(function() {
-        var $cart = $('#seats_chose'), //座位区
-            $tickects_num = $('#tickects_num'), //票数
-            $total_price = $('#total_price'); //票价总额
-        var sc = $('#seat_area').seatCharts({
-            map: [//座位结构图 a 代表座位; 下划线 "_" 代表过道
-                'cccccccccc',
-                'cccccccccc',
-                '__________',
-                'cccccccc__',
-                'cccccccccc',
-                'cccccccccc',
-                'cccccccccc',
-                'cccccccccc',
-                'cccccccccc',
-                'cc__cc__cc'
-            ],
-            naming: {//设置行列等信息
-                top: false, //不显示顶部横坐标（行）
-                getLabel: function(character, row, column) { //返回座位信息
-                    return column;
-                }
-            },
-
-            legend: {//定义图例
-                node: $('#legend'),
-                items: [
-                    ['c', 'available', '可选座'],
-                    ['c', 'unavailable', '已售出']
-                ]
-            },
-
-            click: function() {
-                if (this.status() == 'available') { //若为可选座状态，添加座位
-                    $('<li>' + (this.settings.row + 1) + '排' + this.settings.label + '座</li>')
-                        .attr('id', 'cart-item-' + this.settings.id)
-                        .data('seatId', this.settings.id)
-                        .appendTo($cart);
-                    $tickects_num.text(sc.find('selected').length + 1); //统计选票数量
-                    $total_price.text(getTotalPrice(sc) + price);//计算票价总金额
-                    return 'selected';
-                } else if (this.status() == 'selected') { //若为选中状态
-                    $tickects_num.text(sc.find('selected').length - 1);//更新票数量
-                    $total_price.text(getTotalPrice(sc) - price);//更新票价总金额
-                    $('#cart-item-' + this.settings.id).remove();//删除已预订座位
-
-                    return 'available';
-                } else if (this.status() == 'unavailable') { //若为已售出状态
-                    return 'unavailable';
-                } else {
-                    return this.style();
-                }
-            }
-        });
-        //设置已售出的座位
-        sc.get(['1_3', '1_4', '4_4', '4_5', '4_6', '4_7', '4_8']).status('unavailable');
-    });
-    function getTotalPrice(sc) { //计算票价总额
-        var total = 0;
-        sc.find('selected').each(function() {
-            total += price;
-        });
-        return total;
-    }
-</script>
 </body>
 </html>

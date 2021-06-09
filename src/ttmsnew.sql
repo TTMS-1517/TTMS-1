@@ -233,9 +233,7 @@ CREATE TABLE `schedule`  (
   `sched_status` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`sched_id`) USING BTREE,
   INDEX `FK_play_sched`(`play_id`) USING BTREE,
-  INDEX `FK_studio_sched`(`studio_id`) USING BTREE,
-  CONSTRAINT `FK_play_sched` FOREIGN KEY (`play_id`) REFERENCES `play` (`play_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `FK_studio_sched` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `FK_studio_sched`(`studio_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
 
@@ -323,9 +321,7 @@ CREATE TABLE `ticket`  (
   `ticket_locktime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '加锁时间(下单后加锁)',
   PRIMARY KEY (`ticket_id`) USING BTREE,
   INDEX `FK_sched_ticket`(`sched_id`) USING BTREE,
-  INDEX `FK_seat_ticket`(`seat_id`) USING BTREE,
-  CONSTRAINT `FK_sched_ticket` FOREIGN KEY (`sched_id`) REFERENCES `schedule` (`sched_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `FK_seat_ticket` FOREIGN KEY (`seat_id`) REFERENCES `seat` (`seat_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `FK_seat_ticket`(`seat_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
 -- ----------------------------
