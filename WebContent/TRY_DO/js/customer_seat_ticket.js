@@ -54,7 +54,7 @@ $(document).ready(function() {
         }
     });
     //设置已售出的座位
-    sc.get(['1_3', '1_4', '4_4', '4_5', '4_6', '4_7', '4_8']).status('unavailable');
+    //sc.get(['1_3', '1_4', '4_4', '4_5', '4_6', '4_7', '4_8']).status('unavailable');
 });
 function getTotalPrice(sc) { //计算票价总额
     var total = 0;

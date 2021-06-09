@@ -84,25 +84,10 @@ function searchScheComplete() {
     if (req.readyState == 4 && req.status == 200) {
         var selectSeat = document.getElementById("selectSeat");
         var json =  JSON.parse(req.responseText);//转换为json对象
-        selectSeat.innerHTML = '<div class="demo clearfix">' +
-            '          <!---左边座位列表----->' +
-            '          <div id="seat_area">' +
-            '            <div class="front">屏幕</div>' +
-            '          </div>' +
-            '          <!---右边选座信息----->' +
-            '          <div class="booking_area mt-5">' +
-            '            <p>影厅：<span>' + json[0].studioid + '</span></p>' +
-            '            <p>电影：<span>' + json[0].playname + '</span></p>' +
-            '            <p>时间：<span>' + json[0].schedtime + '</span></p>' +
-            '            <p>票价：<span id="price">' + json[0].price + '</span></p>' +
-            '            <p>座位：</p>' +
-            '            <ul id="seats_chose"></ul>' +
-            '            <p>票数：<span id="tickects_num">0</span></p>' +
-            '            <p>总价：<b>￥<span id="total_price">0</span></b></p>' +
-            '            <a type="button" class="btn1"><span>确定购买</span></a>' +
-            '            <div id="legend"></div>' +
-            '          </div>' +
-            '        </div>';
+        document.getElementById("studioid").innerText = json[0].studioid;
+        document.getElementById("playname").innerText = json[0].playname;
+        document.getElementById("schedtime").innerText = json[0].schedtime;
+        document.getElementById("price").innerText = json[0].price;
         searchMovieContent(json[0].playname);
     }
 }
