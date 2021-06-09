@@ -69,6 +69,11 @@
 
 <a href="customer_seat_ticket.html?type=search&schedid=' + json[i].schedid + '" class="btn btn-sm btn-primary">购票</a>
 
+<form id="form" method="post" enctype="multipart/form-data">
+    <input type="file" id="input1">
+</form>
+<button id="button">获取内容</button>
+<p id="file_path"></p>
 
 
 
@@ -81,6 +86,12 @@
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="js/vue.min.js"></script>
 <script type="text/javascript">
+
+    document.getElementById("button").onclick = function (){
+        var input1 = document.getElementById("input1").value;
+        document.getElementById("file_path").innerText = input1;
+    }
+
     document.getElementById("price").onclick = function (){
         console.log(document.getElementById("price").innerText);
     }
