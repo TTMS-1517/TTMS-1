@@ -36,8 +36,7 @@ function initAll(){
         row.insertCell(3).innerHTML = json[i].schedtime;
         row.insertCell(4).innerHTML = json[i].price;
         var tmp = json[i].id + ",\'" + json[i].name + "\'," + json[i].rowCount + "," + json[i].colCount + ",\'" + json[i].introduction +"\'";
-        row.insertCell(5).innerHTML = '<input type="button" class="btn btn-sm btn-primary" value="修改" onclick="modify('+ tmp +')" ' +
-        '/>&nbsp;&nbsp;<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].schedid+')" />';
+        row.insertCell(5).innerHTML = '<input type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delModal" value="删除" onclick="del('+json[i].schedid+')" />';
 
 }
 

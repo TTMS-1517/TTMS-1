@@ -266,10 +266,12 @@
 </section>
 <script src="js/Bootstrap/jquery.js"></script>
 <script src="js/jquery.seat-charts.min.js"></script>
+<script src="js/Bootstrap/bootstrap.js"></script>
+<script src="js/customer_seat.js"></script>
 <script type="text/javascript">
 var price = $("#price").text(); //电影票价
 $(document).ready(function() {
-	console.log("123");
+	console.log(price);
     var $cart = $('#seats_chose'), //座位区
         $tickects_num = $('#tickects_num'), //票数
         $total_price = $('#total_price'); //票价总额
@@ -334,8 +336,6 @@ function getTotalPrice(sc) { //计算票价总额
     return total;
 }
 </script>
-<script src="js/Bootstrap/bootstrap.js"></script>
-<script src="js/customer_seat.js"></script>
 
 </body>
 </html>
