@@ -71,6 +71,20 @@
 <p id="file_path"></p>
 
 
+<form action="" enctype="multipart/form-data" method="post" name="form1" id="form1">
+    文件：<input type="file" name="myFile" id="myFile" onchange="getFileContent();" multiple>
+
+    <!-- 进度条 -->
+<div></div>
+<input type="submit">
+
+</form>
+
+
+<!-- 图片展示区域 -->
+<ul id="imgList"></ul>
+
+
 
 
 
@@ -107,7 +121,7 @@
     }
 
     function search1(){
-        var url = "../ScheduleServlet";
+        var url = "ScheduleServlet";
         var playname = '九零后';
         if (window.XMLHttpRequest)
             req = new XMLHttpRequest();
